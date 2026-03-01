@@ -28,33 +28,6 @@ import hashlib
 from datetime import datetime, timedelta
 from typing import Optional
 
-import threading
-from http.server import HTTPServer, BaseHTTPRequestHandler
-
-class PingHandler(BaseHTTPRequestHandler):
-    def do_GET(self):
-        self.send_response(200)
-        self.end_headers()
-        self.wfile.write(b"Bot aktif!")
-    def log_message(self, *args):
-        pass  # Log istemiyoruz
-
-def keep_alive():
-    server = HTTPServer(("0.0.0.0", 8080), PingHandler)
-    server.serve_forever()
-
-# main() fonksiyonunun başına ekle:
-threading.Thread(target=keep_alive, daemon=True).start()
-```
-
-Sonra [UptimeRobot](https://uptimerobot.com) sitesine üye ol → Render URL'ini 5 dakikada bir pingler → bot hiç uykuya geçmez. İkisi de ücretsiz.
-
----
-
-## 📋 Özet — En Ucuz & Kolay Yol
-```
-GitHub (ücretsiz) → Render.com (ücretsiz) → UptimeRobot (ücretsiz)
-
 from telegram import (
     Update, InlineKeyboardButton, InlineKeyboardMarkup,
     ChatPermissions, ChatMemberUpdated
@@ -77,7 +50,7 @@ logging.basicConfig(
         logging.StreamHandler()
     ]
 )
-logger = logging.getLogger("Ti App Studio")
+logger = logging.getLogger("GameStudioBot")
 
 # ─────────────────────────────────────────────
 #  YARDIMCI FONKSİYONLAR
@@ -1068,6 +1041,25 @@ async def error_handler(update: object, context: ContextTypes.DEFAULT_TYPE):
 #  MAIN
 # ─────────────────────────────────────────────
 
+
+# ─────────────────────────────────────────────
+#  RENDER.COM UYKU ENGELI (Keep-Alive Server)
+# ─────────────────────────────────────────────
+import threading
+from http.server import HTTPServer, BaseHTTPRequestHandler
+
+class PingHandler(BaseHTTPRequestHandler):
+    def do_GET(self):
+        self.send_response(200)
+        self.end_headers()
+        self.wfile.write(b"Bot aktif!")
+    def log_message(self, *args):
+        pass
+
+def keep_alive():
+    server = HTTPServer(("0.0.0.0", 8080), PingHandler)
+    server.serve_forever()
+
 def main():
     cfg = load_config()
     token = cfg["bot_token"]
@@ -1077,7 +1069,21 @@ def main():
         print("   @BotFather'dan token al ve config.json'a yapıştır.")
         return
 
-    app = Application.builder().token(token).build()
+    # Proxy ayarı (Türkiye'de Telegram engeliyse kullan)
+    # config.json'a ekle: "proxy": "socks5://127.0.0.1:9050"
+    proxy_url = cfg.get("proxy", None)
+
+    from telegram.request import HTTPXRequest
+    request = HTTPXRequest(
+        connection_pool_size=8,
+        connect_timeout=30.0,
+        read_timeout=30.0,
+        write_timeout=30.0,
+        pool_timeout=30.0,
+        proxy=proxy_url,
+    )
+
+    app = Application.builder().token(token).request(request).build()
 
     # Komut handler'ları
     app.add_handler(CommandHandler("start", cmd_start))
