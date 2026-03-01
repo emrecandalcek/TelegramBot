@@ -1,6 +1,6 @@
 {
-  "bot_token": "8184060678:AAFVrixHiuVatmsEj0Nl4Iwn4Fv5VGKknh4",
-  "bot_name": "Ti App Studio Bot",
+  "bot_token": "ENV",
+  "bot_name": "🎮 GameStudio Bot",
   "group_id": -1001234567890,
   "rewards": {
     "join_bonus_xp": 100,
@@ -114,7 +114,7 @@
       "min_level": 14
     },
     {
-      "name": " Designer",
+      "name": "Game Designer",
       "emoji": "🎨",
       "min_level": 17
     },
@@ -425,9 +425,9 @@
       "id": "q5",
       "category": "Oyun Tarihi",
       "question": "Grand Theft Auto serisini hangi şirket geliştirdi?",
-      "answer": "Rockstar s",
+      "answer": "Rockstar Games",
       "wrong_answers": [
-        "EA s",
+        "EA Games",
         "Ubisoft",
         "Activision"
       ]
@@ -472,7 +472,7 @@
       "answer": "NES",
       "wrong_answers": [
         "SNES",
-        " Boy",
+        "Game Boy",
         "N64"
       ]
     },
@@ -512,5 +512,6 @@
   ],
   "proxy": null,
   "groq_api_key": "ENV",
-  "ai_system_prompt": "Sen Ti App Studio'nun Telegram grup yapay zeka asistanısın. Oyun geliştirme (Unity, Unreal Engine, Godot), programlama (C#, Python, C++), game design, grafik ve genel konularda yardımcı olursun. Türkçe cevap verirsin. Samimi, enerjik ve bilgilisin. Cevapların net ve anlaşılır olsun. Emoji kullanabilirsin."
+  "ai_system_prompt": "Sen Ti App Studio'nun Telegram grup yapay zeka asistanısın. Oyun geliştirme (Unity, Unreal Engine, Godot), programlama (C#, Python, C++), game design, grafik ve genel konularda yardımcı olursun. Türkçe cevap verirsin. Samimi, enerjik ve bilgilisin. Cevapların net ve anlaşılır olsun. Emoji kullanabilirsin.",
+  "bot_username": "BOTUNUN_KULLANICI_ADI"
 }
