@@ -1,7 +1,7 @@
 #!/usr/bin/env python3
 # -*- coding: utf-8 -*-
 """
-🎮 GAME STUDIO TELEGRAM BOT
+Ti App Studio TELEGRAM BOT
 ============================
 Tam kapsamlı oyun stüdyosu grup botu
 Özellikler:
@@ -60,7 +60,7 @@ logging.basicConfig(
         logging.StreamHandler()
     ]
 )
-logger = logging.getLogger("GameStudioBot")
+logger = logging.getLogger("TiAppStudio_Bot")
 
 # ─────────────────────────────────────────────
 #  YARDIMCI FONKSİYONLAR
