@@ -1,7 +1,7 @@
 #!/usr/bin/env python3
 # -*- coding: utf-8 -*-
 """
-Ti App Studio TELEGRAM BOT
+TI APP STUDIO TELEGRAM BOT
 ============================
 Tam kapsamlı oyun stüdyosu grup botu
 Özellikler:
@@ -79,6 +79,106 @@ def load_data() -> dict:
 def save_data(data: dict):
     with open("data.json", "w", encoding="utf-8") as f:
         json.dump(data, f, ensure_ascii=False, indent=2)
+
+
+# ─────────────────────────────────────────────
+#  DM YARDIMCI FONKSİYONLARI
+# ─────────────────────────────────────────────
+
+async def send_dm(context, user_id: int, text: str, parse_mode=None, reply_markup=None, photo=None):
+    """
+    Kullanıcıya DM gönder.
+    Başarılı olursa True, DM açık değilse False döner.
+    """
+    try:
+        if photo:
+            await context.bot.send_photo(
+                chat_id=user_id,
+                photo=photo,
+                caption=text,
+                parse_mode=parse_mode
+            )
+        else:
+            await context.bot.send_message(
+                chat_id=user_id,
+                text=text,
+                parse_mode=parse_mode,
+                reply_markup=reply_markup
+            )
+        return True
+    except Exception:
+        return False
+
+
+async def dm_veya_uyar(update: Update, context: ContextTypes.DEFAULT_TYPE,
+                       text: str, parse_mode=None, reply_markup=None, photo=None):
+    """
+    Komut gruba yazıldıysa DM göndermeye çalış.
+    DM açık değilse grupta uyarı mesajı at ve 10sn sonra sil.
+    Komut zaten DM'de yazıldıysa direkt orada yanıtla.
+    """
+    user = update.effective_user
+    chat = update.effective_chat
+    cfg = load_config()
+    bot_username = cfg.get("bot_username", "")
+
+    # DM'de yazıldıysa direkt yanıtla
+    if chat.type == "private":
+        if photo:
+            await update.message.reply_photo(photo=photo, caption=text, parse_mode=parse_mode)
+        else:
+            await update.message.reply_text(text, parse_mode=parse_mode, reply_markup=reply_markup)
+        return
+
+    # Grupta yazıldıysa — önce kullanıcının mesajını sil
+    try:
+        await update.message.delete()
+    except Exception:
+        pass
+
+    # DM göndermeyi dene
+    success = await send_dm(context, user.id, text, parse_mode=parse_mode,
+                             reply_markup=reply_markup, photo=photo)
+
+    if success:
+        # Başarılı — kısa bildirim at ve sil
+        notif = await context.bot.send_message(
+            chat_id=chat.id,
+            text=f"📩 {mention(user.id, user.first_name)}, bilgilerin özel mesaj olarak gönderildi!",
+            parse_mode="HTML"
+        )
+        # 8 saniye sonra bildirimi sil
+        context.job_queue.run_once(
+            lambda ctx: asyncio.create_task(safe_delete(ctx.bot, chat.id, notif.message_id)),
+            when=8
+        )
+    else:
+        # DM açık değil — deep link butonu göster
+        deep_link = f"https://t.me/{bot_username}?start=dmac"
+        keyboard = InlineKeyboardMarkup([
+            [InlineKeyboardButton("🤖 Bota DM Aç", url=deep_link)]
+        ])
+        uyari = await context.bot.send_message(
+            chat_id=chat.id,
+            text=f"⚠️ {mention(user.id, user.first_name)}, önce bota özel mesaj açman gerekiyor!\n"
+                 f"Aşağıdaki butona bas, sonra tekrar dene.",
+            parse_mode="HTML",
+            reply_markup=keyboard
+        )
+        # 15 saniye sonra uyarıyı sil
+        context.job_queue.run_once(
+            lambda ctx: asyncio.create_task(safe_delete(ctx.bot, chat.id, uyari.message_id)),
+            when=15
+        )
+
+
+async def safe_delete(bot, chat_id: int, message_id: int):
+    """Mesajı güvenli şekilde sil (hata olursa görmezden gel)"""
+    try:
+        await bot.delete_message(chat_id=chat_id, message_id=message_id)
+    except Exception:
+        pass
+
 
 def get_user(data: dict, user_id: int) -> dict:
     uid = str(user_id)
@@ -201,7 +301,12 @@ async def welcome_new_member(update: Update, context: ContextTypes.DEFAULT_TYPE)
         f"🎯 Aktif ol, puan kazan, liderlik tablosuna çık!"
     )
 
+    cfg2 = load_config()
+    bot_username = cfg2.get("bot_username", "")
+    deep_link = f"https://t.me/{bot_username}?start=dmac"
+
     keyboard = InlineKeyboardMarkup([
+        [InlineKeyboardButton("🤖 Özel Mesajlar İçin Buraya Bas!", url=deep_link)],
         [InlineKeyboardButton("📊 Profilim", callback_data=f"profile_{user.id}"),
          InlineKeyboardButton("🏆 Liderlik", callback_data="leaderboard_1")],
         [InlineKeyboardButton("🎮 Oyunlar", callback_data="games_menu"),
@@ -210,7 +315,7 @@ async def welcome_new_member(update: Update, context: ContextTypes.DEFAULT_TYPE)
 
     await context.bot.send_message(
         chat_id=result.chat.id,
-        text=msg,
+        text=msg + "\n\n🤖 <b>Önemli:</b> Özel komutların DM'e gelsin istiyorsan yukarıdaki butona bas!",
         parse_mode=ParseMode.HTML,
         reply_markup=keyboard
     )
@@ -356,12 +461,29 @@ async def handle_message(update: Update, context: ContextTypes.DEFAULT_TYPE):
 
 async def cmd_start(update: Update, context: ContextTypes.DEFAULT_TYPE):
     cfg = load_config()
+    user = update.effective_user
+
+    # Deep link ile geldi mi? (gruptan "DM aç" butonuna bastı)
+    args = context.args
+    if args and args[0] == "dmac":
+        data = load_data()
+        db_user = get_user(data, user.id)
+        db_user["dm_open"] = True
+        save_data(data)
+        await update.message.reply_text(
+            f"✅ Harika {user.first_name}! Artık özel komutların buraya gelecek!\n\n"
+            f"🎮 Gruba dön ve komutları kullanmaya başla!\n"
+            f"Örnek: /yardim /profil /gunluk",
+            parse_mode=ParseMode.HTML
+        )
+        return
+
     keyboard = InlineKeyboardMarkup([
-        [InlineKeyboardButton("📊 Profilim", callback_data=f"profile_{update.effective_user.id}"),
+        [InlineKeyboardButton("📊 Profilim", callback_data=f"profile_{user.id}"),
          InlineKeyboardButton("🏆 Liderlik", callback_data="leaderboard_1")],
         [InlineKeyboardButton("🎮 Oyunlar", callback_data="games_menu"),
          InlineKeyboardButton("🎁 Günlük Bonus", callback_data="daily_bonus")],
-        [InlineKeyboardButton("🏅 Başarılar", callback_data=f"achievements_{update.effective_user.id}"),
+        [InlineKeyboardButton("🏅 Başarılar", callback_data=f"achievements_{user.id}"),
          InlineKeyboardButton("📖 Yardım", callback_data="help_menu")]
     ])
     await update.message.reply_text(
@@ -379,6 +501,71 @@ async def cmd_profil(update: Update, context: ContextTypes.DEFAULT_TYPE):
     db_user["username"] = user.username
     db_user["first_name"] = user.first_name
     save_data(data)
+    # Grupta yazıldıysa kullanıcının mesajını sil, profili DM'e gönder
+    if update.effective_chat.type != "private":
+        try:
+            await update.message.delete()
+        except Exception:
+            pass
+        # Profil metnini oluştur ve DM'e gönder
+        rank = get_rank_info(db_user["level"])
+        level = db_user["level"]
+        current_xp = db_user["xp"]
+        next_xp = xp_for_level(level + 1) if level < 30 else current_xp
+        xp_needed = next_xp - xp_for_level(level)
+        xp_current = current_xp - xp_for_level(level)
+        bar = progress_bar(xp_current, xp_needed, 12)
+        title = db_user.get("title") or rank["name"]
+        cfg2 = load_config()
+        trivia_rate = "0%"
+        if db_user["trivia_total"] > 0:
+            trivia_rate = f"{int(db_user['trivia_correct'] / db_user['trivia_total'] * 100)}%"
+        msg = (
+            f"╔══════════════════════════╗\n"
+            f"║  👤 <b>{user.first_name[:16]}</b>\n"
+            f"╚══════════════════════════╝\n\n"
+            f"🏅 <b>Rank:</b> {rank['emoji']} {rank['name']}\n"
+            f"🎖 <b>Unvan:</b> {title}\n\n"
+            f"━━━━━━ STATS ━━━━━━\n"
+            f"⚡ <b>Seviye:</b> {level}/30\n"
+            f"🔷 <b>XP:</b> {current_xp:,} / {next_xp:,}\n"
+            f"   {bar} {int(xp_current/xp_needed*100) if xp_needed>0 else 100}%\n"
+            f"💰 <b>Altın:</b> {db_user['gold']:,}\n"
+            f"💬 <b>Mesaj:</b> {db_user['messages']:,}\n"
+            f"🔥 <b>Streak:</b> {db_user['daily_streak']} gün\n"
+            f"🏆 <b>Başarı:</b> {len(db_user['achievements'])}/{len(cfg2['achievements'])}\n"
+            f"🎲 <b>Trivia:</b> {db_user['trivia_correct']}/{db_user['trivia_total']} ({trivia_rate})"
+        )
+        keyboard = InlineKeyboardMarkup([
+            [InlineKeyboardButton("🏅 Başarılarım", callback_data=f"achievements_{user.id}"),
+             InlineKeyboardButton("🎁 Günlük Bonus", callback_data="daily_bonus")]
+        ])
+        success = await send_dm(context, user.id, msg, parse_mode="HTML", reply_markup=keyboard)
+        if success:
+            notif = await context.bot.send_message(
+                chat_id=update.effective_chat.id,
+                text=f"📩 {mention(user.id, user.first_name)}, profil bilgilerin özel mesaj olarak gönderildi!",
+                parse_mode="HTML"
+            )
+            context.job_queue.run_once(
+                lambda ctx: asyncio.create_task(safe_delete(ctx.bot, update.effective_chat.id, notif.message_id)),
+                when=8
+            )
+        else:
+            cfg3 = load_config()
+            bot_username = cfg3.get("bot_username", "")
+            deep_link = f"https://t.me/{bot_username}?start=dmac"
+            uyari = await context.bot.send_message(
+                chat_id=update.effective_chat.id,
+                text=f"⚠️ {mention(user.id, user.first_name)}, önce bota DM aç!",
+                parse_mode="HTML",
+                reply_markup=InlineKeyboardMarkup([[InlineKeyboardButton("🤖 DM Aç", url=deep_link)]])
+            )
+            context.job_queue.run_once(
+                lambda ctx: asyncio.create_task(safe_delete(ctx.bot, update.effective_chat.id, uyari.message_id)),
+                when=15
+            )
+        return
     await show_profile(update, context, user.id, user.first_name)
 
 async def show_profile(update_or_query, context, user_id: int, first_name: str):
@@ -433,6 +620,9 @@ async def show_profile(update_or_query, context, user_id: int, first_name: str):
         await update_or_query.edit_message_text(msg, parse_mode=ParseMode.HTML, reply_markup=keyboard)
 
 async def cmd_liderlik(update: Update, context: ContextTypes.DEFAULT_TYPE):
+    if update.effective_chat.type != "private":
+        try: await update.message.delete()
+        except Exception: pass
     await show_leaderboard(update, context, page=1)
 
 async def show_leaderboard(update_or_query, context, page: int = 1):
@@ -480,6 +670,9 @@ async def show_leaderboard(update_or_query, context, page: int = 1):
         await update_or_query.edit_message_text(msg, parse_mode=ParseMode.HTML, reply_markup=keyboard)
 
 async def cmd_gunluk(update: Update, context: ContextTypes.DEFAULT_TYPE):
+    if update.effective_chat.type != "private":
+        try: await update.message.delete()
+        except Exception: pass
     await handle_daily_bonus(update, context, update.effective_user)
 
 async def handle_daily_bonus(update_or_query, context, user):
@@ -562,7 +755,35 @@ async def handle_daily_bonus(update_or_query, context, user):
     ])
 
     if hasattr(update_or_query, "message") and update_or_query.message:
-        await update_or_query.message.reply_text(msg, parse_mode=ParseMode.HTML, reply_markup=keyboard)
+        # Grupta yazıldıysa DM'e gönder
+        chat = update_or_query.effective_chat
+        if chat and chat.type != "private":
+            success = await send_dm(context, user.id, msg, parse_mode="HTML", reply_markup=keyboard)
+            if success:
+                notif = await context.bot.send_message(
+                    chat_id=chat.id,
+                    text=f"🎁 {mention(user.id, user.first_name)}, günlük bonusun özel mesaj olarak gönderildi!",
+                    parse_mode="HTML"
+                )
+                context.job_queue.run_once(
+                    lambda ctx: asyncio.create_task(safe_delete(ctx.bot, chat.id, notif.message_id)),
+                    when=8
+                )
+            else:
+                cfg3 = load_config()
+                bot_un = cfg3.get("bot_username", "")
+                uyari = await context.bot.send_message(
+                    chat_id=chat.id,
+                    text=f"⚠️ {mention(user.id, user.first_name)}, önce bota DM aç!",
+                    parse_mode="HTML",
+                    reply_markup=InlineKeyboardMarkup([[InlineKeyboardButton("🤖 DM Aç", url=f"https://t.me/{bot_un}?start=dmac")]])
+                )
+                context.job_queue.run_once(
+                    lambda ctx: asyncio.create_task(safe_delete(ctx.bot, chat.id, uyari.message_id)),
+                    when=15
+                )
+        else:
+            await update_or_query.message.reply_text(msg, parse_mode=ParseMode.HTML, reply_markup=keyboard)
     else:
         await update_or_query.edit_message_text(msg, parse_mode=ParseMode.HTML, reply_markup=keyboard)
 
@@ -580,6 +801,42 @@ async def cmd_basarilar(update: Update, context: ContextTypes.DEFAULT_TYPE):
     data = load_data()
     cfg = load_config()
     db_user = get_user(data, user.id)
+    if update.effective_chat.type != "private":
+        try: await update.message.delete()
+        except Exception: pass
+        earned = db_user["achievements"]
+        all_achs = cfg["achievements"]
+        msg = f"🏆 <b>{user.first_name}'in Başarıları</b>\nKazanılan: {len(earned)}/{len(all_achs)}\n\n"
+        for ach in all_achs:
+            if ach["id"] in earned:
+                msg += f"✅ {ach['emoji']} <b>{ach['name']}</b>\n   <i>{ach['description']}</i>\n\n"
+            else:
+                msg += f"🔒 ??? <i>(Gizli başarı)</i>\n\n"
+        success = await send_dm(context, user.id, msg, parse_mode="HTML")
+        if success:
+            notif = await context.bot.send_message(
+                chat_id=update.effective_chat.id,
+                text=f"📩 {mention(user.id, user.first_name)}, başarıların özel mesaj olarak gönderildi!",
+                parse_mode="HTML"
+            )
+            context.job_queue.run_once(
+                lambda ctx: asyncio.create_task(safe_delete(ctx.bot, update.effective_chat.id, notif.message_id)),
+                when=8
+            )
+        else:
+            cfg3 = load_config()
+            bot_un = cfg3.get("bot_username", "")
+            uyari = await context.bot.send_message(
+                chat_id=update.effective_chat.id,
+                text=f"⚠️ {mention(user.id, user.first_name)}, önce bota DM aç!",
+                parse_mode="HTML",
+                reply_markup=InlineKeyboardMarkup([[InlineKeyboardButton("🤖 DM Aç", url=f"https://t.me/{bot_un}?start=dmac")]])
+            )
+            context.job_queue.run_once(
+                lambda ctx: asyncio.create_task(safe_delete(ctx.bot, update.effective_chat.id, uyari.message_id)),
+                when=15
+            )
+        return
     await show_achievements(update, context, user.id, user.first_name, db_user, cfg)
 
 async def show_achievements(update_or_query, context, user_id, first_name, db_user, cfg):
@@ -736,6 +993,11 @@ async def cmd_unvan_sec(update: Update, context: ContextTypes.DEFAULT_TYPE):
     data = load_data()
     user = update.effective_user
     db_user = get_user(data, user.id)
+    is_private = update.effective_chat.type == "private"
+
+    if not is_private:
+        try: await update.message.delete()
+        except Exception: pass
 
     available_titles = [t for t in cfg["titles"] if db_user["level"] >= t["min_level"]]
 
@@ -744,22 +1006,20 @@ async def cmd_unvan_sec(update: Update, context: ContextTypes.DEFAULT_TYPE):
             f"{'✅' if db_user['title'] == t['name'] else '🏷'} {t['name']} (Lv.{t['min_level']}+)"
             for t in available_titles
         ])
-        await update.message.reply_text(
-            f"🏷 <b>Kullanılabilir Unvanlar</b>\n\n{titles_text}\n\n"
-            f"Seçmek için: /unvan [unvan adı]",
-            parse_mode=ParseMode.HTML
-        )
+        msg = (f"🏷 <b>Kullanılabilir Unvanlar</b>\n\n{titles_text}\n\n"
+               f"Seçmek için: /unvan [unvan adı]")
+        await dm_veya_uyar(update, context, msg, parse_mode="HTML")
         return
 
     title_name = " ".join(context.args)
     matching = [t for t in available_titles if t["name"].lower() == title_name.lower()]
     if not matching:
-        await update.message.reply_text("❌ Böyle bir unvan yok veya seviyeniz yeterli değil!")
+        await dm_veya_uyar(update, context, "❌ Böyle bir unvan yok veya seviyeniz yeterli değil!")
         return
 
     db_user["title"] = matching[0]["name"]
     save_data(data)
-    await update.message.reply_text(f"✅ Unvanın <b>{matching[0]['name']}</b> olarak güncellendi!", parse_mode=ParseMode.HTML)
+    await dm_veya_uyar(update, context, f"✅ Unvanın <b>{matching[0]['name']}</b> olarak güncellendi!", parse_mode="HTML")
 
 async def cmd_hediye(update: Update, context: ContextTypes.DEFAULT_TYPE):
     """Birine altın gönder"""
@@ -814,7 +1074,7 @@ async def cmd_istatistik(update: Update, context: ContextTypes.DEFAULT_TYPE):
     max_level_user = max(active_users, key=lambda u: u["level"]) if active_users else None
     top_name = max_level_user.get("first_name", "???") if max_level_user else "?"
 
-    await update.message.reply_text(
+    msg = (
         f"📊 <b>GRUP İSTATİSTİKLERİ</b>\n\n"
         f"👥 Toplam üye: {len(users)}\n"
         f"✅ Aktif üye: {len(active_users)}\n"
@@ -822,9 +1082,9 @@ async def cmd_istatistik(update: Update, context: ContextTypes.DEFAULT_TYPE):
         f"⚡ Toplam XP: {total_xp:,}\n"
         f"💰 Toplam altın: {total_gold:,}\n"
         f"👑 En yüksek seviye: {top_name} (Lv.{max_level_user['level'] if max_level_user else 0})\n"
-        f"🤖 Bot: {cfg['bot_name']}",
-        parse_mode=ParseMode.HTML
+        f"🤖 Bot: {cfg['bot_name']}"
     )
+    await dm_veya_uyar(update, context, msg, parse_mode="HTML")
 
 async def cmd_yardim(update: Update, context: ContextTypes.DEFAULT_TYPE):
     keyboard = InlineKeyboardMarkup([
@@ -832,7 +1092,7 @@ async def cmd_yardim(update: Update, context: ContextTypes.DEFAULT_TYPE):
          InlineKeyboardButton("🏆 Liderlik", callback_data="leaderboard_1")],
         [InlineKeyboardButton("🎲 Oyunlar", callback_data="games_menu")]
     ])
-    await update.message.reply_text(
+    await dm_veya_uyar(update, context,
         "📖 <b>KOMUT LİSTESİ</b>\n\n"
         "👤 <b>Profil &amp; Puan</b>\n"
         "/profil — Profilini gör\n"
@@ -844,6 +1104,8 @@ async def cmd_yardim(update: Update, context: ContextTypes.DEFAULT_TYPE):
         "🎮 <b>Oyunlar</b>\n"
         "/zar [miktar] — Zar bahis oyunu\n"
         "/yatura [yazi/tura] [miktar] — Yazı-tura\n"
+        "/slot [miktar] — Slot makinesi\n"
+        "/blackjack [miktar] — Blackjack oyna\n"
         "/trivia — Bilgi yarışması sorusu\n\n"
         "💰 <b>Ekonomi</b>\n"
         "/hediye [miktar] — Birine altın gönder\n\n"
@@ -851,6 +1113,12 @@ async def cmd_yardim(update: Update, context: ContextTypes.DEFAULT_TYPE):
         "/sorusor [soru] — Tek seferlik soru sor\n"
         "/aisohbet [mesaj] — Bağlam hatırlayan sohbet\n"
         "/aisifirla — Konuşma geçmişini sıfırla\n\n"
+        "🖼️ <b>Profil</b>\n"
+        "/kart — Profil kartını resim olarak al\n\n"
+        "📢 <b>Admin Komutları</b>\n"
+        "/duyuru [mesaj] — Duyuru yap\n"
+        "/anket [soru] | [seç1] | [seç2] — Anket oluştur\n"
+        "/cekilish [ödül] [kazanan] — Çekiliş başlat\n\n"
         "ℹ️ Bot selam mesajlarına +XP ve altın verir!\n"
         "🔥 Her gün giriş yap, streak bonusu kazan!",
         parse_mode=ParseMode.HTML,
@@ -1242,6 +1510,575 @@ async def cmd_aisifirla(update: Update, context: ContextTypes.DEFAULT_TYPE):
     )
 
 
+
+# ═══════════════════════════════════════════════════════════════
+#  🎰 SLOT MAKİNESİ
+# ═══════════════════════════════════════════════════════════════
+
+SLOT_SYMBOLS = ["🍒", "🍋", "🍊", "🍇", "⭐", "💎", "7️⃣"]
+SLOT_PAYOUTS = {
+    "💎💎💎": 10, "7️⃣7️⃣7️⃣": 8, "⭐⭐⭐": 5,
+    "🍇🍇🍇": 4, "🍊🍊🍊": 3, "🍋🍋🍋": 2, "🍒🍒🍒": 2,
+}
+
+async def cmd_slot(update: Update, context: ContextTypes.DEFAULT_TYPE):
+    user = update.effective_user
+    cfg = load_config()
+    data = load_data()
+    db_user = get_user(data, user.id)
+
+    args = context.args
+    if not args or not args[0].isdigit():
+        await update.message.reply_text(
+            "🎰 <b>Slot Makinesi</b>\n\n"
+            "Kullanım: /slot [miktar]\n"
+            "Örnek: /slot 100\n\n"
+            "Ödüller:\n"
+            "💎💎💎 → 10x\n⭐⭐⭐ → 5x\n7️⃣7️⃣7️⃣ → 8x\n"
+            "🍇🍇🍇 → 4x\n🍊🍊🍊 → 3x\nİkili eşleşme → 0.5x",
+            parse_mode=ParseMode.HTML
+        )
+        return
+
+    amount = int(args[0])
+    if amount < 10:
+        await update.message.reply_text("❌ Minimum bahis: 10 altın!")
+        return
+    if amount > db_user["gold"]:
+        await update.message.reply_text(f"❌ Yeterli altının yok! Mevcut: {db_user['gold']:,} 💰")
+        return
+    if amount > cfg["games"].get("slot_max_bet", 3000):
+        await update.message.reply_text(f"❌ Maksimum bahis: {cfg['games'].get('slot_max_bet', 3000)} altın!")
+        return
+
+    s1, s2, s3 = random.choice(SLOT_SYMBOLS), random.choice(SLOT_SYMBOLS), random.choice(SLOT_SYMBOLS)
+    combo = s1 + s2 + s3
+
+    multiplier = 0
+    result_text = ""
+
+    # Üçlü eşleşme kontrolü
+    for pattern, mult in SLOT_PAYOUTS.items():
+        p = pattern.replace("💎💎💎","").replace("7️⃣7️⃣7️⃣","").replace("⭐⭐⭐","")
+        syms = list(filter(None, pattern.split()))
+        if s1 == s2 == s3 == syms[0] if len(syms) == 1 else False:
+            multiplier = mult
+            break
+
+    if s1 == s2 == s3:
+        key = s1 * 3
+        multiplier = SLOT_PAYOUTS.get(key, 2)
+        won = int(amount * multiplier)
+        db_user["gold"] += won
+        result_text = f"🎊 <b>JACKPOT! {multiplier}x!</b> +{won} 💰"
+    elif s1 == s2 or s2 == s3 or s1 == s3:
+        won = int(amount * 0.5)
+        db_user["gold"] += won
+        result_text = f"✅ <b>İkili Eşleşme!</b> +{won} 💰"
+    else:
+        db_user["gold"] -= amount
+        result_text = f"❌ <b>Kaybettin!</b> -{amount} 💰"
+
+    save_data(data)
+    await update.message.reply_text(
+        f"🎰 <b>SLOT MAKİNESİ</b>\n\n"
+        f"╔═══════════╗\n"
+        f"║  {s1}  {s2}  {s3}  ║\n"
+        f"╚═══════════╝\n\n"
+        f"{result_text}\n"
+        f"💰 Bakiye: {db_user['gold']:,}",
+        parse_mode=ParseMode.HTML
+    )
+
+
+# ═══════════════════════════════════════════════════════════════
+#  🃏 BLACKJACK
+# ═══════════════════════════════════════════════════════════════
+
+bj_games = {}
+
+def bj_card():
+    suits = ["♠", "♥", "♦", "♣"]
+    ranks = ["2","3","4","5","6","7","8","9","10","J","Q","K","A"]
+    return random.choice(ranks) + random.choice(suits)
+
+def bj_value(cards):
+    total = 0
+    aces = 0
+    for card in cards:
+        rank = card[:-1] if len(card) > 2 else card[0]
+        if rank in ["J","Q","K"]:
+            total += 10
+        elif rank == "A":
+            total += 11
+            aces += 1
+        else:
+            total += int(rank)
+    while total > 21 and aces:
+        total -= 10
+        aces -= 1
+    return total
+
+def bj_hand_str(cards):
+    return "  ".join(cards)
+
+async def cmd_blackjack(update: Update, context: ContextTypes.DEFAULT_TYPE):
+    user = update.effective_user
+    cfg = load_config()
+    data = load_data()
+    db_user = get_user(data, user.id)
+
+    uid = str(user.id)
+    if uid in bj_games:
+        await update.message.reply_text("❌ Zaten aktif bir oyunun var! /bjdur yazarak çık.")
+        return
+
+    args = context.args
+    if not args or not args[0].isdigit():
+        await update.message.reply_text(
+            "🃏 <b>Blackjack</b>\n\nKullanım: /blackjack [miktar]\n"
+            "21'e en yakın olan kazanır!\n\n"
+            "Komutlar:\n/bjcek — Kart çek\n/bjdur — Dur (dealer oynar)\n/bjdur2x — Çift bahis (1 kart)",
+            parse_mode=ParseMode.HTML
+        )
+        return
+
+    amount = int(args[0])
+    if amount < 10 or amount > db_user["gold"]:
+        await update.message.reply_text("❌ Geçersiz miktar!")
+        return
+
+    # Oyunu başlat
+    player = [bj_card(), bj_card()]
+    dealer = [bj_card(), bj_card()]
+    bj_games[uid] = {"player": player, "dealer": dealer, "bet": amount, "done": False}
+    db_user["gold"] -= amount
+    save_data(data)
+
+    pval = bj_value(player)
+    msg = (
+        f"🃏 <b>BLACKJACK</b>\n\n"
+        f"🧑 Senin kartların: {bj_hand_str(player)} = <b>{pval}</b>\n"
+        f"🤖 Dealer: {dealer[0]}  🂠\n\n"
+        f"Bahis: {amount} 💰"
+    )
+
+    if pval == 21:
+        won = int(amount * 2.5)
+        db_user["gold"] += won
+        del bj_games[uid]
+        save_data(data)
+        await update.message.reply_text(
+            msg + f"\n\n🎊 <b>BLACKJACK! Kazandın!</b> +{won} 💰",
+            parse_mode=ParseMode.HTML
+        )
+        return
+
+    keyboard = InlineKeyboardMarkup([
+        [InlineKeyboardButton("🃏 Kart Çek", callback_data=f"bj_hit_{uid}"),
+         InlineKeyboardButton("✋ Dur", callback_data=f"bj_stand_{uid}")]
+    ])
+    await update.message.reply_text(msg, parse_mode=ParseMode.HTML, reply_markup=keyboard)
+
+
+async def bj_callback(update: Update, context: ContextTypes.DEFAULT_TYPE):
+    query = update.callback_query
+    await query.answer()
+    data_str = query.data
+    user = query.from_user
+    uid = str(user.id)
+
+    if uid not in bj_games:
+        await query.edit_message_text("❌ Aktif oyun bulunamadı!")
+        return
+
+    game = bj_games[uid]
+    data = load_data()
+    db_user = get_user(data, user.id)
+
+    if data_str == f"bj_hit_{uid}":
+        game["player"].append(bj_card())
+        pval = bj_value(game["player"])
+
+        if pval > 21:
+            del bj_games[uid]
+            save_data(data)
+            await query.edit_message_text(
+                f"🃏 <b>BLACKJACK</b>\n\n"
+                f"🧑 {bj_hand_str(game['player'])} = <b>{pval}</b>\n\n"
+                f"💥 <b>BUST! Kaybettin!</b> -{game['bet']} 💰\n"
+                f"💰 Bakiye: {db_user['gold']:,}",
+                parse_mode=ParseMode.HTML
+            )
+            return
+
+        keyboard = InlineKeyboardMarkup([
+            [InlineKeyboardButton("🃏 Kart Çek", callback_data=f"bj_hit_{uid}"),
+             InlineKeyboardButton("✋ Dur", callback_data=f"bj_stand_{uid}")]
+        ])
+        await query.edit_message_text(
+            f"🃏 <b>BLACKJACK</b>\n\n"
+            f"🧑 {bj_hand_str(game['player'])} = <b>{pval}</b>\n"
+            f"🤖 Dealer: {game['dealer'][0]}  🂠\n\n"
+            f"Bahis: {game['bet']} 💰",
+            parse_mode=ParseMode.HTML,
+            reply_markup=keyboard
+        )
+
+    elif data_str == f"bj_stand_{uid}":
+        # Dealer oynar
+        dealer = game["dealer"]
+        while bj_value(dealer) < 17:
+            dealer.append(bj_card())
+
+        pval = bj_value(game["player"])
+        dval = bj_value(dealer)
+        bet = game["bet"]
+        del bj_games[uid]
+
+        if dval > 21 or pval > dval:
+            won = bet * 2
+            db_user["gold"] += won
+            result = f"🎊 <b>KAZANDIN!</b> +{bet} 💰"
+        elif pval == dval:
+            db_user["gold"] += bet
+            result = f"🤝 <b>BERABERE!</b> Bahis iade edildi."
+        else:
+            result = f"❌ <b>KAYBETTİN!</b> -{bet} 💰"
+
+        save_data(data)
+        await query.edit_message_text(
+            f"🃏 <b>BLACKJACK SONUCU</b>\n\n"
+            f"🧑 {bj_hand_str(game['player'])} = <b>{pval}</b>\n"
+            f"🤖 {bj_hand_str(dealer)} = <b>{dval}</b>\n\n"
+            f"{result}\n💰 Bakiye: {db_user['gold']:,}",
+            parse_mode=ParseMode.HTML
+        )
+
+async def cmd_bjdur(update: Update, context: ContextTypes.DEFAULT_TYPE):
+    uid = str(update.effective_user.id)
+    if uid in bj_games:
+        del bj_games[uid]
+        data = load_data()
+        db_user = get_user(data, update.effective_user.id)
+        await update.message.reply_text(f"❌ Oyundan çıkıldı. Bahis kaybedildi.\n💰 Bakiye: {db_user['gold']:,}")
+    else:
+        await update.message.reply_text("Aktif blackjack oyunun yok.")
+
+
+# ═══════════════════════════════════════════════════════════════
+#  📢 DUYURU & ANKET SİSTEMİ
+# ═══════════════════════════════════════════════════════════════
+
+async def cmd_duyuru(update: Update, context: ContextTypes.DEFAULT_TYPE):
+    """Admin duyuru komutu"""
+    if not await is_admin(update, context):
+        await update.message.reply_text("❌ Bu komut sadece adminler içindir!")
+        return
+
+    if not context.args:
+        await update.message.reply_text(
+            "📢 <b>Duyuru Komutu</b>\n\nKullanım: /duyuru [mesaj]\n"
+            "Örnek: /duyuru Yeni güncelleme çıktı!",
+            parse_mode=ParseMode.HTML
+        )
+        return
+
+    mesaj = " ".join(context.args)
+    user = update.effective_user
+    cfg = load_config()
+
+    duyuru_text = (
+        f"📢 <b>DUYURU</b>\n"
+        f"━━━━━━━━━━━━━━━━\n\n"
+        f"{mesaj}\n\n"
+        f"━━━━━━━━━━━━━━━━\n"
+        f"<i>— {user.first_name} tarafından</i>"
+    )
+
+    keyboard = InlineKeyboardMarkup([
+        [InlineKeyboardButton("✅ Gördüm", callback_data="duyuru_ok"),
+         InlineKeyboardButton("🔔 Hatırlat", callback_data="duyuru_remind")]
+    ])
+
+    await update.message.reply_text(duyuru_text, parse_mode=ParseMode.HTML, reply_markup=keyboard)
+
+
+anket_sessions = {}
+
+async def cmd_anket(update: Update, context: ContextTypes.DEFAULT_TYPE):
+    """Anket oluştur"""
+    if not await is_admin(update, context):
+        await update.message.reply_text("❌ Sadece adminler anket oluşturabilir!")
+        return
+
+    if len(context.args) < 3:
+        await update.message.reply_text(
+            "📊 <b>Anket Komutu</b>\n\n"
+            "Kullanım: /anket [soru] | [seçenek1] | [seçenek2] | ...\n\n"
+            "Örnek:\n/anket Hangi oyun türü? | Aksiyon | RPG | Strateji | Bulmaca",
+            parse_mode=ParseMode.HTML
+        )
+        return
+
+    full_text = " ".join(context.args)
+    parts = [p.strip() for p in full_text.split("|")]
+
+    if len(parts) < 3:
+        await update.message.reply_text("❌ En az 1 soru ve 2 seçenek gerekli! Seçenekleri | ile ayır.")
+        return
+
+    soru = parts[0]
+    secenekler = parts[1:]
+    anket_id = str(update.message.message_id)
+
+    anket_sessions[anket_id] = {
+        "soru": soru,
+        "secenekler": secenekler,
+        "oylar": {s: [] for s in secenekler},
+        "toplam": 0
+    }
+
+    buttons = [
+        [InlineKeyboardButton(f"{s} (0)", callback_data=f"anket_{anket_id}_{i}")]
+        for i, s in enumerate(secenekler)
+    ]
+    buttons.append([InlineKeyboardButton("📊 Sonuçları Gör", callback_data=f"anket_sonuc_{anket_id}")])
+
+    await update.message.reply_text(
+        f"📊 <b>ANKET</b>\n\n❓ {soru}\n\nOy kullanmak için bir seçeneğe tıkla:",
+        parse_mode=ParseMode.HTML,
+        reply_markup=InlineKeyboardMarkup(buttons)
+    )
+
+
+# ═══════════════════════════════════════════════════════════════
+#  🖼️ PROFİL KARTI GÖRSELİ
+# ═══════════════════════════════════════════════════════════════
+
+async def cmd_kart(update: Update, context: ContextTypes.DEFAULT_TYPE):
+    """Profil kartını resim olarak gönder"""
+    try:
+        from PIL import Image, ImageDraw, ImageFont
+        import io
+    except ImportError:
+        await update.message.reply_text(
+            "❌ Pillow kütüphanesi yüklü değil!\n"
+            "requirements.txt dosyasına Pillow==10.3.0 ekle."
+        )
+        return
+
+    user = update.effective_user
+    data = load_data()
+    cfg = load_config()
+    db_user = get_user(data, user.id)
+    rank = get_rank_info(db_user["level"])
+
+    # Kart boyutu
+    W, H = 600, 320
+    img = Image.new("RGB", (W, H), color=(15, 15, 30))
+    draw = ImageDraw.Draw(img)
+
+    # Arkaplan degrade efekti (manuel)
+    for y in range(H):
+        r = int(15 + (y / H) * 20)
+        g = int(15 + (y / H) * 10)
+        b = int(30 + (y / H) * 40)
+        draw.line([(0, y), (W, y)], fill=(r, g, b))
+
+    # Dekoratif çerçeve
+    draw.rectangle([10, 10, W-10, H-10], outline=(100, 80, 200), width=2)
+    draw.rectangle([14, 14, W-14, H-14], outline=(60, 40, 120), width=1)
+
+    # Sol taraf avatar dairesi
+    cx, cy, cr = 90, 110, 65
+    draw.ellipse([cx-cr, cy-cr, cx+cr, cy+cr], fill=(40, 35, 80), outline=(150, 100, 255), width=3)
+
+    # Avatar içi — seviyeye göre renk
+    level_colors = [(100,100,200),(50,150,200),(50,200,150),(200,150,50),(200,50,50),(180,50,200)]
+    acolor = level_colors[min(db_user["level"] // 5, len(level_colors)-1)]
+    draw.ellipse([cx-50, cy-50, cx+50, cy+50], fill=acolor)
+
+    # Avatar içi ilk harf
+    name_char = (user.first_name or "?")[0].upper()
+    try:
+        font_big = ImageFont.truetype("/usr/share/fonts/truetype/dejavu/DejaVuSans-Bold.ttf", 48)
+        font_med = ImageFont.truetype("/usr/share/fonts/truetype/dejavu/DejaVuSans-Bold.ttf", 22)
+        font_sm  = ImageFont.truetype("/usr/share/fonts/truetype/dejavu/DejaVuSans.ttf", 16)
+        font_xs  = ImageFont.truetype("/usr/share/fonts/truetype/dejavu/DejaVuSans.ttf", 13)
+    except Exception:
+        font_big = font_med = font_sm = font_xs = ImageFont.load_default()
+
+    bbox = draw.textbbox((0,0), name_char, font=font_big)
+    tw, th = bbox[2]-bbox[0], bbox[3]-bbox[1]
+    draw.text((cx - tw//2, cy - th//2 - 5), name_char, font=font_big, fill=(255,255,255))
+
+    # İsim
+    draw.text((180, 30), user.first_name[:20], font=font_med, fill=(255, 255, 255))
+
+    # Rank etiketi
+    rank_text = f"{rank['name']}"
+    draw.rounded_rectangle([180, 60, 180 + len(rank_text)*11 + 20, 85], radius=8, fill=(80, 50, 160))
+    draw.text((190, 63), rank_text, font=font_sm, fill=(220, 200, 255))
+
+    # Level
+    draw.text((180, 95), f"Seviye {db_user['level']}", font=font_sm, fill=(180, 180, 255))
+
+    # XP bar
+    level = db_user["level"]
+    current_xp = db_user["xp"]
+    next_xp = xp_for_level(level + 1) if level < 30 else current_xp
+    xp_base = xp_for_level(level)
+    progress = (current_xp - xp_base) / max(next_xp - xp_base, 1)
+    bar_x, bar_y, bar_w, bar_h = 180, 120, 380, 14
+    draw.rounded_rectangle([bar_x, bar_y, bar_x+bar_w, bar_y+bar_h], radius=7, fill=(40, 40, 80))
+    if progress > 0:
+        draw.rounded_rectangle([bar_x, bar_y, bar_x+int(bar_w*progress), bar_y+bar_h], radius=7, fill=(120, 80, 255))
+    draw.text((bar_x, bar_y + bar_h + 3), f"XP: {current_xp:,} / {next_xp:,}", font=font_xs, fill=(150, 150, 200))
+
+    # Stats kutuları
+    stats = [
+        ("💬 Mesaj", f"{db_user['messages']:,}"),
+        ("💰 Altın", f"{db_user['gold']:,}"),
+        ("🔥 Streak", f"{db_user['daily_streak']} gün"),
+        ("🏆 Başarı", f"{len(db_user['achievements'])}"),
+    ]
+    box_y = 185
+    box_w = 125
+    for i, (label, val) in enumerate(stats):
+        bx = 25 + i * (box_w + 10)
+        draw.rounded_rectangle([bx, box_y, bx+box_w, box_y+70], radius=10, fill=(30, 25, 60), outline=(80, 60, 150))
+        draw.text((bx+10, box_y+8), label, font=font_xs, fill=(150, 150, 220))
+        draw.text((bx+10, box_y+30), val, font=font_sm, fill=(255, 255, 255))
+
+    # Alt çizgi
+    draw.line([(25, H-35), (W-25, H-35)], fill=(60, 40, 120), width=1)
+    draw.text((25, H-28), f"🎮 GameStudio Bot", font=font_xs, fill=(80, 80, 120))
+    title = db_user.get("title") or rank["name"]
+    draw.text((W-25 - len(title)*8, H-28), title, font=font_xs, fill=(100, 80, 180))
+
+    # Kaydet ve gönder
+    buf = io.BytesIO()
+    img.save(buf, format="PNG")
+    buf.seek(0)
+
+    await update.message.reply_photo(
+        photo=buf,
+        caption=f"🖼️ <b>{user.first_name}'in Profil Kartı</b>\n"
+                f"{rank['emoji']} {rank['name']} • Lv.{db_user['level']}",
+        parse_mode=ParseMode.HTML
+    )
+
+
+# ═══════════════════════════════════════════════════════════════
+#  🎁 ÇEKİLİŞ / GIVEAWAY SİSTEMİ
+# ═══════════════════════════════════════════════════════════════
+
+giveaway_sessions = {}
+
+async def cmd_cekilish(update: Update, context: ContextTypes.DEFAULT_TYPE):
+    """Çekiliş başlat (sadece admin)"""
+    if not await is_admin(update, context):
+        await update.message.reply_text("❌ Sadece adminler çekiliş başlatabilir!")
+        return
+
+    if len(context.args) < 2:
+        await update.message.reply_text(
+            "🎁 <b>Çekiliş Başlat</b>\n\n"
+            "Kullanım: /cekilish [ödül] [kazanan sayısı]\n\n"
+            "Örnek: /cekilish 1000 altın 3\n"
+            "Örnek: /cekilish Özel Unvan 1",
+            parse_mode=ParseMode.HTML
+        )
+        return
+
+    # Son argüman kazanan sayısı, geri kalan ödül
+    try:
+        winner_count = int(context.args[-1])
+        odul = " ".join(context.args[:-1])
+    except ValueError:
+        winner_count = 1
+        odul = " ".join(context.args)
+
+    cekilish_id = str(update.message.message_id)
+    giveaway_sessions[cekilish_id] = {
+        "odul": odul,
+        "winner_count": winner_count,
+        "katilimcilar": {},
+        "baslatici": update.effective_user.id,
+        "baslatici_adi": update.effective_user.first_name,
+        "aktif": True
+    }
+
+    keyboard = InlineKeyboardMarkup([
+        [InlineKeyboardButton("🎁 Katıl! (0 kişi)", callback_data=f"giveaway_join_{cekilish_id}")],
+        [InlineKeyboardButton("👥 Katılımcılar", callback_data=f"giveaway_list_{cekilish_id}"),
+         InlineKeyboardButton("🎲 Çekiliş Yap", callback_data=f"giveaway_draw_{cekilish_id}")]
+    ])
+
+    await update.message.reply_text(
+        f"🎁 <b>ÇEKİLİŞ BAŞLADI!</b>\n\n"
+        f"🏆 <b>Ödül:</b> {odul}\n"
+        f"👑 <b>Kazanan Sayısı:</b> {winner_count}\n"
+        f"👤 <b>Düzenleyen:</b> {update.effective_user.first_name}\n\n"
+        f"Katılmak için aşağıdaki butona tıkla!\n"
+        f"Admin çekiliş yapmaya hazır olunca 'Çekiliş Yap' butonuna basar.",
+        parse_mode=ParseMode.HTML,
+        reply_markup=keyboard
+    )
+
+
+async def cmd_cekilish_bitis(update: Update, context: ContextTypes.DEFAULT_TYPE):
+    """Çekiliş ID ile çekiliş yap"""
+    if not await is_admin(update, context):
+        return
+    if not context.args:
+        await update.message.reply_text("Kullanım: /cekilishbitis [cekilish_id]")
+        return
+    cid = context.args[0]
+    if cid not in giveaway_sessions:
+        await update.message.reply_text("❌ Çekiliş bulunamadı!")
+        return
+    await do_giveaway_draw(update.effective_chat.id, cid, context)
+
+async def do_giveaway_draw(chat_id, cekilish_id, context):
+    session = giveaway_sessions.get(cekilish_id)
+    if not session or not session["aktif"]:
+        return
+
+    session["aktif"] = False
+    katilimcilar = list(session["katilimcilar"].items())
+
+    if not katilimcilar:
+        await context.bot.send_message(chat_id, "😢 Çekilişe kimse katılmadı!")
+        return
+
+    winner_count = min(session["winner_count"], len(katilimcilar))
+    winners = random.sample(katilimcilar, winner_count)
+
+    winner_mentions = "\n".join([
+        f"🥇 {mention(int(uid), name)}" for uid, name in winners
+    ])
+
+    # Kazananlara XP ver
+    data = load_data()
+    for uid, name in winners:
+        wu = get_user(data, int(uid))
+        wu["xp"] += 500
+        wu["gold"] += 1000
+        wu["total_xp_earned"] += 500
+    save_data(data)
+
+    await context.bot.send_message(
+        chat_id,
+        f"🎊 <b>ÇEKİLİŞ SONUÇLANDI!</b>\n\n"
+        f"🏆 Ödül: <b>{session['odul']}</b>\n"
+        f"👥 Katılımcı: {len(katilimcilar)}\n\n"
+        f"🎉 <b>Kazananlar:</b>\n{winner_mentions}\n\n"
+        f"Tebrikler! +500 XP +1000 💰 bonus verildi!",
+        parse_mode=ParseMode.HTML
+    )
+
 # ─────────────────────────────────────────────
 #  MAIN
 # ─────────────────────────────────────────────
@@ -1311,6 +2148,18 @@ def main():
     app.add_handler(CommandHandler("istatistik", cmd_istatistik))
 
     app.add_handler(CommandHandler("sorusor", cmd_sorusor))
+    # Yeni oyunlar
+    app.add_handler(CommandHandler("slot", cmd_slot))
+    app.add_handler(CommandHandler("blackjack", cmd_blackjack))
+    app.add_handler(CommandHandler("bjdur", cmd_bjdur))
+    # Duyuru & anket
+    app.add_handler(CommandHandler("duyuru", cmd_duyuru))
+    app.add_handler(CommandHandler("anket", cmd_anket))
+    # Profil kartı
+    app.add_handler(CommandHandler("kart", cmd_kart))
+    # Çekiliş
+    app.add_handler(CommandHandler("cekilish", cmd_cekilish))
+    app.add_handler(CommandHandler("cekilishbitis", cmd_cekilish_bitis))
     app.add_handler(CommandHandler("aisohbet", cmd_aisohbet))
     app.add_handler(CommandHandler("aisifirla", cmd_aisifirla))
 
