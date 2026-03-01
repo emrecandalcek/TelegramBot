@@ -42,6 +42,16 @@ from telegram.constants import ParseMode
 # ─────────────────────────────────────────────
 #  LOGGING
 # ─────────────────────────────────────────────
+
+# ─────────────────────────────────────────────
+#  GROQ AI İSTEMCİSİ
+# ─────────────────────────────────────────────
+try:
+    from groq import Groq as GroqClient
+    GROQ_AVAILABLE = True
+except ImportError:
+    GROQ_AVAILABLE = False
+
 logging.basicConfig(
     format="%(asctime)s | %(levelname)s | %(name)s | %(message)s",
     level=logging.INFO,
@@ -837,6 +847,10 @@ async def cmd_yardim(update: Update, context: ContextTypes.DEFAULT_TYPE):
         "/trivia — Bilgi yarışması sorusu\n\n"
         "💰 <b>Ekonomi</b>\n"
         "/hediye <miktar> — Birine altın gönder\n\n"
+        "🤖 <b>Yapay Zeka</b>\n"
+        "/sorusor <soru> — Tek seferlik soru sor\n"
+        "/aisohbet <mesaj> — Bağlam hatırlayan sohbet\n"
+        "/aisifirla — Konuşma geçmişini sıfırla\n\n"
         "ℹ️ Bot selam mesajlarına +XP ve altın verir!\n"
         "🔥 Her gün giriş yap, streak bonusu kazan!",
         parse_mode=ParseMode.HTML,
@@ -1037,6 +1051,197 @@ async def handle_callback(update: Update, context: ContextTypes.DEFAULT_TYPE):
 async def error_handler(update: object, context: ContextTypes.DEFAULT_TYPE):
     logger.error(f"Hata: {context.error}", exc_info=context.error)
 
+
+# ─────────────────────────────────────────────
+#  YAPAY ZEKA KOMUTLARI
+# ─────────────────────────────────────────────
+
+# Konuşma geçmişini tut (kullanıcı bazlı)
+ai_conversations = {}
+
+async def cmd_sorusor(update: Update, context: ContextTypes.DEFAULT_TYPE):
+    """Yapay zekaya soru sor - /sorusor <soru>"""
+    cfg = load_config()
+    groq_key = cfg.get("groq_api_key")
+
+    import os
+    env_key = os.environ.get("GROQ_API_KEY")
+    if env_key:
+        groq_key = env_key
+
+    if not groq_key or groq_key == "YOUR_GROQ_API_KEY_HERE":
+        await update.message.reply_text(
+            "❌ Groq API key ayarlanmamış!\n"
+            "config.json içine \"groq_api_key\" ekle."
+        )
+        return
+
+    if not GROQ_AVAILABLE:
+        await update.message.reply_text("❌ groq kütüphanesi yüklü değil!")
+        return
+
+    user = update.effective_user
+    soru = " ".join(context.args) if context.args else ""
+
+    if not soru:
+        await update.message.reply_text(
+            "🤖 <b>Yapay Zeka Asistanı</b>\n\n"
+            "Kullanım: /sorusor <sorunuz>\n"
+            "Örnek: /sorusor Unity'de nasıl oyun yapılır?\n\n"
+            "💬 /aisohbet — Sürekli sohbet modunu başlat\n"
+            "🗑 /aisifirla — Konuşma geçmişini sıfırla",
+            parse_mode=ParseMode.HTML
+        )
+        return
+
+    # Yazıyor... göster
+    await context.bot.send_chat_action(
+        chat_id=update.effective_chat.id,
+        action="typing"
+    )
+
+    # XP ver
+    data = load_data()
+    db_user = get_user(data, user.id)
+    db_user["xp"] += 5
+    db_user["total_xp_earned"] += 5
+    db_user["commands_used"] += 1
+    save_data(data)
+
+    try:
+        client = GroqClient(api_key=groq_key)
+
+        # Sistem promptu - oyun stüdyosu temalı
+        system_prompt = cfg.get("ai_system_prompt",
+            "Sen Ti App Studio'nun Telegram grup asistanısın. "
+            "Oyun geliştirme, programlama, Unity, Unreal Engine, "
+            "game design ve genel konularda yardımcı olursun. "
+            "Türkçe cevap verirsin. Kısa ve net cevaplar verirsin. "
+            "Samimi ve enerjik bir tonsun. Emoji kullanabilirsin."
+        )
+
+        response = client.chat.completions.create(
+            model="llama-3.3-70b-versatile",
+            messages=[
+                {"role": "system", "content": system_prompt},
+                {"role": "user", "content": soru}
+            ],
+            max_tokens=1024,
+            temperature=0.7,
+        )
+
+        cevap = response.choices[0].message.content
+
+        # Çok uzunsa böl
+        if len(cevap) > 4000:
+            cevap = cevap[:4000] + "...\n\n_(Cevap kısaltıldı)_"
+
+        await update.message.reply_text(
+            f"🤖 <b>Yapay Zeka Cevabı:</b>\n\n{cevap}\n\n"
+            f"<i>⚡ +5 XP kazandın!</i>",
+            parse_mode=ParseMode.HTML
+        )
+
+    except Exception as e:
+        logger.error(f"Groq API hatası: {e}")
+        await update.message.reply_text(
+            "❌ Yapay zeka şu an cevap veremiyor, lütfen tekrar dene!\n"
+            f"Hata: {str(e)[:100]}"
+        )
+
+
+async def cmd_aisohbet(update: Update, context: ContextTypes.DEFAULT_TYPE):
+    """Çok turlu AI sohbet - bağlam hatırlar"""
+    cfg = load_config()
+    groq_key = cfg.get("groq_api_key")
+
+    import os
+    env_key = os.environ.get("GROQ_API_KEY")
+    if env_key:
+        groq_key = env_key
+
+    if not groq_key or groq_key == "YOUR_GROQ_API_KEY_HERE":
+        await update.message.reply_text("❌ Groq API key ayarlanmamış!")
+        return
+
+    user = update.effective_user
+    mesaj = " ".join(context.args) if context.args else ""
+
+    if not mesaj:
+        uid = str(user.id)
+        history_len = len(ai_conversations.get(uid, []))
+        await update.message.reply_text(
+            f"💬 <b>AI Sohbet Modu</b>\n\n"
+            f"Ben konuşma geçmişini hatırlıyorum!\n"
+            f"Mevcut geçmiş: {history_len // 2} mesaj\n\n"
+            f"Kullanım: /aisohbet <mesajın>\n"
+            f"🗑 Sıfırlamak için: /aisifirla",
+            parse_mode=ParseMode.HTML
+        )
+        return
+
+    await context.bot.send_chat_action(
+        chat_id=update.effective_chat.id,
+        action="typing"
+    )
+
+    uid = str(user.id)
+    if uid not in ai_conversations:
+        ai_conversations[uid] = []
+
+    # Geçmişe ekle
+    ai_conversations[uid].append({"role": "user", "content": mesaj})
+
+    # Son 10 mesajı tut (hafıza limiti)
+    if len(ai_conversations[uid]) > 20:
+        ai_conversations[uid] = ai_conversations[uid][-20:]
+
+    cfg = load_config()
+    system_prompt = cfg.get("ai_system_prompt",
+        "Sen Ti App Studio'nun Telegram grup asistanısın. "
+        "Oyun geliştirme, programlama ve genel konularda yardımcı olursun. "
+        "Türkçe konuşursun. Samimi ve enerjiksin."
+    )
+
+    try:
+        client = GroqClient(api_key=groq_key)
+        messages = [{"role": "system", "content": system_prompt}]
+        messages.extend(ai_conversations[uid])
+
+        response = client.chat.completions.create(
+            model="llama-3.3-70b-versatile",
+            messages=messages,
+            max_tokens=1024,
+            temperature=0.7,
+        )
+
+        cevap = response.choices[0].message.content
+        ai_conversations[uid].append({"role": "assistant", "content": cevap})
+
+        if len(cevap) > 4000:
+            cevap = cevap[:4000] + "..."
+
+        turno = len(ai_conversations[uid]) // 2
+        await update.message.reply_text(
+            f"🤖 <b>AI</b> (#{turno}):\n\n{cevap}",
+            parse_mode=ParseMode.HTML
+        )
+
+    except Exception as e:
+        logger.error(f"Groq sohbet hatası: {e}")
+        await update.message.reply_text("❌ Hata oluştu, tekrar dene!")
+
+
+async def cmd_aisifirla(update: Update, context: ContextTypes.DEFAULT_TYPE):
+    """Konuşma geçmişini sıfırla"""
+    uid = str(update.effective_user.id)
+    if uid in ai_conversations:
+        del ai_conversations[uid]
+    await update.message.reply_text(
+        "🗑 Konuşma geçmişin sıfırlandı! Yeni bir sohbet başlatabilirsin."
+    )
+
+
 # ─────────────────────────────────────────────
 #  MAIN
 # ─────────────────────────────────────────────
@@ -1104,6 +1309,10 @@ def main():
     app.add_handler(CommandHandler("unvan", cmd_unvan_sec))
     app.add_handler(CommandHandler("hediye", cmd_hediye))
     app.add_handler(CommandHandler("istatistik", cmd_istatistik))
+
+    app.add_handler(CommandHandler("sorusor", cmd_sorusor))
+    app.add_handler(CommandHandler("aisohbet", cmd_aisohbet))
+    app.add_handler(CommandHandler("aisifirla", cmd_aisifirla))
 
     # Admin komutları
     app.add_handler(CommandHandler("ban", cmd_ban))
