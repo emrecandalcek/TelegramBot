@@ -1118,6 +1118,9 @@ def main():
 
     print(f"🚀 {cfg['bot_name']} başlatıldı!")
     print("📌 Durdurmak için Ctrl+C")
+    import asyncio
+    loop = asyncio.new_event_loop()
+    asyncio.set_event_loop(loop)
     app.run_polling(allowed_updates=Update.ALL_TYPES)
 
 if __name__ == "__main__":
