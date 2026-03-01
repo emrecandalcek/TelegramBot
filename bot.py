@@ -617,7 +617,7 @@ async def cmd_zar(update: Update, context: ContextTypes.DEFAULT_TYPE):
     args = context.args
     if not args or not args[0].isdigit():
         await update.message.reply_text(
-            "🎲 <b>Zar Oyunu</b>\nKullanım: /zar <miktar>\nÖrnek: /zar 100\n\n"
+            "🎲 <b>Zar Oyunu</b>\nKullanım: /zar [miktar]\nÖrnek: /zar 100\n\n"
             "Sonuç 4-6 gelirse 1.5x kazanırsın!\nSonuç 1-3 gelirse kaybedersin!",
             parse_mode=ParseMode.HTML
         )
@@ -662,7 +662,7 @@ async def cmd_yazi_tura(update: Update, context: ContextTypes.DEFAULT_TYPE):
     args = context.args
     if len(args) < 2 or not args[1].isdigit():
         await update.message.reply_text(
-            "🪙 <b>Yazı-Tura</b>\nKullanım: /yatura <yazi/tura> <miktar>\nÖrnek: /yatura yazi 200",
+            "🪙 <b>Yazı-Tura</b>\nKullanım: /yatura [yazi/tura] [miktar]\nÖrnek: /yatura yazi 200",
             parse_mode=ParseMode.HTML
         )
         return
@@ -746,7 +746,7 @@ async def cmd_unvan_sec(update: Update, context: ContextTypes.DEFAULT_TYPE):
         ])
         await update.message.reply_text(
             f"🏷 <b>Kullanılabilir Unvanlar</b>\n\n{titles_text}\n\n"
-            f"Seçmek için: /unvan <unvan adı>",
+            f"Seçmek için: /unvan [unvan adı]",
             parse_mode=ParseMode.HTML
         )
         return
@@ -767,7 +767,7 @@ async def cmd_hediye(update: Update, context: ContextTypes.DEFAULT_TYPE):
         await update.message.reply_text("❌ Altın göndermek için bir mesaja yanıtla!")
         return
     if not context.args or not context.args[0].isdigit():
-        await update.message.reply_text("❌ Kullanım: /hediye <miktar> (bir mesajı yanıtlayarak)")
+        await update.message.reply_text("❌ Kullanım: /hediye [miktar] (bir mesajı yanıtlayarak)")
         return
 
     sender = update.effective_user
@@ -834,7 +834,7 @@ async def cmd_yardim(update: Update, context: ContextTypes.DEFAULT_TYPE):
     ])
     await update.message.reply_text(
         "📖 <b>KOMUT LİSTESİ</b>\n\n"
-        "👤 <b>Profil & Puan</b>\n"
+        "👤 <b>Profil &amp; Puan</b>\n"
         "/profil — Profilini gör\n"
         "/liderlik — Liderlik tablosu\n"
         "/gunluk — Günlük bonus al\n"
@@ -842,14 +842,14 @@ async def cmd_yardim(update: Update, context: ContextTypes.DEFAULT_TYPE):
         "/istatistik — Grup stats\n"
         "/unvan — Unvan değiştir\n\n"
         "🎮 <b>Oyunlar</b>\n"
-        "/zar <miktar> — Zar bahis oyunu\n"
-        "/yatura <yazi/tura> <miktar> — Yazı-tura\n"
+        "/zar [miktar] — Zar bahis oyunu\n"
+        "/yatura [yazi/tura] [miktar] — Yazı-tura\n"
         "/trivia — Bilgi yarışması sorusu\n\n"
         "💰 <b>Ekonomi</b>\n"
-        "/hediye <miktar> — Birine altın gönder\n\n"
+        "/hediye [miktar] — Birine altın gönder\n\n"
         "🤖 <b>Yapay Zeka</b>\n"
-        "/sorusor <soru> — Tek seferlik soru sor\n"
-        "/aisohbet <mesaj> — Bağlam hatırlayan sohbet\n"
+        "/sorusor [soru] — Tek seferlik soru sor\n"
+        "/aisohbet [mesaj] — Bağlam hatırlayan sohbet\n"
         "/aisifirla — Konuşma geçmişini sıfırla\n\n"
         "ℹ️ Bot selam mesajlarına +XP ve altın verir!\n"
         "🔥 Her gün giriş yap, streak bonusu kazan!",
@@ -929,7 +929,7 @@ async def cmd_xp_ver(update: Update, context: ContextTypes.DEFAULT_TYPE):
     if not await is_admin(update, context):
         return
     if not update.message.reply_to_message or not context.args:
-        await update.message.reply_text("❌ Kullanım: /xpver <miktar> (mesajı yanıtla)")
+        await update.message.reply_text("❌ Kullanım: /xpver [miktar] (mesajı yanıtla)")
         return
     target = update.message.reply_to_message.from_user
     amount = int(context.args[0])
@@ -979,8 +979,8 @@ async def handle_callback(update: Update, context: ContextTypes.DEFAULT_TYPE):
     elif data_str == "games_menu":
         await query.edit_message_text(
             "🎮 <b>OYUN MENÜSÜ</b>\n\n"
-            "🎲 /zar <miktar> — Zar at, bahis yap!\n"
-            "🪙 /yatura <seçim> <miktar> — Yazı-tura\n"
+            "🎲 /zar [miktar] — Zar at, bahis yap!\n"
+            "🪙 /yatura [seçim] [miktar] — Yazı-tura\n"
             "🧠 /trivia — Bilgi sorusu\n\n"
             "💡 <i>Oyunlarda altın kazan veya kaybet!</i>",
             parse_mode=ParseMode.HTML,
@@ -1060,7 +1060,7 @@ async def error_handler(update: object, context: ContextTypes.DEFAULT_TYPE):
 ai_conversations = {}
 
 async def cmd_sorusor(update: Update, context: ContextTypes.DEFAULT_TYPE):
-    """Yapay zekaya soru sor - /sorusor <soru>"""
+    """Yapay zekaya soru sor - /sorusor [soru]"""
     cfg = load_config()
     groq_key = cfg.get("groq_api_key")
 
@@ -1086,7 +1086,7 @@ async def cmd_sorusor(update: Update, context: ContextTypes.DEFAULT_TYPE):
     if not soru:
         await update.message.reply_text(
             "🤖 <b>Yapay Zeka Asistanı</b>\n\n"
-            "Kullanım: /sorusor <sorunuz>\n"
+            "Kullanım: /sorusor [sorunuz]\n"
             "Örnek: /sorusor Unity'de nasıl oyun yapılır?\n\n"
             "💬 /aisohbet — Sürekli sohbet modunu başlat\n"
             "🗑 /aisifirla — Konuşma geçmişini sıfırla",
@@ -1174,7 +1174,7 @@ async def cmd_aisohbet(update: Update, context: ContextTypes.DEFAULT_TYPE):
             f"💬 <b>AI Sohbet Modu</b>\n\n"
             f"Ben konuşma geçmişini hatırlıyorum!\n"
             f"Mevcut geçmiş: {history_len // 2} mesaj\n\n"
-            f"Kullanım: /aisohbet <mesajın>\n"
+            f"Kullanım: /aisohbet [mesajın]\n"
             f"🗑 Sıfırlamak için: /aisifirla",
             parse_mode=ParseMode.HTML
         )
