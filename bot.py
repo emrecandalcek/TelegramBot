@@ -28,6 +28,33 @@ import hashlib
 from datetime import datetime, timedelta
 from typing import Optional
 
+import threading
+from http.server import HTTPServer, BaseHTTPRequestHandler
+
+class PingHandler(BaseHTTPRequestHandler):
+    def do_GET(self):
+        self.send_response(200)
+        self.end_headers()
+        self.wfile.write(b"Bot aktif!")
+    def log_message(self, *args):
+        pass  # Log istemiyoruz
+
+def keep_alive():
+    server = HTTPServer(("0.0.0.0", 8080), PingHandler)
+    server.serve_forever()
+
+# main() fonksiyonunun başına ekle:
+threading.Thread(target=keep_alive, daemon=True).start()
+```
+
+Sonra [UptimeRobot](https://uptimerobot.com) sitesine üye ol → Render URL'ini 5 dakikada bir pingler → bot hiç uykuya geçmez. İkisi de ücretsiz.
+
+---
+
+## 📋 Özet — En Ucuz & Kolay Yol
+```
+GitHub (ücretsiz) → Render.com (ücretsiz) → UptimeRobot (ücretsiz)
+
 from telegram import (
     Update, InlineKeyboardButton, InlineKeyboardMarkup,
     ChatPermissions, ChatMemberUpdated
