@@ -1,6 +1,6 @@
 {
   "bot_token": "8184060678:AAFVrixHiuVatmsEj0Nl4Iwn4Fv5VGKknh4",
-  "bot_name": "🎮 GameStudio Bot",
+  "bot_name": "Ti App Studio Bot",
   "group_id": -1001234567890,
   "rewards": {
     "join_bonus_xp": 100,
@@ -114,7 +114,7 @@
       "min_level": 14
     },
     {
-      "name": "Game Designer",
+      "name": " Designer",
       "emoji": "🎨",
       "min_level": 17
     },
@@ -425,9 +425,9 @@
       "id": "q5",
       "category": "Oyun Tarihi",
       "question": "Grand Theft Auto serisini hangi şirket geliştirdi?",
-      "answer": "Rockstar Games",
+      "answer": "Rockstar s",
       "wrong_answers": [
-        "EA Games",
+        "EA s",
         "Ubisoft",
         "Activision"
       ]
@@ -472,7 +472,7 @@
       "answer": "NES",
       "wrong_answers": [
         "SNES",
-        "Game Boy",
+        " Boy",
         "N64"
       ]
     },
