@@ -59,9 +59,6 @@ logger = logging.getLogger("GameStudioBot")
 def load_config() -> dict:
     with open("config.json", "r", encoding="utf-8") as f:
         return json.load(f)
-      
-import os
-cfg["bot_token"] = os.environ.get("BOT_TOKEN", cfg["bot_token"])
 
 def load_data() -> dict:
     if not os.path.exists("data.json"):
@@ -1067,7 +1064,13 @@ def main():
     cfg = load_config()
     token = cfg["bot_token"]
 
-    if token == "YOUR_BOT_TOKEN_HERE":
+    # Render.com Environment Variable desteği
+    import os
+    env_token = os.environ.get("BOT_TOKEN")
+    if env_token:
+        token = env_token
+
+    if token in ("YOUR_BOT_TOKEN_HERE", "ENV", "", None):
         print("❌ HATA: config.json içindeki bot_token'ı güncelle!")
         print("   @BotFather'dan token al ve config.json'a yapıştır.")
         return
