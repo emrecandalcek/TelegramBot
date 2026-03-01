@@ -1,0 +1,123 @@
+{
+  "users": {
+    "8210905709": {
+      "xp": 56,
+      "gold": 25,
+      "level": 1,
+      "messages": 1,
+      "commands_used": 0,
+      "daily_streak": 0,
+      "last_daily": null,
+      "last_message_time": "2026-03-01T02:27:44.311448",
+      "username": null,
+      "first_name": "Emrecan",
+      "join_date": "2026-03-01T02:27:44.311427",
+      "achievements": [
+        "first_message"
+      ],
+      "title": null,
+      "warnings": 0,
+      "is_banned": false,
+      "trivia_correct": 0,
+      "trivia_total": 0,
+      "inventory": [],
+      "total_xp_earned": 6
+    },
+    "8160846372": {
+      "xp": 67,
+      "gold": 25,
+      "level": 1,
+      "messages": 3,
+      "commands_used": 0,
+      "daily_streak": 0,
+      "last_daily": null,
+      "last_message_time": "2026-03-01T02:47:04.510923",
+      "username": null,
+      "first_name": "Recep",
+      "join_date": "2026-03-01T02:46:42.403066",
+      "achievements": [
+        "first_message"
+      ],
+      "title": null,
+      "warnings": 0,
+      "is_banned": false,
+      "trivia_correct": 0,
+      "trivia_total": 0,
+      "inventory": [],
+      "total_xp_earned": 17
+    },
+    "1087968824": {
+      "xp": 57,
+      "gold": 25,
+      "level": 1,
+      "messages": 1,
+      "commands_used": 0,
+      "daily_streak": 0,
+      "last_daily": null,
+      "last_message_time": "2026-03-01T02:46:56.586330",
+      "username": "GroupAnonymousBot",
+      "first_name": "Group",
+      "join_date": "2026-03-01T02:46:56.586294",
+      "achievements": [
+        "first_message"
+      ],
+      "title": null,
+      "warnings": 0,
+      "is_banned": false,
+      "trivia_correct": 0,
+      "trivia_total": 0,
+      "inventory": [],
+      "total_xp_earned": 7
+    },
+    "5923666851": {
+      "xp": 75,
+      "gold": 35,
+      "level": 1,
+      "messages": 2,
+      "commands_used": 0,
+      "daily_streak": 0,
+      "last_daily": null,
+      "last_message_time": "2026-03-01T12:23:27.141645",
+      "username": "Jhonb99",
+      "first_name": "Jhon B",
+      "join_date": "2026-03-01T12:21:26.670723",
+      "achievements": [
+        "first_message"
+      ],
+      "title": null,
+      "warnings": 0,
+      "is_banned": false,
+      "trivia_correct": 0,
+      "trivia_total": 0,
+      "inventory": [],
+      "total_xp_earned": 25
+    },
+    "7880289258": {
+      "xp": 58,
+      "gold": 25,
+      "level": 1,
+      "messages": 1,
+      "commands_used": 0,
+      "daily_streak": 0,
+      "last_daily": null,
+      "last_message_time": "2026-03-01T12:22:13.860731",
+      "username": "Yusufbaba94",
+      "first_name": "Yusufbaba",
+      "join_date": "2026-03-01T12:22:13.860707",
+      "achievements": [
+        "first_message"
+      ],
+      "title": null,
+      "warnings": 0,
+      "is_banned": false,
+      "trivia_correct": 0,
+      "trivia_total": 0,
+      "inventory": [],
+      "total_xp_earned": 8
+    }
+  },
+  "group_stats": {
+    "total_messages": 8,
+    "total_commands": 0
+  }
+}

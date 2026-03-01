@@ -1,0 +1,2355 @@
+2026-03-01 02:21:05,262 | INFO | httpx | HTTP Request: POST https://api.telegram.org/bot8184060678:AAFVrixHiuVatmsEj0Nl4Iwn4Fv5VGKknh4/getMe "HTTP/1.1 200 OK"
+2026-03-01 02:21:05,355 | INFO | httpx | HTTP Request: POST https://api.telegram.org/bot8184060678:AAFVrixHiuVatmsEj0Nl4Iwn4Fv5VGKknh4/deleteWebhook "HTTP/1.1 200 OK"
+2026-03-01 02:21:05,358 | INFO | telegram.ext.Application | Application started
+2026-03-01 02:21:05,594 | INFO | httpx | HTTP Request: POST https://api.telegram.org/bot8184060678:AAFVrixHiuVatmsEj0Nl4Iwn4Fv5VGKknh4/getUpdates "HTTP/1.1 200 OK"
+2026-03-01 02:21:05,788 | INFO | httpx | HTTP Request: POST https://api.telegram.org/bot8184060678:AAFVrixHiuVatmsEj0Nl4Iwn4Fv5VGKknh4/sendMessage "HTTP/1.1 200 OK"
+2026-03-01 02:21:15,696 | INFO | httpx | HTTP Request: POST https://api.telegram.org/bot8184060678:AAFVrixHiuVatmsEj0Nl4Iwn4Fv5VGKknh4/getUpdates "HTTP/1.1 200 OK"
+2026-03-01 02:21:25,790 | INFO | httpx | HTTP Request: POST https://api.telegram.org/bot8184060678:AAFVrixHiuVatmsEj0Nl4Iwn4Fv5VGKknh4/getUpdates "HTTP/1.1 200 OK"
+2026-03-01 02:21:35,859 | INFO | httpx | HTTP Request: POST https://api.telegram.org/bot8184060678:AAFVrixHiuVatmsEj0Nl4Iwn4Fv5VGKknh4/getUpdates "HTTP/1.1 200 OK"
+2026-03-01 02:21:45,967 | INFO | httpx | HTTP Request: POST https://api.telegram.org/bot8184060678:AAFVrixHiuVatmsEj0Nl4Iwn4Fv5VGKknh4/getUpdates "HTTP/1.1 200 OK"
+2026-03-01 02:21:56,067 | INFO | httpx | HTTP Request: POST https://api.telegram.org/bot8184060678:AAFVrixHiuVatmsEj0Nl4Iwn4Fv5VGKknh4/getUpdates "HTTP/1.1 200 OK"
+2026-03-01 02:22:06,184 | INFO | httpx | HTTP Request: POST https://api.telegram.org/bot8184060678:AAFVrixHiuVatmsEj0Nl4Iwn4Fv5VGKknh4/getUpdates "HTTP/1.1 200 OK"
+2026-03-01 02:22:16,723 | INFO | httpx | HTTP Request: POST https://api.telegram.org/bot8184060678:AAFVrixHiuVatmsEj0Nl4Iwn4Fv5VGKknh4/getUpdates "HTTP/1.1 200 OK"
+2026-03-01 02:22:26,799 | INFO | httpx | HTTP Request: POST https://api.telegram.org/bot8184060678:AAFVrixHiuVatmsEj0Nl4Iwn4Fv5VGKknh4/getUpdates "HTTP/1.1 200 OK"
+2026-03-01 02:22:36,383 | INFO | httpx | HTTP Request: POST https://api.telegram.org/bot8184060678:AAFVrixHiuVatmsEj0Nl4Iwn4Fv5VGKknh4/getUpdates "HTTP/1.1 502 Bad Gateway"
+2026-03-01 02:22:36,384 | ERROR | GameStudioBot | Hata: Bad Gateway
+Traceback (most recent call last):
+  File "C:\Users\emred\AppData\Local\Programs\Python\Python314\Lib\site-packages\telegram\ext\_utils\networkloop.py", line 161, in network_retry_loop
+    await do_action()
+  File "C:\Users\emred\AppData\Local\Programs\Python\Python314\Lib\site-packages\telegram\ext\_utils\networkloop.py", line 154, in do_action
+    action_cb_task.result()
+    ~~~~~~~~~~~~~~~~~~~~~^^
+  File "C:\Users\emred\AppData\Local\Programs\Python\Python314\Lib\site-packages\telegram\ext\_updater.py", line 340, in polling_action_cb
+    updates = await self.bot.get_updates(
+              ^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    ...<3 lines>...
+    )
+    ^
+  File "C:\Users\emred\AppData\Local\Programs\Python\Python314\Lib\site-packages\telegram\ext\_extbot.py", line 671, in get_updates
+    updates = await super().get_updates(
+              ^^^^^^^^^^^^^^^^^^^^^^^^^^
+    ...<9 lines>...
+    )
+    ^
+  File "C:\Users\emred\AppData\Local\Programs\Python\Python314\Lib\site-packages\telegram\_bot.py", line 4860, in get_updates
+    await self._post(
+    ^^^^^^^^^^^^^^^^^
+    ...<7 lines>...
+    ),
+    ^
+  File "C:\Users\emred\AppData\Local\Programs\Python\Python314\Lib\site-packages\telegram\_bot.py", line 703, in _post
+    return await self._do_post(
+           ^^^^^^^^^^^^^^^^^^^^
+    ...<6 lines>...
+    )
+    ^
+  File "C:\Users\emred\AppData\Local\Programs\Python\Python314\Lib\site-packages\telegram\ext\_extbot.py", line 369, in _do_post
+    return await super()._do_post(
+           ^^^^^^^^^^^^^^^^^^^^^^^
+    ...<6 lines>...
+    )
+    ^
+  File "C:\Users\emred\AppData\Local\Programs\Python\Python314\Lib\site-packages\telegram\_bot.py", line 732, in _do_post
+    result = await request.post(
+             ^^^^^^^^^^^^^^^^^^^
+    ...<6 lines>...
+    )
+    ^
+  File "C:\Users\emred\AppData\Local\Programs\Python\Python314\Lib\site-packages\telegram\request\_baserequest.py", line 198, in post
+    result = await self._request_wrapper(
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    ...<7 lines>...
+    )
+    ^
+  File "C:\Users\emred\AppData\Local\Programs\Python\Python314\Lib\site-packages\telegram\request\_baserequest.py", line 375, in _request_wrapper
+    raise exception
+telegram.error.NetworkError: Bad Gateway
+2026-03-01 02:22:37,523 | INFO | httpx | HTTP Request: POST https://api.telegram.org/bot8184060678:AAFVrixHiuVatmsEj0Nl4Iwn4Fv5VGKknh4/getUpdates "HTTP/1.1 502 Bad Gateway"
+2026-03-01 02:22:37,524 | ERROR | GameStudioBot | Hata: Bad Gateway
+Traceback (most recent call last):
+  File "C:\Users\emred\AppData\Local\Programs\Python\Python314\Lib\site-packages\telegram\ext\_utils\networkloop.py", line 161, in network_retry_loop
+    await do_action()
+  File "C:\Users\emred\AppData\Local\Programs\Python\Python314\Lib\site-packages\telegram\ext\_utils\networkloop.py", line 154, in do_action
+    action_cb_task.result()
+    ~~~~~~~~~~~~~~~~~~~~~^^
+  File "C:\Users\emred\AppData\Local\Programs\Python\Python314\Lib\site-packages\telegram\ext\_updater.py", line 340, in polling_action_cb
+    updates = await self.bot.get_updates(
+              ^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    ...<3 lines>...
+    )
+    ^
+  File "C:\Users\emred\AppData\Local\Programs\Python\Python314\Lib\site-packages\telegram\ext\_extbot.py", line 671, in get_updates
+    updates = await super().get_updates(
+              ^^^^^^^^^^^^^^^^^^^^^^^^^^
+    ...<9 lines>...
+    )
+    ^
+  File "C:\Users\emred\AppData\Local\Programs\Python\Python314\Lib\site-packages\telegram\_bot.py", line 4860, in get_updates
+    await self._post(
+    ^^^^^^^^^^^^^^^^^
+    ...<7 lines>...
+    ),
+    ^
+  File "C:\Users\emred\AppData\Local\Programs\Python\Python314\Lib\site-packages\telegram\_bot.py", line 703, in _post
+    return await self._do_post(
+           ^^^^^^^^^^^^^^^^^^^^
+    ...<6 lines>...
+    )
+    ^
+  File "C:\Users\emred\AppData\Local\Programs\Python\Python314\Lib\site-packages\telegram\ext\_extbot.py", line 369, in _do_post
+    return await super()._do_post(
+           ^^^^^^^^^^^^^^^^^^^^^^^
+    ...<6 lines>...
+    )
+    ^
+  File "C:\Users\emred\AppData\Local\Programs\Python\Python314\Lib\site-packages\telegram\_bot.py", line 732, in _do_post
+    result = await request.post(
+             ^^^^^^^^^^^^^^^^^^^
+    ...<6 lines>...
+    )
+    ^
+  File "C:\Users\emred\AppData\Local\Programs\Python\Python314\Lib\site-packages\telegram\request\_baserequest.py", line 198, in post
+    result = await self._request_wrapper(
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    ...<7 lines>...
+    )
+    ^
+  File "C:\Users\emred\AppData\Local\Programs\Python\Python314\Lib\site-packages\telegram\request\_baserequest.py", line 375, in _request_wrapper
+    raise exception
+telegram.error.NetworkError: Bad Gateway
+2026-03-01 02:22:39,116 | INFO | httpx | HTTP Request: POST https://api.telegram.org/bot8184060678:AAFVrixHiuVatmsEj0Nl4Iwn4Fv5VGKknh4/getUpdates "HTTP/1.1 502 Bad Gateway"
+2026-03-01 02:22:39,118 | ERROR | GameStudioBot | Hata: Bad Gateway
+Traceback (most recent call last):
+  File "C:\Users\emred\AppData\Local\Programs\Python\Python314\Lib\site-packages\telegram\ext\_utils\networkloop.py", line 161, in network_retry_loop
+    await do_action()
+  File "C:\Users\emred\AppData\Local\Programs\Python\Python314\Lib\site-packages\telegram\ext\_utils\networkloop.py", line 154, in do_action
+    action_cb_task.result()
+    ~~~~~~~~~~~~~~~~~~~~~^^
+  File "C:\Users\emred\AppData\Local\Programs\Python\Python314\Lib\site-packages\telegram\ext\_updater.py", line 340, in polling_action_cb
+    updates = await self.bot.get_updates(
+              ^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    ...<3 lines>...
+    )
+    ^
+  File "C:\Users\emred\AppData\Local\Programs\Python\Python314\Lib\site-packages\telegram\ext\_extbot.py", line 671, in get_updates
+    updates = await super().get_updates(
+              ^^^^^^^^^^^^^^^^^^^^^^^^^^
+    ...<9 lines>...
+    )
+    ^
+  File "C:\Users\emred\AppData\Local\Programs\Python\Python314\Lib\site-packages\telegram\_bot.py", line 4860, in get_updates
+    await self._post(
+    ^^^^^^^^^^^^^^^^^
+    ...<7 lines>...
+    ),
+    ^
+  File "C:\Users\emred\AppData\Local\Programs\Python\Python314\Lib\site-packages\telegram\_bot.py", line 703, in _post
+    return await self._do_post(
+           ^^^^^^^^^^^^^^^^^^^^
+    ...<6 lines>...
+    )
+    ^
+  File "C:\Users\emred\AppData\Local\Programs\Python\Python314\Lib\site-packages\telegram\ext\_extbot.py", line 369, in _do_post
+    return await super()._do_post(
+           ^^^^^^^^^^^^^^^^^^^^^^^
+    ...<6 lines>...
+    )
+    ^
+  File "C:\Users\emred\AppData\Local\Programs\Python\Python314\Lib\site-packages\telegram\_bot.py", line 732, in _do_post
+    result = await request.post(
+             ^^^^^^^^^^^^^^^^^^^
+    ...<6 lines>...
+    )
+    ^
+  File "C:\Users\emred\AppData\Local\Programs\Python\Python314\Lib\site-packages\telegram\request\_baserequest.py", line 198, in post
+    result = await self._request_wrapper(
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    ...<7 lines>...
+    )
+    ^
+  File "C:\Users\emred\AppData\Local\Programs\Python\Python314\Lib\site-packages\telegram\request\_baserequest.py", line 375, in _request_wrapper
+    raise exception
+telegram.error.NetworkError: Bad Gateway
+2026-03-01 02:22:41,500 | INFO | httpx | HTTP Request: POST https://api.telegram.org/bot8184060678:AAFVrixHiuVatmsEj0Nl4Iwn4Fv5VGKknh4/getUpdates "HTTP/1.1 502 Bad Gateway"
+2026-03-01 02:22:41,502 | ERROR | GameStudioBot | Hata: Bad Gateway
+Traceback (most recent call last):
+  File "C:\Users\emred\AppData\Local\Programs\Python\Python314\Lib\site-packages\telegram\ext\_utils\networkloop.py", line 161, in network_retry_loop
+    await do_action()
+  File "C:\Users\emred\AppData\Local\Programs\Python\Python314\Lib\site-packages\telegram\ext\_utils\networkloop.py", line 154, in do_action
+    action_cb_task.result()
+    ~~~~~~~~~~~~~~~~~~~~~^^
+  File "C:\Users\emred\AppData\Local\Programs\Python\Python314\Lib\site-packages\telegram\ext\_updater.py", line 340, in polling_action_cb
+    updates = await self.bot.get_updates(
+              ^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    ...<3 lines>...
+    )
+    ^
+  File "C:\Users\emred\AppData\Local\Programs\Python\Python314\Lib\site-packages\telegram\ext\_extbot.py", line 671, in get_updates
+    updates = await super().get_updates(
+              ^^^^^^^^^^^^^^^^^^^^^^^^^^
+    ...<9 lines>...
+    )
+    ^
+  File "C:\Users\emred\AppData\Local\Programs\Python\Python314\Lib\site-packages\telegram\_bot.py", line 4860, in get_updates
+    await self._post(
+    ^^^^^^^^^^^^^^^^^
+    ...<7 lines>...
+    ),
+    ^
+  File "C:\Users\emred\AppData\Local\Programs\Python\Python314\Lib\site-packages\telegram\_bot.py", line 703, in _post
+    return await self._do_post(
+           ^^^^^^^^^^^^^^^^^^^^
+    ...<6 lines>...
+    )
+    ^
+  File "C:\Users\emred\AppData\Local\Programs\Python\Python314\Lib\site-packages\telegram\ext\_extbot.py", line 369, in _do_post
+    return await super()._do_post(
+           ^^^^^^^^^^^^^^^^^^^^^^^
+    ...<6 lines>...
+    )
+    ^
+  File "C:\Users\emred\AppData\Local\Programs\Python\Python314\Lib\site-packages\telegram\_bot.py", line 732, in _do_post
+    result = await request.post(
+             ^^^^^^^^^^^^^^^^^^^
+    ...<6 lines>...
+    )
+    ^
+  File "C:\Users\emred\AppData\Local\Programs\Python\Python314\Lib\site-packages\telegram\request\_baserequest.py", line 198, in post
+    result = await self._request_wrapper(
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    ...<7 lines>...
+    )
+    ^
+  File "C:\Users\emred\AppData\Local\Programs\Python\Python314\Lib\site-packages\telegram\request\_baserequest.py", line 375, in _request_wrapper
+    raise exception
+telegram.error.NetworkError: Bad Gateway
+2026-03-01 02:26:20,287 | ERROR | telegram.ext | Network Retry Loop (Bootstrap Initialize Application): Timed out: Timed out. Failed run number 0 of 0. Aborting.
+Traceback (most recent call last):
+  File "C:\Users\emred\AppData\Local\Programs\Python\Python314\Lib\site-packages\httpx\_transports\default.py", line 101, in map_httpcore_exceptions
+    yield
+  File "C:\Users\emred\AppData\Local\Programs\Python\Python314\Lib\site-packages\httpx\_transports\default.py", line 394, in handle_async_request
+    resp = await self._pool.handle_async_request(req)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\emred\AppData\Local\Programs\Python\Python314\Lib\site-packages\httpcore\_async\connection_pool.py", line 256, in handle_async_request
+    raise exc from None
+  File "C:\Users\emred\AppData\Local\Programs\Python\Python314\Lib\site-packages\httpcore\_async\connection_pool.py", line 236, in handle_async_request
+    response = await connection.handle_async_request(
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+        pool_request.request
+        ^^^^^^^^^^^^^^^^^^^^
+    )
+    ^
+  File "C:\Users\emred\AppData\Local\Programs\Python\Python314\Lib\site-packages\httpcore\_async\connection.py", line 103, in handle_async_request
+    return await self._connection.handle_async_request(request)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\emred\AppData\Local\Programs\Python\Python314\Lib\site-packages\httpcore\_async\http11.py", line 136, in handle_async_request
+    raise exc
+  File "C:\Users\emred\AppData\Local\Programs\Python\Python314\Lib\site-packages\httpcore\_async\http11.py", line 106, in handle_async_request
+    ) = await self._receive_response_headers(**kwargs)
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\emred\AppData\Local\Programs\Python\Python314\Lib\site-packages\httpcore\_async\http11.py", line 177, in _receive_response_headers
+    event = await self._receive_event(timeout=timeout)
+            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\emred\AppData\Local\Programs\Python\Python314\Lib\site-packages\httpcore\_async\http11.py", line 217, in _receive_event
+    data = await self._network_stream.read(
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+        self.READ_NUM_BYTES, timeout=timeout
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    )
+    ^
+  File "C:\Users\emred\AppData\Local\Programs\Python\Python314\Lib\site-packages\httpcore\_backends\anyio.py", line 32, in read
+    with map_exceptions(exc_map):
+         ~~~~~~~~~~~~~~^^^^^^^^^
+  File "C:\Users\emred\AppData\Local\Programs\Python\Python314\Lib\contextlib.py", line 162, in __exit__
+    self.gen.throw(value)
+    ~~~~~~~~~~~~~~^^^^^^^
+  File "C:\Users\emred\AppData\Local\Programs\Python\Python314\Lib\site-packages\httpcore\_exceptions.py", line 14, in map_exceptions
+    raise to_exc(exc) from exc
+httpcore.ReadTimeout
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "C:\Users\emred\AppData\Local\Programs\Python\Python314\Lib\site-packages\telegram\request\_httpxrequest.py", line 279, in do_request
+    res = await self._client.request(
+          ^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    ...<6 lines>...
+    )
+    ^
+  File "C:\Users\emred\AppData\Local\Programs\Python\Python314\Lib\site-packages\httpx\_client.py", line 1540, in request
+    return await self.send(request, auth=auth, follow_redirects=follow_redirects)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\emred\AppData\Local\Programs\Python\Python314\Lib\site-packages\httpx\_client.py", line 1629, in send
+    response = await self._send_handling_auth(
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    ...<4 lines>...
+    )
+    ^
+  File "C:\Users\emred\AppData\Local\Programs\Python\Python314\Lib\site-packages\httpx\_client.py", line 1657, in _send_handling_auth
+    response = await self._send_handling_redirects(
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    ...<3 lines>...
+    )
+    ^
+  File "C:\Users\emred\AppData\Local\Programs\Python\Python314\Lib\site-packages\httpx\_client.py", line 1694, in _send_handling_redirects
+    response = await self._send_single_request(request)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\emred\AppData\Local\Programs\Python\Python314\Lib\site-packages\httpx\_client.py", line 1730, in _send_single_request
+    response = await transport.handle_async_request(request)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\emred\AppData\Local\Programs\Python\Python314\Lib\site-packages\httpx\_transports\default.py", line 393, in handle_async_request
+    with map_httpcore_exceptions():
+         ~~~~~~~~~~~~~~~~~~~~~~~^^
+  File "C:\Users\emred\AppData\Local\Programs\Python\Python314\Lib\contextlib.py", line 162, in __exit__
+    self.gen.throw(value)
+    ~~~~~~~~~~~~~~^^^^^^^
+  File "C:\Users\emred\AppData\Local\Programs\Python\Python314\Lib\site-packages\httpx\_transports\default.py", line 118, in map_httpcore_exceptions
+    raise mapped_exc(message) from exc
+httpx.ReadTimeout
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "C:\Users\emred\AppData\Local\Programs\Python\Python314\Lib\site-packages\telegram\ext\_utils\networkloop.py", line 161, in network_retry_loop
+    await do_action()
+  File "C:\Users\emred\AppData\Local\Programs\Python\Python314\Lib\site-packages\telegram\ext\_utils\networkloop.py", line 136, in do_action
+    await action_cb()
+  File "C:\Users\emred\AppData\Local\Programs\Python\Python314\Lib\site-packages\telegram\ext\_application.py", line 489, in initialize
+    await self.bot.initialize()
+  File "C:\Users\emred\AppData\Local\Programs\Python\Python314\Lib\site-packages\telegram\ext\_extbot.py", line 315, in initialize
+    await super().initialize()
+  File "C:\Users\emred\AppData\Local\Programs\Python\Python314\Lib\site-packages\telegram\_bot.py", line 856, in initialize
+    await self.get_me()
+  File "C:\Users\emred\AppData\Local\Programs\Python\Python314\Lib\site-packages\telegram\ext\_extbot.py", line 2007, in get_me
+    return await super().get_me(
+           ^^^^^^^^^^^^^^^^^^^^^
+    ...<5 lines>...
+    )
+    ^
+  File "C:\Users\emred\AppData\Local\Programs\Python\Python314\Lib\site-packages\telegram\_bot.py", line 989, in get_me
+    result = await self._post(
+             ^^^^^^^^^^^^^^^^^
+    ...<6 lines>...
+    )
+    ^
+  File "C:\Users\emred\AppData\Local\Programs\Python\Python314\Lib\site-packages\telegram\_bot.py", line 703, in _post
+    return await self._do_post(
+           ^^^^^^^^^^^^^^^^^^^^
+    ...<6 lines>...
+    )
+    ^
+  File "C:\Users\emred\AppData\Local\Programs\Python\Python314\Lib\site-packages\telegram\ext\_extbot.py", line 369, in _do_post
+    return await super()._do_post(
+           ^^^^^^^^^^^^^^^^^^^^^^^
+    ...<6 lines>...
+    )
+    ^
+  File "C:\Users\emred\AppData\Local\Programs\Python\Python314\Lib\site-packages\telegram\_bot.py", line 732, in _do_post
+    result = await request.post(
+             ^^^^^^^^^^^^^^^^^^^
+    ...<6 lines>...
+    )
+    ^
+  File "C:\Users\emred\AppData\Local\Programs\Python\Python314\Lib\site-packages\telegram\request\_baserequest.py", line 198, in post
+    result = await self._request_wrapper(
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    ...<7 lines>...
+    )
+    ^
+  File "C:\Users\emred\AppData\Local\Programs\Python\Python314\Lib\site-packages\telegram\request\_baserequest.py", line 305, in _request_wrapper
+    code, payload = await self.do_request(
+                    ^^^^^^^^^^^^^^^^^^^^^^
+    ...<7 lines>...
+    )
+    ^
+  File "C:\Users\emred\AppData\Local\Programs\Python\Python314\Lib\site-packages\telegram\request\_httpxrequest.py", line 296, in do_request
+    raise TimedOut from err
+telegram.error.TimedOut: Timed out
+2026-03-01 02:27:00,484 | INFO | httpx | HTTP Request: POST https://api.telegram.org/bot8184060678:AAFVrixHiuVatmsEj0Nl4Iwn4Fv5VGKknh4/getMe "HTTP/1.1 200 OK"
+2026-03-01 02:27:00,545 | INFO | httpx | HTTP Request: POST https://api.telegram.org/bot8184060678:AAFVrixHiuVatmsEj0Nl4Iwn4Fv5VGKknh4/deleteWebhook "HTTP/1.1 200 OK"
+2026-03-01 02:27:00,549 | INFO | telegram.ext.Application | Application started
+2026-03-01 02:27:10,712 | INFO | httpx | HTTP Request: POST https://api.telegram.org/bot8184060678:AAFVrixHiuVatmsEj0Nl4Iwn4Fv5VGKknh4/getUpdates "HTTP/1.1 200 OK"
+2026-03-01 02:27:13,361 | INFO | httpx | HTTP Request: POST https://api.telegram.org/bot8184060678:AAFVrixHiuVatmsEj0Nl4Iwn4Fv5VGKknh4/getUpdates "HTTP/1.1 200 OK"
+2026-03-01 02:27:13,542 | INFO | httpx | HTTP Request: POST https://api.telegram.org/bot8184060678:AAFVrixHiuVatmsEj0Nl4Iwn4Fv5VGKknh4/answerCallbackQuery "HTTP/1.1 200 OK"
+2026-03-01 02:27:13,636 | INFO | httpx | HTTP Request: POST https://api.telegram.org/bot8184060678:AAFVrixHiuVatmsEj0Nl4Iwn4Fv5VGKknh4/sendMessage "HTTP/1.1 200 OK"
+2026-03-01 02:27:15,717 | INFO | httpx | HTTP Request: POST https://api.telegram.org/bot8184060678:AAFVrixHiuVatmsEj0Nl4Iwn4Fv5VGKknh4/getUpdates "HTTP/1.1 200 OK"
+2026-03-01 02:27:15,776 | INFO | httpx | HTTP Request: POST https://api.telegram.org/bot8184060678:AAFVrixHiuVatmsEj0Nl4Iwn4Fv5VGKknh4/answerCallbackQuery "HTTP/1.1 200 OK"
+2026-03-01 02:27:15,862 | INFO | httpx | HTTP Request: POST https://api.telegram.org/bot8184060678:AAFVrixHiuVatmsEj0Nl4Iwn4Fv5VGKknh4/sendMessage "HTTP/1.1 200 OK"
+2026-03-01 02:27:16,956 | INFO | httpx | HTTP Request: POST https://api.telegram.org/bot8184060678:AAFVrixHiuVatmsEj0Nl4Iwn4Fv5VGKknh4/getUpdates "HTTP/1.1 200 OK"
+2026-03-01 02:27:17,034 | INFO | httpx | HTTP Request: POST https://api.telegram.org/bot8184060678:AAFVrixHiuVatmsEj0Nl4Iwn4Fv5VGKknh4/answerCallbackQuery "HTTP/1.1 200 OK"
+2026-03-01 02:27:17,088 | INFO | httpx | HTTP Request: POST https://api.telegram.org/bot8184060678:AAFVrixHiuVatmsEj0Nl4Iwn4Fv5VGKknh4/editMessageText "HTTP/1.1 400 Bad Request"
+2026-03-01 02:27:17,089 | ERROR | Ti App Studio | Hata: Can't parse entities: unsupported start tag "miktar" at byte offset 37
+Traceback (most recent call last):
+  File "C:\Users\emred\AppData\Local\Programs\Python\Python314\Lib\site-packages\telegram\ext\_application.py", line 1315, in process_update
+    await coroutine
+  File "C:\Users\emred\AppData\Local\Programs\Python\Python314\Lib\site-packages\telegram\ext\_handlers\basehandler.py", line 159, in handle_update
+    return await self.callback(update, context)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\emred\Desktop\Yeni klasör (2)\bot.py", line 966, in handle_callback
+    await query.edit_message_text(
+    ...<9 lines>...
+    )
+  File "C:\Users\emred\AppData\Local\Programs\Python\Python314\Lib\site-packages\telegram\_callbackquery.py", line 269, in edit_message_text
+    return await self._get_message().edit_text(
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    ...<11 lines>...
+    )
+    ^
+  File "C:\Users\emred\AppData\Local\Programs\Python\Python314\Lib\site-packages\telegram\_message.py", line 4205, in edit_text
+    return await self.get_bot().edit_message_text(
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    ...<15 lines>...
+    )
+    ^
+  File "C:\Users\emred\AppData\Local\Programs\Python\Python314\Lib\site-packages\telegram\ext\_extbot.py", line 1732, in edit_message_text
+    return await super().edit_message_text(
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    ...<15 lines>...
+    )
+    ^
+  File "C:\Users\emred\AppData\Local\Programs\Python\Python314\Lib\site-packages\telegram\_bot.py", line 4543, in edit_message_text
+    return await self._send_message(
+           ^^^^^^^^^^^^^^^^^^^^^^^^^
+    ...<11 lines>...
+    )
+    ^
+  File "C:\Users\emred\AppData\Local\Programs\Python\Python314\Lib\site-packages\telegram\ext\_extbot.py", line 629, in _send_message
+    result = await super()._send_message(
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    ...<23 lines>...
+    )
+    ^
+  File "C:\Users\emred\AppData\Local\Programs\Python\Python314\Lib\site-packages\telegram\_bot.py", line 819, in _send_message
+    result = await self._post(
+             ^^^^^^^^^^^^^^^^^
+    ...<7 lines>...
+    )
+    ^
+  File "C:\Users\emred\AppData\Local\Programs\Python\Python314\Lib\site-packages\telegram\_bot.py", line 703, in _post
+    return await self._do_post(
+           ^^^^^^^^^^^^^^^^^^^^
+    ...<6 lines>...
+    )
+    ^
+  File "C:\Users\emred\AppData\Local\Programs\Python\Python314\Lib\site-packages\telegram\ext\_extbot.py", line 369, in _do_post
+    return await super()._do_post(
+           ^^^^^^^^^^^^^^^^^^^^^^^
+    ...<6 lines>...
+    )
+    ^
+  File "C:\Users\emred\AppData\Local\Programs\Python\Python314\Lib\site-packages\telegram\_bot.py", line 732, in _do_post
+    result = await request.post(
+             ^^^^^^^^^^^^^^^^^^^
+    ...<6 lines>...
+    )
+    ^
+  File "C:\Users\emred\AppData\Local\Programs\Python\Python314\Lib\site-packages\telegram\request\_baserequest.py", line 198, in post
+    result = await self._request_wrapper(
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    ...<7 lines>...
+    )
+    ^
+  File "C:\Users\emred\AppData\Local\Programs\Python\Python314\Lib\site-packages\telegram\request\_baserequest.py", line 375, in _request_wrapper
+    raise exception
+telegram.error.BadRequest: Can't parse entities: unsupported start tag "miktar" at byte offset 37
+2026-03-01 02:27:20,619 | INFO | httpx | HTTP Request: POST https://api.telegram.org/bot8184060678:AAFVrixHiuVatmsEj0Nl4Iwn4Fv5VGKknh4/getUpdates "HTTP/1.1 200 OK"
+2026-03-01 02:27:20,693 | INFO | httpx | HTTP Request: POST https://api.telegram.org/bot8184060678:AAFVrixHiuVatmsEj0Nl4Iwn4Fv5VGKknh4/answerCallbackQuery "HTTP/1.1 200 OK"
+2026-03-01 02:27:20,747 | INFO | httpx | HTTP Request: POST https://api.telegram.org/bot8184060678:AAFVrixHiuVatmsEj0Nl4Iwn4Fv5VGKknh4/editMessageText "HTTP/1.1 400 Bad Request"
+2026-03-01 02:27:20,748 | ERROR | Ti App Studio | Hata: Can't parse entities: unsupported start tag "miktar" at byte offset 37
+Traceback (most recent call last):
+  File "C:\Users\emred\AppData\Local\Programs\Python\Python314\Lib\site-packages\telegram\ext\_application.py", line 1315, in process_update
+    await coroutine
+  File "C:\Users\emred\AppData\Local\Programs\Python\Python314\Lib\site-packages\telegram\ext\_handlers\basehandler.py", line 159, in handle_update
+    return await self.callback(update, context)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\emred\Desktop\Yeni klasör (2)\bot.py", line 966, in handle_callback
+    await query.edit_message_text(
+    ...<9 lines>...
+    )
+  File "C:\Users\emred\AppData\Local\Programs\Python\Python314\Lib\site-packages\telegram\_callbackquery.py", line 269, in edit_message_text
+    return await self._get_message().edit_text(
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    ...<11 lines>...
+    )
+    ^
+  File "C:\Users\emred\AppData\Local\Programs\Python\Python314\Lib\site-packages\telegram\_message.py", line 4205, in edit_text
+    return await self.get_bot().edit_message_text(
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    ...<15 lines>...
+    )
+    ^
+  File "C:\Users\emred\AppData\Local\Programs\Python\Python314\Lib\site-packages\telegram\ext\_extbot.py", line 1732, in edit_message_text
+    return await super().edit_message_text(
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    ...<15 lines>...
+    )
+    ^
+  File "C:\Users\emred\AppData\Local\Programs\Python\Python314\Lib\site-packages\telegram\_bot.py", line 4543, in edit_message_text
+    return await self._send_message(
+           ^^^^^^^^^^^^^^^^^^^^^^^^^
+    ...<11 lines>...
+    )
+    ^
+  File "C:\Users\emred\AppData\Local\Programs\Python\Python314\Lib\site-packages\telegram\ext\_extbot.py", line 629, in _send_message
+    result = await super()._send_message(
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    ...<23 lines>...
+    )
+    ^
+  File "C:\Users\emred\AppData\Local\Programs\Python\Python314\Lib\site-packages\telegram\_bot.py", line 819, in _send_message
+    result = await self._post(
+             ^^^^^^^^^^^^^^^^^
+    ...<7 lines>...
+    )
+    ^
+  File "C:\Users\emred\AppData\Local\Programs\Python\Python314\Lib\site-packages\telegram\_bot.py", line 703, in _post
+    return await self._do_post(
+           ^^^^^^^^^^^^^^^^^^^^
+    ...<6 lines>...
+    )
+    ^
+  File "C:\Users\emred\AppData\Local\Programs\Python\Python314\Lib\site-packages\telegram\ext\_extbot.py", line 369, in _do_post
+    return await super()._do_post(
+           ^^^^^^^^^^^^^^^^^^^^^^^
+    ...<6 lines>...
+    )
+    ^
+  File "C:\Users\emred\AppData\Local\Programs\Python\Python314\Lib\site-packages\telegram\_bot.py", line 732, in _do_post
+    result = await request.post(
+             ^^^^^^^^^^^^^^^^^^^
+    ...<6 lines>...
+    )
+    ^
+  File "C:\Users\emred\AppData\Local\Programs\Python\Python314\Lib\site-packages\telegram\request\_baserequest.py", line 198, in post
+    result = await self._request_wrapper(
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    ...<7 lines>...
+    )
+    ^
+  File "C:\Users\emred\AppData\Local\Programs\Python\Python314\Lib\site-packages\telegram\request\_baserequest.py", line 375, in _request_wrapper
+    raise exception
+telegram.error.BadRequest: Can't parse entities: unsupported start tag "miktar" at byte offset 37
+2026-03-01 02:27:21,590 | INFO | httpx | HTTP Request: POST https://api.telegram.org/bot8184060678:AAFVrixHiuVatmsEj0Nl4Iwn4Fv5VGKknh4/getUpdates "HTTP/1.1 200 OK"
+2026-03-01 02:27:21,653 | INFO | httpx | HTTP Request: POST https://api.telegram.org/bot8184060678:AAFVrixHiuVatmsEj0Nl4Iwn4Fv5VGKknh4/answerCallbackQuery "HTTP/1.1 200 OK"
+2026-03-01 02:27:21,744 | INFO | httpx | HTTP Request: POST https://api.telegram.org/bot8184060678:AAFVrixHiuVatmsEj0Nl4Iwn4Fv5VGKknh4/sendMessage "HTTP/1.1 200 OK"
+2026-03-01 02:27:23,490 | INFO | httpx | HTTP Request: POST https://api.telegram.org/bot8184060678:AAFVrixHiuVatmsEj0Nl4Iwn4Fv5VGKknh4/getUpdates "HTTP/1.1 200 OK"
+2026-03-01 02:27:23,557 | INFO | httpx | HTTP Request: POST https://api.telegram.org/bot8184060678:AAFVrixHiuVatmsEj0Nl4Iwn4Fv5VGKknh4/answerCallbackQuery "HTTP/1.1 200 OK"
+2026-03-01 02:27:23,633 | INFO | httpx | HTTP Request: POST https://api.telegram.org/bot8184060678:AAFVrixHiuVatmsEj0Nl4Iwn4Fv5VGKknh4/editMessageText "HTTP/1.1 200 OK"
+2026-03-01 02:27:33,548 | INFO | httpx | HTTP Request: POST https://api.telegram.org/bot8184060678:AAFVrixHiuVatmsEj0Nl4Iwn4Fv5VGKknh4/getUpdates "HTTP/1.1 200 OK"
+2026-03-01 02:27:34,793 | INFO | httpx | HTTP Request: POST https://api.telegram.org/bot8184060678:AAFVrixHiuVatmsEj0Nl4Iwn4Fv5VGKknh4/getUpdates "HTTP/1.1 200 OK"
+2026-03-01 02:27:34,967 | INFO | httpx | HTTP Request: POST https://api.telegram.org/bot8184060678:AAFVrixHiuVatmsEj0Nl4Iwn4Fv5VGKknh4/sendMessage "HTTP/1.1 400 Bad Request"
+2026-03-01 02:27:34,968 | ERROR | Ti App Studio | Hata: Can't parse entities: unsupported start tag "miktar" at byte offset 261
+Traceback (most recent call last):
+  File "C:\Users\emred\AppData\Local\Programs\Python\Python314\Lib\site-packages\telegram\ext\_application.py", line 1315, in process_update
+    await coroutine
+  File "C:\Users\emred\AppData\Local\Programs\Python\Python314\Lib\site-packages\telegram\ext\_handlers\basehandler.py", line 159, in handle_update
+    return await self.callback(update, context)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\emred\Desktop\Yeni klasör (2)\bot.py", line 825, in cmd_yardim
+    await update.message.reply_text(
+    ...<18 lines>...
+    )
+  File "C:\Users\emred\AppData\Local\Programs\Python\Python314\Lib\site-packages\telegram\_message.py", line 2068, in reply_text
+    return await self.get_bot().send_message(
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    ...<21 lines>...
+    )
+    ^
+  File "C:\Users\emred\AppData\Local\Programs\Python\Python314\Lib\site-packages\telegram\ext\_extbot.py", line 3115, in send_message
+    return await super().send_message(
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    ...<23 lines>...
+    )
+    ^
+  File "C:\Users\emred\AppData\Local\Programs\Python\Python314\Lib\site-packages\telegram\_bot.py", line 1122, in send_message
+    return await self._send_message(
+           ^^^^^^^^^^^^^^^^^^^^^^^^^
+    ...<21 lines>...
+    )
+    ^
+  File "C:\Users\emred\AppData\Local\Programs\Python\Python314\Lib\site-packages\telegram\ext\_extbot.py", line 629, in _send_message
+    result = await super()._send_message(
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    ...<23 lines>...
+    )
+    ^
+  File "C:\Users\emred\AppData\Local\Programs\Python\Python314\Lib\site-packages\telegram\_bot.py", line 819, in _send_message
+    result = await self._post(
+             ^^^^^^^^^^^^^^^^^
+    ...<7 lines>...
+    )
+    ^
+  File "C:\Users\emred\AppData\Local\Programs\Python\Python314\Lib\site-packages\telegram\_bot.py", line 703, in _post
+    return await self._do_post(
+           ^^^^^^^^^^^^^^^^^^^^
+    ...<6 lines>...
+    )
+    ^
+  File "C:\Users\emred\AppData\Local\Programs\Python\Python314\Lib\site-packages\telegram\ext\_extbot.py", line 369, in _do_post
+    return await super()._do_post(
+           ^^^^^^^^^^^^^^^^^^^^^^^
+    ...<6 lines>...
+    )
+    ^
+  File "C:\Users\emred\AppData\Local\Programs\Python\Python314\Lib\site-packages\telegram\_bot.py", line 732, in _do_post
+    result = await request.post(
+             ^^^^^^^^^^^^^^^^^^^
+    ...<6 lines>...
+    )
+    ^
+  File "C:\Users\emred\AppData\Local\Programs\Python\Python314\Lib\site-packages\telegram\request\_baserequest.py", line 198, in post
+    result = await self._request_wrapper(
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    ...<7 lines>...
+    )
+    ^
+  File "C:\Users\emred\AppData\Local\Programs\Python\Python314\Lib\site-packages\telegram\request\_baserequest.py", line 375, in _request_wrapper
+    raise exception
+telegram.error.BadRequest: Can't parse entities: unsupported start tag "miktar" at byte offset 261
+2026-03-01 02:27:44,309 | INFO | httpx | HTTP Request: POST https://api.telegram.org/bot8184060678:AAFVrixHiuVatmsEj0Nl4Iwn4Fv5VGKknh4/getUpdates "HTTP/1.1 200 OK"
+2026-03-01 02:27:44,544 | INFO | httpx | HTTP Request: POST https://api.telegram.org/bot8184060678:AAFVrixHiuVatmsEj0Nl4Iwn4Fv5VGKknh4/sendMessage "HTTP/1.1 200 OK"
+2026-03-01 02:27:54,365 | INFO | httpx | HTTP Request: POST https://api.telegram.org/bot8184060678:AAFVrixHiuVatmsEj0Nl4Iwn4Fv5VGKknh4/getUpdates "HTTP/1.1 200 OK"
+2026-03-01 02:27:56,798 | INFO | httpx | HTTP Request: POST https://api.telegram.org/bot8184060678:AAFVrixHiuVatmsEj0Nl4Iwn4Fv5VGKknh4/getUpdates "HTTP/1.1 200 OK"
+2026-03-01 02:27:57,035 | INFO | httpx | HTTP Request: POST https://api.telegram.org/bot8184060678:AAFVrixHiuVatmsEj0Nl4Iwn4Fv5VGKknh4/sendMessage "HTTP/1.1 200 OK"
+2026-03-01 02:28:06,856 | INFO | httpx | HTTP Request: POST https://api.telegram.org/bot8184060678:AAFVrixHiuVatmsEj0Nl4Iwn4Fv5VGKknh4/getUpdates "HTTP/1.1 200 OK"
+2026-03-01 02:28:16,914 | INFO | httpx | HTTP Request: POST https://api.telegram.org/bot8184060678:AAFVrixHiuVatmsEj0Nl4Iwn4Fv5VGKknh4/getUpdates "HTTP/1.1 200 OK"
+2026-03-01 02:28:26,968 | INFO | httpx | HTTP Request: POST https://api.telegram.org/bot8184060678:AAFVrixHiuVatmsEj0Nl4Iwn4Fv5VGKknh4/getUpdates "HTTP/1.1 200 OK"
+2026-03-01 02:28:37,022 | INFO | httpx | HTTP Request: POST https://api.telegram.org/bot8184060678:AAFVrixHiuVatmsEj0Nl4Iwn4Fv5VGKknh4/getUpdates "HTTP/1.1 200 OK"
+2026-03-01 02:28:47,079 | INFO | httpx | HTTP Request: POST https://api.telegram.org/bot8184060678:AAFVrixHiuVatmsEj0Nl4Iwn4Fv5VGKknh4/getUpdates "HTTP/1.1 200 OK"
+2026-03-01 02:28:57,133 | INFO | httpx | HTTP Request: POST https://api.telegram.org/bot8184060678:AAFVrixHiuVatmsEj0Nl4Iwn4Fv5VGKknh4/getUpdates "HTTP/1.1 200 OK"
+2026-03-01 02:29:07,188 | INFO | httpx | HTTP Request: POST https://api.telegram.org/bot8184060678:AAFVrixHiuVatmsEj0Nl4Iwn4Fv5VGKknh4/getUpdates "HTTP/1.1 200 OK"
+2026-03-01 02:29:17,244 | INFO | httpx | HTTP Request: POST https://api.telegram.org/bot8184060678:AAFVrixHiuVatmsEj0Nl4Iwn4Fv5VGKknh4/getUpdates "HTTP/1.1 200 OK"
+2026-03-01 02:29:27,301 | INFO | httpx | HTTP Request: POST https://api.telegram.org/bot8184060678:AAFVrixHiuVatmsEj0Nl4Iwn4Fv5VGKknh4/getUpdates "HTTP/1.1 200 OK"
+2026-03-01 02:29:37,454 | INFO | httpx | HTTP Request: POST https://api.telegram.org/bot8184060678:AAFVrixHiuVatmsEj0Nl4Iwn4Fv5VGKknh4/getUpdates "HTTP/1.1 200 OK"
+2026-03-01 02:29:47,515 | INFO | httpx | HTTP Request: POST https://api.telegram.org/bot8184060678:AAFVrixHiuVatmsEj0Nl4Iwn4Fv5VGKknh4/getUpdates "HTTP/1.1 200 OK"
+2026-03-01 02:29:57,576 | INFO | httpx | HTTP Request: POST https://api.telegram.org/bot8184060678:AAFVrixHiuVatmsEj0Nl4Iwn4Fv5VGKknh4/getUpdates "HTTP/1.1 200 OK"
+2026-03-01 02:30:07,633 | INFO | httpx | HTTP Request: POST https://api.telegram.org/bot8184060678:AAFVrixHiuVatmsEj0Nl4Iwn4Fv5VGKknh4/getUpdates "HTTP/1.1 200 OK"
+2026-03-01 02:30:17,730 | INFO | httpx | HTTP Request: POST https://api.telegram.org/bot8184060678:AAFVrixHiuVatmsEj0Nl4Iwn4Fv5VGKknh4/getUpdates "HTTP/1.1 200 OK"
+2026-03-01 02:30:27,787 | INFO | httpx | HTTP Request: POST https://api.telegram.org/bot8184060678:AAFVrixHiuVatmsEj0Nl4Iwn4Fv5VGKknh4/getUpdates "HTTP/1.1 200 OK"
+2026-03-01 02:30:38,145 | INFO | httpx | HTTP Request: POST https://api.telegram.org/bot8184060678:AAFVrixHiuVatmsEj0Nl4Iwn4Fv5VGKknh4/getUpdates "HTTP/1.1 200 OK"
+2026-03-01 02:30:48,199 | INFO | httpx | HTTP Request: POST https://api.telegram.org/bot8184060678:AAFVrixHiuVatmsEj0Nl4Iwn4Fv5VGKknh4/getUpdates "HTTP/1.1 200 OK"
+2026-03-01 02:30:58,255 | INFO | httpx | HTTP Request: POST https://api.telegram.org/bot8184060678:AAFVrixHiuVatmsEj0Nl4Iwn4Fv5VGKknh4/getUpdates "HTTP/1.1 200 OK"
+2026-03-01 02:31:08,310 | INFO | httpx | HTTP Request: POST https://api.telegram.org/bot8184060678:AAFVrixHiuVatmsEj0Nl4Iwn4Fv5VGKknh4/getUpdates "HTTP/1.1 200 OK"
+2026-03-01 02:31:18,364 | INFO | httpx | HTTP Request: POST https://api.telegram.org/bot8184060678:AAFVrixHiuVatmsEj0Nl4Iwn4Fv5VGKknh4/getUpdates "HTTP/1.1 200 OK"
+2026-03-01 02:31:28,418 | INFO | httpx | HTTP Request: POST https://api.telegram.org/bot8184060678:AAFVrixHiuVatmsEj0Nl4Iwn4Fv5VGKknh4/getUpdates "HTTP/1.1 200 OK"
+2026-03-01 02:31:38,473 | INFO | httpx | HTTP Request: POST https://api.telegram.org/bot8184060678:AAFVrixHiuVatmsEj0Nl4Iwn4Fv5VGKknh4/getUpdates "HTTP/1.1 200 OK"
+2026-03-01 02:31:48,534 | INFO | httpx | HTTP Request: POST https://api.telegram.org/bot8184060678:AAFVrixHiuVatmsEj0Nl4Iwn4Fv5VGKknh4/getUpdates "HTTP/1.1 200 OK"
+2026-03-01 02:31:58,588 | INFO | httpx | HTTP Request: POST https://api.telegram.org/bot8184060678:AAFVrixHiuVatmsEj0Nl4Iwn4Fv5VGKknh4/getUpdates "HTTP/1.1 200 OK"
+2026-03-01 02:32:08,650 | INFO | httpx | HTTP Request: POST https://api.telegram.org/bot8184060678:AAFVrixHiuVatmsEj0Nl4Iwn4Fv5VGKknh4/getUpdates "HTTP/1.1 200 OK"
+2026-03-01 02:32:18,704 | INFO | httpx | HTTP Request: POST https://api.telegram.org/bot8184060678:AAFVrixHiuVatmsEj0Nl4Iwn4Fv5VGKknh4/getUpdates "HTTP/1.1 200 OK"
+2026-03-01 02:32:28,761 | INFO | httpx | HTTP Request: POST https://api.telegram.org/bot8184060678:AAFVrixHiuVatmsEj0Nl4Iwn4Fv5VGKknh4/getUpdates "HTTP/1.1 200 OK"
+2026-03-01 02:32:38,820 | INFO | httpx | HTTP Request: POST https://api.telegram.org/bot8184060678:AAFVrixHiuVatmsEj0Nl4Iwn4Fv5VGKknh4/getUpdates "HTTP/1.1 200 OK"
+2026-03-01 02:32:48,875 | INFO | httpx | HTTP Request: POST https://api.telegram.org/bot8184060678:AAFVrixHiuVatmsEj0Nl4Iwn4Fv5VGKknh4/getUpdates "HTTP/1.1 200 OK"
+2026-03-01 02:32:58,930 | INFO | httpx | HTTP Request: POST https://api.telegram.org/bot8184060678:AAFVrixHiuVatmsEj0Nl4Iwn4Fv5VGKknh4/getUpdates "HTTP/1.1 200 OK"
+2026-03-01 02:33:08,985 | INFO | httpx | HTTP Request: POST https://api.telegram.org/bot8184060678:AAFVrixHiuVatmsEj0Nl4Iwn4Fv5VGKknh4/getUpdates "HTTP/1.1 200 OK"
+2026-03-01 02:33:19,039 | INFO | httpx | HTTP Request: POST https://api.telegram.org/bot8184060678:AAFVrixHiuVatmsEj0Nl4Iwn4Fv5VGKknh4/getUpdates "HTTP/1.1 200 OK"
+2026-03-01 02:33:29,094 | INFO | httpx | HTTP Request: POST https://api.telegram.org/bot8184060678:AAFVrixHiuVatmsEj0Nl4Iwn4Fv5VGKknh4/getUpdates "HTTP/1.1 200 OK"
+2026-03-01 02:33:39,167 | INFO | httpx | HTTP Request: POST https://api.telegram.org/bot8184060678:AAFVrixHiuVatmsEj0Nl4Iwn4Fv5VGKknh4/getUpdates "HTTP/1.1 200 OK"
+2026-03-01 02:33:49,231 | INFO | httpx | HTTP Request: POST https://api.telegram.org/bot8184060678:AAFVrixHiuVatmsEj0Nl4Iwn4Fv5VGKknh4/getUpdates "HTTP/1.1 200 OK"
+2026-03-01 02:33:59,288 | INFO | httpx | HTTP Request: POST https://api.telegram.org/bot8184060678:AAFVrixHiuVatmsEj0Nl4Iwn4Fv5VGKknh4/getUpdates "HTTP/1.1 200 OK"
+2026-03-01 02:34:09,344 | INFO | httpx | HTTP Request: POST https://api.telegram.org/bot8184060678:AAFVrixHiuVatmsEj0Nl4Iwn4Fv5VGKknh4/getUpdates "HTTP/1.1 200 OK"
+2026-03-01 02:34:19,678 | INFO | httpx | HTTP Request: POST https://api.telegram.org/bot8184060678:AAFVrixHiuVatmsEj0Nl4Iwn4Fv5VGKknh4/getUpdates "HTTP/1.1 200 OK"
+2026-03-01 02:34:29,733 | INFO | httpx | HTTP Request: POST https://api.telegram.org/bot8184060678:AAFVrixHiuVatmsEj0Nl4Iwn4Fv5VGKknh4/getUpdates "HTTP/1.1 200 OK"
+2026-03-01 02:34:39,826 | INFO | httpx | HTTP Request: POST https://api.telegram.org/bot8184060678:AAFVrixHiuVatmsEj0Nl4Iwn4Fv5VGKknh4/getUpdates "HTTP/1.1 200 OK"
+2026-03-01 02:34:49,963 | INFO | httpx | HTTP Request: POST https://api.telegram.org/bot8184060678:AAFVrixHiuVatmsEj0Nl4Iwn4Fv5VGKknh4/getUpdates "HTTP/1.1 200 OK"
+2026-03-01 02:35:00,019 | INFO | httpx | HTTP Request: POST https://api.telegram.org/bot8184060678:AAFVrixHiuVatmsEj0Nl4Iwn4Fv5VGKknh4/getUpdates "HTTP/1.1 200 OK"
+2026-03-01 02:35:10,415 | INFO | httpx | HTTP Request: POST https://api.telegram.org/bot8184060678:AAFVrixHiuVatmsEj0Nl4Iwn4Fv5VGKknh4/getUpdates "HTTP/1.1 200 OK"
+2026-03-01 02:35:20,521 | INFO | httpx | HTTP Request: POST https://api.telegram.org/bot8184060678:AAFVrixHiuVatmsEj0Nl4Iwn4Fv5VGKknh4/getUpdates "HTTP/1.1 200 OK"
+2026-03-01 02:35:30,581 | INFO | httpx | HTTP Request: POST https://api.telegram.org/bot8184060678:AAFVrixHiuVatmsEj0Nl4Iwn4Fv5VGKknh4/getUpdates "HTTP/1.1 200 OK"
+2026-03-01 02:35:40,637 | INFO | httpx | HTTP Request: POST https://api.telegram.org/bot8184060678:AAFVrixHiuVatmsEj0Nl4Iwn4Fv5VGKknh4/getUpdates "HTTP/1.1 200 OK"
+2026-03-01 02:35:51,017 | INFO | httpx | HTTP Request: POST https://api.telegram.org/bot8184060678:AAFVrixHiuVatmsEj0Nl4Iwn4Fv5VGKknh4/getUpdates "HTTP/1.1 200 OK"
+2026-03-01 02:36:01,076 | INFO | httpx | HTTP Request: POST https://api.telegram.org/bot8184060678:AAFVrixHiuVatmsEj0Nl4Iwn4Fv5VGKknh4/getUpdates "HTTP/1.1 200 OK"
+2026-03-01 02:36:11,132 | INFO | httpx | HTTP Request: POST https://api.telegram.org/bot8184060678:AAFVrixHiuVatmsEj0Nl4Iwn4Fv5VGKknh4/getUpdates "HTTP/1.1 200 OK"
+2026-03-01 02:36:21,185 | INFO | httpx | HTTP Request: POST https://api.telegram.org/bot8184060678:AAFVrixHiuVatmsEj0Nl4Iwn4Fv5VGKknh4/getUpdates "HTTP/1.1 200 OK"
+2026-03-01 02:36:28,810 | INFO | httpx | HTTP Request: POST https://api.telegram.org/bot8184060678:AAFVrixHiuVatmsEj0Nl4Iwn4Fv5VGKknh4/getUpdates "HTTP/1.1 200 OK"
+2026-03-01 02:36:38,865 | INFO | httpx | HTTP Request: POST https://api.telegram.org/bot8184060678:AAFVrixHiuVatmsEj0Nl4Iwn4Fv5VGKknh4/getUpdates "HTTP/1.1 200 OK"
+2026-03-01 02:36:48,927 | INFO | httpx | HTTP Request: POST https://api.telegram.org/bot8184060678:AAFVrixHiuVatmsEj0Nl4Iwn4Fv5VGKknh4/getUpdates "HTTP/1.1 200 OK"
+2026-03-01 02:36:58,981 | INFO | httpx | HTTP Request: POST https://api.telegram.org/bot8184060678:AAFVrixHiuVatmsEj0Nl4Iwn4Fv5VGKknh4/getUpdates "HTTP/1.1 200 OK"
+2026-03-01 02:37:09,036 | INFO | httpx | HTTP Request: POST https://api.telegram.org/bot8184060678:AAFVrixHiuVatmsEj0Nl4Iwn4Fv5VGKknh4/getUpdates "HTTP/1.1 200 OK"
+2026-03-01 02:37:19,089 | INFO | httpx | HTTP Request: POST https://api.telegram.org/bot8184060678:AAFVrixHiuVatmsEj0Nl4Iwn4Fv5VGKknh4/getUpdates "HTTP/1.1 200 OK"
+2026-03-01 02:37:29,144 | INFO | httpx | HTTP Request: POST https://api.telegram.org/bot8184060678:AAFVrixHiuVatmsEj0Nl4Iwn4Fv5VGKknh4/getUpdates "HTTP/1.1 200 OK"
+2026-03-01 02:37:39,200 | INFO | httpx | HTTP Request: POST https://api.telegram.org/bot8184060678:AAFVrixHiuVatmsEj0Nl4Iwn4Fv5VGKknh4/getUpdates "HTTP/1.1 200 OK"
+2026-03-01 02:37:49,538 | INFO | httpx | HTTP Request: POST https://api.telegram.org/bot8184060678:AAFVrixHiuVatmsEj0Nl4Iwn4Fv5VGKknh4/getUpdates "HTTP/1.1 200 OK"
+2026-03-01 02:37:59,592 | INFO | httpx | HTTP Request: POST https://api.telegram.org/bot8184060678:AAFVrixHiuVatmsEj0Nl4Iwn4Fv5VGKknh4/getUpdates "HTTP/1.1 200 OK"
+2026-03-01 02:38:09,652 | INFO | httpx | HTTP Request: POST https://api.telegram.org/bot8184060678:AAFVrixHiuVatmsEj0Nl4Iwn4Fv5VGKknh4/getUpdates "HTTP/1.1 200 OK"
+2026-03-01 02:38:19,710 | INFO | httpx | HTTP Request: POST https://api.telegram.org/bot8184060678:AAFVrixHiuVatmsEj0Nl4Iwn4Fv5VGKknh4/getUpdates "HTTP/1.1 200 OK"
+2026-03-01 02:38:29,764 | INFO | httpx | HTTP Request: POST https://api.telegram.org/bot8184060678:AAFVrixHiuVatmsEj0Nl4Iwn4Fv5VGKknh4/getUpdates "HTTP/1.1 200 OK"
+2026-03-01 02:38:39,823 | INFO | httpx | HTTP Request: POST https://api.telegram.org/bot8184060678:AAFVrixHiuVatmsEj0Nl4Iwn4Fv5VGKknh4/getUpdates "HTTP/1.1 200 OK"
+2026-03-01 02:38:49,878 | INFO | httpx | HTTP Request: POST https://api.telegram.org/bot8184060678:AAFVrixHiuVatmsEj0Nl4Iwn4Fv5VGKknh4/getUpdates "HTTP/1.1 200 OK"
+2026-03-01 02:38:59,940 | INFO | httpx | HTTP Request: POST https://api.telegram.org/bot8184060678:AAFVrixHiuVatmsEj0Nl4Iwn4Fv5VGKknh4/getUpdates "HTTP/1.1 200 OK"
+2026-03-01 02:39:09,995 | INFO | httpx | HTTP Request: POST https://api.telegram.org/bot8184060678:AAFVrixHiuVatmsEj0Nl4Iwn4Fv5VGKknh4/getUpdates "HTTP/1.1 200 OK"
+2026-03-01 02:39:20,049 | INFO | httpx | HTTP Request: POST https://api.telegram.org/bot8184060678:AAFVrixHiuVatmsEj0Nl4Iwn4Fv5VGKknh4/getUpdates "HTTP/1.1 200 OK"
+2026-03-01 02:39:30,104 | INFO | httpx | HTTP Request: POST https://api.telegram.org/bot8184060678:AAFVrixHiuVatmsEj0Nl4Iwn4Fv5VGKknh4/getUpdates "HTTP/1.1 200 OK"
+2026-03-01 02:39:40,444 | INFO | httpx | HTTP Request: POST https://api.telegram.org/bot8184060678:AAFVrixHiuVatmsEj0Nl4Iwn4Fv5VGKknh4/getUpdates "HTTP/1.1 200 OK"
+2026-03-01 02:39:50,782 | INFO | httpx | HTTP Request: POST https://api.telegram.org/bot8184060678:AAFVrixHiuVatmsEj0Nl4Iwn4Fv5VGKknh4/getUpdates "HTTP/1.1 200 OK"
+2026-03-01 02:40:00,837 | INFO | httpx | HTTP Request: POST https://api.telegram.org/bot8184060678:AAFVrixHiuVatmsEj0Nl4Iwn4Fv5VGKknh4/getUpdates "HTTP/1.1 200 OK"
+2026-03-01 02:40:10,891 | INFO | httpx | HTTP Request: POST https://api.telegram.org/bot8184060678:AAFVrixHiuVatmsEj0Nl4Iwn4Fv5VGKknh4/getUpdates "HTTP/1.1 200 OK"
+2026-03-01 02:40:20,947 | INFO | httpx | HTTP Request: POST https://api.telegram.org/bot8184060678:AAFVrixHiuVatmsEj0Nl4Iwn4Fv5VGKknh4/getUpdates "HTTP/1.1 200 OK"
+2026-03-01 02:40:31,011 | INFO | httpx | HTTP Request: POST https://api.telegram.org/bot8184060678:AAFVrixHiuVatmsEj0Nl4Iwn4Fv5VGKknh4/getUpdates "HTTP/1.1 200 OK"
+2026-03-01 02:40:41,067 | INFO | httpx | HTTP Request: POST https://api.telegram.org/bot8184060678:AAFVrixHiuVatmsEj0Nl4Iwn4Fv5VGKknh4/getUpdates "HTTP/1.1 200 OK"
+2026-03-01 02:40:51,122 | INFO | httpx | HTTP Request: POST https://api.telegram.org/bot8184060678:AAFVrixHiuVatmsEj0Nl4Iwn4Fv5VGKknh4/getUpdates "HTTP/1.1 200 OK"
+2026-03-01 02:41:01,176 | INFO | httpx | HTTP Request: POST https://api.telegram.org/bot8184060678:AAFVrixHiuVatmsEj0Nl4Iwn4Fv5VGKknh4/getUpdates "HTTP/1.1 200 OK"
+2026-03-01 02:41:11,229 | INFO | httpx | HTTP Request: POST https://api.telegram.org/bot8184060678:AAFVrixHiuVatmsEj0Nl4Iwn4Fv5VGKknh4/getUpdates "HTTP/1.1 200 OK"
+2026-03-01 02:41:21,285 | INFO | httpx | HTTP Request: POST https://api.telegram.org/bot8184060678:AAFVrixHiuVatmsEj0Nl4Iwn4Fv5VGKknh4/getUpdates "HTTP/1.1 200 OK"
+2026-03-01 02:41:31,344 | INFO | httpx | HTTP Request: POST https://api.telegram.org/bot8184060678:AAFVrixHiuVatmsEj0Nl4Iwn4Fv5VGKknh4/getUpdates "HTTP/1.1 200 OK"
+2026-03-01 02:41:41,399 | INFO | httpx | HTTP Request: POST https://api.telegram.org/bot8184060678:AAFVrixHiuVatmsEj0Nl4Iwn4Fv5VGKknh4/getUpdates "HTTP/1.1 200 OK"
+2026-03-01 02:41:51,456 | INFO | httpx | HTTP Request: POST https://api.telegram.org/bot8184060678:AAFVrixHiuVatmsEj0Nl4Iwn4Fv5VGKknh4/getUpdates "HTTP/1.1 200 OK"
+2026-03-01 02:42:01,510 | INFO | httpx | HTTP Request: POST https://api.telegram.org/bot8184060678:AAFVrixHiuVatmsEj0Nl4Iwn4Fv5VGKknh4/getUpdates "HTTP/1.1 200 OK"
+2026-03-01 02:42:11,843 | INFO | httpx | HTTP Request: POST https://api.telegram.org/bot8184060678:AAFVrixHiuVatmsEj0Nl4Iwn4Fv5VGKknh4/getUpdates "HTTP/1.1 200 OK"
+2026-03-01 02:42:21,897 | INFO | httpx | HTTP Request: POST https://api.telegram.org/bot8184060678:AAFVrixHiuVatmsEj0Nl4Iwn4Fv5VGKknh4/getUpdates "HTTP/1.1 200 OK"
+2026-03-01 02:42:31,951 | INFO | httpx | HTTP Request: POST https://api.telegram.org/bot8184060678:AAFVrixHiuVatmsEj0Nl4Iwn4Fv5VGKknh4/getUpdates "HTTP/1.1 200 OK"
+2026-03-01 02:42:42,008 | INFO | httpx | HTTP Request: POST https://api.telegram.org/bot8184060678:AAFVrixHiuVatmsEj0Nl4Iwn4Fv5VGKknh4/getUpdates "HTTP/1.1 200 OK"
+2026-03-01 02:42:52,174 | INFO | httpx | HTTP Request: POST https://api.telegram.org/bot8184060678:AAFVrixHiuVatmsEj0Nl4Iwn4Fv5VGKknh4/getUpdates "HTTP/1.1 200 OK"
+2026-03-01 02:43:02,229 | INFO | httpx | HTTP Request: POST https://api.telegram.org/bot8184060678:AAFVrixHiuVatmsEj0Nl4Iwn4Fv5VGKknh4/getUpdates "HTTP/1.1 200 OK"
+2026-03-01 02:43:12,285 | INFO | httpx | HTTP Request: POST https://api.telegram.org/bot8184060678:AAFVrixHiuVatmsEj0Nl4Iwn4Fv5VGKknh4/getUpdates "HTTP/1.1 200 OK"
+2026-03-01 02:43:22,340 | INFO | httpx | HTTP Request: POST https://api.telegram.org/bot8184060678:AAFVrixHiuVatmsEj0Nl4Iwn4Fv5VGKknh4/getUpdates "HTTP/1.1 200 OK"
+2026-03-01 02:43:32,396 | INFO | httpx | HTTP Request: POST https://api.telegram.org/bot8184060678:AAFVrixHiuVatmsEj0Nl4Iwn4Fv5VGKknh4/getUpdates "HTTP/1.1 200 OK"
+2026-03-01 02:43:42,451 | INFO | httpx | HTTP Request: POST https://api.telegram.org/bot8184060678:AAFVrixHiuVatmsEj0Nl4Iwn4Fv5VGKknh4/getUpdates "HTTP/1.1 200 OK"
+2026-03-01 02:43:52,507 | INFO | httpx | HTTP Request: POST https://api.telegram.org/bot8184060678:AAFVrixHiuVatmsEj0Nl4Iwn4Fv5VGKknh4/getUpdates "HTTP/1.1 200 OK"
+2026-03-01 02:44:02,560 | INFO | httpx | HTTP Request: POST https://api.telegram.org/bot8184060678:AAFVrixHiuVatmsEj0Nl4Iwn4Fv5VGKknh4/getUpdates "HTTP/1.1 200 OK"
+2026-03-01 02:44:12,619 | INFO | httpx | HTTP Request: POST https://api.telegram.org/bot8184060678:AAFVrixHiuVatmsEj0Nl4Iwn4Fv5VGKknh4/getUpdates "HTTP/1.1 200 OK"
+2026-03-01 02:44:22,677 | INFO | httpx | HTTP Request: POST https://api.telegram.org/bot8184060678:AAFVrixHiuVatmsEj0Nl4Iwn4Fv5VGKknh4/getUpdates "HTTP/1.1 200 OK"
+2026-03-01 02:44:32,730 | INFO | httpx | HTTP Request: POST https://api.telegram.org/bot8184060678:AAFVrixHiuVatmsEj0Nl4Iwn4Fv5VGKknh4/getUpdates "HTTP/1.1 200 OK"
+2026-03-01 02:44:42,786 | INFO | httpx | HTTP Request: POST https://api.telegram.org/bot8184060678:AAFVrixHiuVatmsEj0Nl4Iwn4Fv5VGKknh4/getUpdates "HTTP/1.1 200 OK"
+2026-03-01 02:44:52,838 | INFO | httpx | HTTP Request: POST https://api.telegram.org/bot8184060678:AAFVrixHiuVatmsEj0Nl4Iwn4Fv5VGKknh4/getUpdates "HTTP/1.1 200 OK"
+2026-03-01 02:45:02,905 | INFO | httpx | HTTP Request: POST https://api.telegram.org/bot8184060678:AAFVrixHiuVatmsEj0Nl4Iwn4Fv5VGKknh4/getUpdates "HTTP/1.1 200 OK"
+2026-03-01 02:45:12,960 | INFO | httpx | HTTP Request: POST https://api.telegram.org/bot8184060678:AAFVrixHiuVatmsEj0Nl4Iwn4Fv5VGKknh4/getUpdates "HTTP/1.1 200 OK"
+2026-03-01 02:45:23,014 | INFO | httpx | HTTP Request: POST https://api.telegram.org/bot8184060678:AAFVrixHiuVatmsEj0Nl4Iwn4Fv5VGKknh4/getUpdates "HTTP/1.1 200 OK"
+2026-03-01 02:45:33,067 | INFO | httpx | HTTP Request: POST https://api.telegram.org/bot8184060678:AAFVrixHiuVatmsEj0Nl4Iwn4Fv5VGKknh4/getUpdates "HTTP/1.1 200 OK"
+2026-03-01 02:45:43,120 | INFO | httpx | HTTP Request: POST https://api.telegram.org/bot8184060678:AAFVrixHiuVatmsEj0Nl4Iwn4Fv5VGKknh4/getUpdates "HTTP/1.1 200 OK"
+2026-03-01 02:45:53,177 | INFO | httpx | HTTP Request: POST https://api.telegram.org/bot8184060678:AAFVrixHiuVatmsEj0Nl4Iwn4Fv5VGKknh4/getUpdates "HTTP/1.1 200 OK"
+2026-03-01 02:46:03,233 | INFO | httpx | HTTP Request: POST https://api.telegram.org/bot8184060678:AAFVrixHiuVatmsEj0Nl4Iwn4Fv5VGKknh4/getUpdates "HTTP/1.1 200 OK"
+2026-03-01 02:46:13,289 | INFO | httpx | HTTP Request: POST https://api.telegram.org/bot8184060678:AAFVrixHiuVatmsEj0Nl4Iwn4Fv5VGKknh4/getUpdates "HTTP/1.1 200 OK"
+2026-03-01 02:46:23,348 | INFO | httpx | HTTP Request: POST https://api.telegram.org/bot8184060678:AAFVrixHiuVatmsEj0Nl4Iwn4Fv5VGKknh4/getUpdates "HTTP/1.1 200 OK"
+2026-03-01 02:46:33,406 | INFO | httpx | HTTP Request: POST https://api.telegram.org/bot8184060678:AAFVrixHiuVatmsEj0Nl4Iwn4Fv5VGKknh4/getUpdates "HTTP/1.1 200 OK"
+2026-03-01 02:46:42,380 | INFO | httpx | HTTP Request: POST https://api.telegram.org/bot8184060678:AAFVrixHiuVatmsEj0Nl4Iwn4Fv5VGKknh4/getUpdates "HTTP/1.1 200 OK"
+2026-03-01 02:46:42,803 | INFO | httpx | HTTP Request: POST https://api.telegram.org/bot8184060678:AAFVrixHiuVatmsEj0Nl4Iwn4Fv5VGKknh4/sendMessage "HTTP/1.1 200 OK"
+2026-03-01 02:46:52,458 | INFO | httpx | HTTP Request: POST https://api.telegram.org/bot8184060678:AAFVrixHiuVatmsEj0Nl4Iwn4Fv5VGKknh4/getUpdates "HTTP/1.1 200 OK"
+2026-03-01 02:46:56,561 | INFO | httpx | HTTP Request: POST https://api.telegram.org/bot8184060678:AAFVrixHiuVatmsEj0Nl4Iwn4Fv5VGKknh4/getUpdates "HTTP/1.1 200 OK"
+2026-03-01 02:46:56,848 | INFO | httpx | HTTP Request: POST https://api.telegram.org/bot8184060678:AAFVrixHiuVatmsEj0Nl4Iwn4Fv5VGKknh4/sendMessage "HTTP/1.1 200 OK"
+2026-03-01 02:46:58,863 | INFO | httpx | HTTP Request: POST https://api.telegram.org/bot8184060678:AAFVrixHiuVatmsEj0Nl4Iwn4Fv5VGKknh4/getUpdates "HTTP/1.1 200 OK"
+2026-03-01 02:47:04,491 | INFO | httpx | HTTP Request: POST https://api.telegram.org/bot8184060678:AAFVrixHiuVatmsEj0Nl4Iwn4Fv5VGKknh4/getUpdates "HTTP/1.1 200 OK"
+2026-03-01 02:47:14,566 | INFO | httpx | HTTP Request: POST https://api.telegram.org/bot8184060678:AAFVrixHiuVatmsEj0Nl4Iwn4Fv5VGKknh4/getUpdates "HTTP/1.1 200 OK"
+2026-03-01 02:47:24,622 | INFO | httpx | HTTP Request: POST https://api.telegram.org/bot8184060678:AAFVrixHiuVatmsEj0Nl4Iwn4Fv5VGKknh4/getUpdates "HTTP/1.1 200 OK"
+2026-03-01 02:47:34,678 | INFO | httpx | HTTP Request: POST https://api.telegram.org/bot8184060678:AAFVrixHiuVatmsEj0Nl4Iwn4Fv5VGKknh4/getUpdates "HTTP/1.1 200 OK"
+2026-03-01 02:47:44,742 | INFO | httpx | HTTP Request: POST https://api.telegram.org/bot8184060678:AAFVrixHiuVatmsEj0Nl4Iwn4Fv5VGKknh4/getUpdates "HTTP/1.1 200 OK"
+2026-03-01 02:47:54,797 | INFO | httpx | HTTP Request: POST https://api.telegram.org/bot8184060678:AAFVrixHiuVatmsEj0Nl4Iwn4Fv5VGKknh4/getUpdates "HTTP/1.1 200 OK"
+2026-03-01 02:48:04,851 | INFO | httpx | HTTP Request: POST https://api.telegram.org/bot8184060678:AAFVrixHiuVatmsEj0Nl4Iwn4Fv5VGKknh4/getUpdates "HTTP/1.1 200 OK"
+2026-03-01 02:48:14,908 | INFO | httpx | HTTP Request: POST https://api.telegram.org/bot8184060678:AAFVrixHiuVatmsEj0Nl4Iwn4Fv5VGKknh4/getUpdates "HTTP/1.1 200 OK"
+2026-03-01 02:48:24,961 | INFO | httpx | HTTP Request: POST https://api.telegram.org/bot8184060678:AAFVrixHiuVatmsEj0Nl4Iwn4Fv5VGKknh4/getUpdates "HTTP/1.1 200 OK"
+2026-03-01 02:48:35,015 | INFO | httpx | HTTP Request: POST https://api.telegram.org/bot8184060678:AAFVrixHiuVatmsEj0Nl4Iwn4Fv5VGKknh4/getUpdates "HTTP/1.1 200 OK"
+2026-03-01 02:48:45,071 | INFO | httpx | HTTP Request: POST https://api.telegram.org/bot8184060678:AAFVrixHiuVatmsEj0Nl4Iwn4Fv5VGKknh4/getUpdates "HTTP/1.1 200 OK"
+2026-03-01 02:48:55,124 | INFO | httpx | HTTP Request: POST https://api.telegram.org/bot8184060678:AAFVrixHiuVatmsEj0Nl4Iwn4Fv5VGKknh4/getUpdates "HTTP/1.1 200 OK"
+2026-03-01 02:49:05,177 | INFO | httpx | HTTP Request: POST https://api.telegram.org/bot8184060678:AAFVrixHiuVatmsEj0Nl4Iwn4Fv5VGKknh4/getUpdates "HTTP/1.1 200 OK"
+2026-03-01 02:49:15,229 | INFO | httpx | HTTP Request: POST https://api.telegram.org/bot8184060678:AAFVrixHiuVatmsEj0Nl4Iwn4Fv5VGKknh4/getUpdates "HTTP/1.1 200 OK"
+2026-03-01 02:49:25,283 | INFO | httpx | HTTP Request: POST https://api.telegram.org/bot8184060678:AAFVrixHiuVatmsEj0Nl4Iwn4Fv5VGKknh4/getUpdates "HTTP/1.1 200 OK"
+2026-03-01 02:49:35,336 | INFO | httpx | HTTP Request: POST https://api.telegram.org/bot8184060678:AAFVrixHiuVatmsEj0Nl4Iwn4Fv5VGKknh4/getUpdates "HTTP/1.1 200 OK"
+2026-03-01 02:49:45,391 | INFO | httpx | HTTP Request: POST https://api.telegram.org/bot8184060678:AAFVrixHiuVatmsEj0Nl4Iwn4Fv5VGKknh4/getUpdates "HTTP/1.1 200 OK"
+2026-03-01 02:49:55,446 | INFO | httpx | HTTP Request: POST https://api.telegram.org/bot8184060678:AAFVrixHiuVatmsEj0Nl4Iwn4Fv5VGKknh4/getUpdates "HTTP/1.1 200 OK"
+2026-03-01 02:50:05,502 | INFO | httpx | HTTP Request: POST https://api.telegram.org/bot8184060678:AAFVrixHiuVatmsEj0Nl4Iwn4Fv5VGKknh4/getUpdates "HTTP/1.1 200 OK"
+2026-03-01 02:50:15,554 | INFO | httpx | HTTP Request: POST https://api.telegram.org/bot8184060678:AAFVrixHiuVatmsEj0Nl4Iwn4Fv5VGKknh4/getUpdates "HTTP/1.1 200 OK"
+2026-03-01 02:50:25,608 | INFO | httpx | HTTP Request: POST https://api.telegram.org/bot8184060678:AAFVrixHiuVatmsEj0Nl4Iwn4Fv5VGKknh4/getUpdates "HTTP/1.1 200 OK"
+2026-03-01 02:50:35,664 | INFO | httpx | HTTP Request: POST https://api.telegram.org/bot8184060678:AAFVrixHiuVatmsEj0Nl4Iwn4Fv5VGKknh4/getUpdates "HTTP/1.1 200 OK"
+2026-03-01 02:50:45,717 | INFO | httpx | HTTP Request: POST https://api.telegram.org/bot8184060678:AAFVrixHiuVatmsEj0Nl4Iwn4Fv5VGKknh4/getUpdates "HTTP/1.1 200 OK"
+2026-03-01 02:50:55,771 | INFO | httpx | HTTP Request: POST https://api.telegram.org/bot8184060678:AAFVrixHiuVatmsEj0Nl4Iwn4Fv5VGKknh4/getUpdates "HTTP/1.1 200 OK"
+2026-03-01 02:51:05,828 | INFO | httpx | HTTP Request: POST https://api.telegram.org/bot8184060678:AAFVrixHiuVatmsEj0Nl4Iwn4Fv5VGKknh4/getUpdates "HTTP/1.1 200 OK"
+2026-03-01 02:51:15,883 | INFO | httpx | HTTP Request: POST https://api.telegram.org/bot8184060678:AAFVrixHiuVatmsEj0Nl4Iwn4Fv5VGKknh4/getUpdates "HTTP/1.1 200 OK"
+2026-03-01 02:51:25,935 | INFO | httpx | HTTP Request: POST https://api.telegram.org/bot8184060678:AAFVrixHiuVatmsEj0Nl4Iwn4Fv5VGKknh4/getUpdates "HTTP/1.1 200 OK"
+2026-03-01 02:51:35,991 | INFO | httpx | HTTP Request: POST https://api.telegram.org/bot8184060678:AAFVrixHiuVatmsEj0Nl4Iwn4Fv5VGKknh4/getUpdates "HTTP/1.1 200 OK"
+2026-03-01 02:51:46,044 | INFO | httpx | HTTP Request: POST https://api.telegram.org/bot8184060678:AAFVrixHiuVatmsEj0Nl4Iwn4Fv5VGKknh4/getUpdates "HTTP/1.1 200 OK"
+2026-03-01 02:51:56,096 | INFO | httpx | HTTP Request: POST https://api.telegram.org/bot8184060678:AAFVrixHiuVatmsEj0Nl4Iwn4Fv5VGKknh4/getUpdates "HTTP/1.1 200 OK"
+2026-03-01 02:52:06,149 | INFO | httpx | HTTP Request: POST https://api.telegram.org/bot8184060678:AAFVrixHiuVatmsEj0Nl4Iwn4Fv5VGKknh4/getUpdates "HTTP/1.1 200 OK"
+2026-03-01 02:52:16,203 | INFO | httpx | HTTP Request: POST https://api.telegram.org/bot8184060678:AAFVrixHiuVatmsEj0Nl4Iwn4Fv5VGKknh4/getUpdates "HTTP/1.1 200 OK"
+2026-03-01 02:52:26,260 | INFO | httpx | HTTP Request: POST https://api.telegram.org/bot8184060678:AAFVrixHiuVatmsEj0Nl4Iwn4Fv5VGKknh4/getUpdates "HTTP/1.1 200 OK"
+2026-03-01 02:52:36,316 | INFO | httpx | HTTP Request: POST https://api.telegram.org/bot8184060678:AAFVrixHiuVatmsEj0Nl4Iwn4Fv5VGKknh4/getUpdates "HTTP/1.1 200 OK"
+2026-03-01 02:52:46,374 | INFO | httpx | HTTP Request: POST https://api.telegram.org/bot8184060678:AAFVrixHiuVatmsEj0Nl4Iwn4Fv5VGKknh4/getUpdates "HTTP/1.1 200 OK"
+2026-03-01 02:52:56,427 | INFO | httpx | HTTP Request: POST https://api.telegram.org/bot8184060678:AAFVrixHiuVatmsEj0Nl4Iwn4Fv5VGKknh4/getUpdates "HTTP/1.1 200 OK"
+2026-03-01 02:53:06,481 | INFO | httpx | HTTP Request: POST https://api.telegram.org/bot8184060678:AAFVrixHiuVatmsEj0Nl4Iwn4Fv5VGKknh4/getUpdates "HTTP/1.1 200 OK"
+2026-03-01 02:53:16,537 | INFO | httpx | HTTP Request: POST https://api.telegram.org/bot8184060678:AAFVrixHiuVatmsEj0Nl4Iwn4Fv5VGKknh4/getUpdates "HTTP/1.1 200 OK"
+2026-03-01 02:53:26,591 | INFO | httpx | HTTP Request: POST https://api.telegram.org/bot8184060678:AAFVrixHiuVatmsEj0Nl4Iwn4Fv5VGKknh4/getUpdates "HTTP/1.1 200 OK"
+2026-03-01 02:53:36,646 | INFO | httpx | HTTP Request: POST https://api.telegram.org/bot8184060678:AAFVrixHiuVatmsEj0Nl4Iwn4Fv5VGKknh4/getUpdates "HTTP/1.1 200 OK"
+2026-03-01 02:53:46,701 | INFO | httpx | HTTP Request: POST https://api.telegram.org/bot8184060678:AAFVrixHiuVatmsEj0Nl4Iwn4Fv5VGKknh4/getUpdates "HTTP/1.1 200 OK"
+2026-03-01 02:53:56,755 | INFO | httpx | HTTP Request: POST https://api.telegram.org/bot8184060678:AAFVrixHiuVatmsEj0Nl4Iwn4Fv5VGKknh4/getUpdates "HTTP/1.1 200 OK"
+2026-03-01 02:54:06,808 | INFO | httpx | HTTP Request: POST https://api.telegram.org/bot8184060678:AAFVrixHiuVatmsEj0Nl4Iwn4Fv5VGKknh4/getUpdates "HTTP/1.1 200 OK"
+2026-03-01 02:54:16,863 | INFO | httpx | HTTP Request: POST https://api.telegram.org/bot8184060678:AAFVrixHiuVatmsEj0Nl4Iwn4Fv5VGKknh4/getUpdates "HTTP/1.1 200 OK"
+2026-03-01 02:54:26,916 | INFO | httpx | HTTP Request: POST https://api.telegram.org/bot8184060678:AAFVrixHiuVatmsEj0Nl4Iwn4Fv5VGKknh4/getUpdates "HTTP/1.1 200 OK"
+2026-03-01 02:54:36,974 | INFO | httpx | HTTP Request: POST https://api.telegram.org/bot8184060678:AAFVrixHiuVatmsEj0Nl4Iwn4Fv5VGKknh4/getUpdates "HTTP/1.1 200 OK"
+2026-03-01 02:54:47,027 | INFO | httpx | HTTP Request: POST https://api.telegram.org/bot8184060678:AAFVrixHiuVatmsEj0Nl4Iwn4Fv5VGKknh4/getUpdates "HTTP/1.1 200 OK"
+2026-03-01 02:54:57,084 | INFO | httpx | HTTP Request: POST https://api.telegram.org/bot8184060678:AAFVrixHiuVatmsEj0Nl4Iwn4Fv5VGKknh4/getUpdates "HTTP/1.1 200 OK"
+2026-03-01 02:55:07,137 | INFO | httpx | HTTP Request: POST https://api.telegram.org/bot8184060678:AAFVrixHiuVatmsEj0Nl4Iwn4Fv5VGKknh4/getUpdates "HTTP/1.1 200 OK"
+2026-03-01 02:55:17,194 | INFO | httpx | HTTP Request: POST https://api.telegram.org/bot8184060678:AAFVrixHiuVatmsEj0Nl4Iwn4Fv5VGKknh4/getUpdates "HTTP/1.1 200 OK"
+2026-03-01 02:55:27,254 | INFO | httpx | HTTP Request: POST https://api.telegram.org/bot8184060678:AAFVrixHiuVatmsEj0Nl4Iwn4Fv5VGKknh4/getUpdates "HTTP/1.1 200 OK"
+2026-03-01 02:55:37,336 | INFO | httpx | HTTP Request: POST https://api.telegram.org/bot8184060678:AAFVrixHiuVatmsEj0Nl4Iwn4Fv5VGKknh4/getUpdates "HTTP/1.1 200 OK"
+2026-03-01 02:55:47,413 | INFO | httpx | HTTP Request: POST https://api.telegram.org/bot8184060678:AAFVrixHiuVatmsEj0Nl4Iwn4Fv5VGKknh4/getUpdates "HTTP/1.1 200 OK"
+2026-03-01 02:55:57,548 | INFO | httpx | HTTP Request: POST https://api.telegram.org/bot8184060678:AAFVrixHiuVatmsEj0Nl4Iwn4Fv5VGKknh4/getUpdates "HTTP/1.1 200 OK"
+2026-03-01 02:56:07,606 | INFO | httpx | HTTP Request: POST https://api.telegram.org/bot8184060678:AAFVrixHiuVatmsEj0Nl4Iwn4Fv5VGKknh4/getUpdates "HTTP/1.1 200 OK"
+2026-03-01 02:56:17,660 | INFO | httpx | HTTP Request: POST https://api.telegram.org/bot8184060678:AAFVrixHiuVatmsEj0Nl4Iwn4Fv5VGKknh4/getUpdates "HTTP/1.1 200 OK"
+2026-03-01 02:56:27,739 | INFO | httpx | HTTP Request: POST https://api.telegram.org/bot8184060678:AAFVrixHiuVatmsEj0Nl4Iwn4Fv5VGKknh4/getUpdates "HTTP/1.1 200 OK"
+2026-03-01 02:56:37,802 | INFO | httpx | HTTP Request: POST https://api.telegram.org/bot8184060678:AAFVrixHiuVatmsEj0Nl4Iwn4Fv5VGKknh4/getUpdates "HTTP/1.1 200 OK"
+2026-03-01 02:56:47,856 | INFO | httpx | HTTP Request: POST https://api.telegram.org/bot8184060678:AAFVrixHiuVatmsEj0Nl4Iwn4Fv5VGKknh4/getUpdates "HTTP/1.1 200 OK"
+2026-03-01 02:56:57,915 | INFO | httpx | HTTP Request: POST https://api.telegram.org/bot8184060678:AAFVrixHiuVatmsEj0Nl4Iwn4Fv5VGKknh4/getUpdates "HTTP/1.1 200 OK"
+2026-03-01 02:57:07,968 | INFO | httpx | HTTP Request: POST https://api.telegram.org/bot8184060678:AAFVrixHiuVatmsEj0Nl4Iwn4Fv5VGKknh4/getUpdates "HTTP/1.1 200 OK"
+2026-03-01 02:57:18,023 | INFO | httpx | HTTP Request: POST https://api.telegram.org/bot8184060678:AAFVrixHiuVatmsEj0Nl4Iwn4Fv5VGKknh4/getUpdates "HTTP/1.1 200 OK"
+2026-03-01 02:57:28,081 | INFO | httpx | HTTP Request: POST https://api.telegram.org/bot8184060678:AAFVrixHiuVatmsEj0Nl4Iwn4Fv5VGKknh4/getUpdates "HTTP/1.1 200 OK"
+2026-03-01 02:57:38,135 | INFO | httpx | HTTP Request: POST https://api.telegram.org/bot8184060678:AAFVrixHiuVatmsEj0Nl4Iwn4Fv5VGKknh4/getUpdates "HTTP/1.1 200 OK"
+2026-03-01 02:57:48,189 | INFO | httpx | HTTP Request: POST https://api.telegram.org/bot8184060678:AAFVrixHiuVatmsEj0Nl4Iwn4Fv5VGKknh4/getUpdates "HTTP/1.1 200 OK"
+2026-03-01 02:57:58,245 | INFO | httpx | HTTP Request: POST https://api.telegram.org/bot8184060678:AAFVrixHiuVatmsEj0Nl4Iwn4Fv5VGKknh4/getUpdates "HTTP/1.1 200 OK"
+2026-03-01 02:58:08,299 | INFO | httpx | HTTP Request: POST https://api.telegram.org/bot8184060678:AAFVrixHiuVatmsEj0Nl4Iwn4Fv5VGKknh4/getUpdates "HTTP/1.1 200 OK"
+2026-03-01 02:58:18,354 | INFO | httpx | HTTP Request: POST https://api.telegram.org/bot8184060678:AAFVrixHiuVatmsEj0Nl4Iwn4Fv5VGKknh4/getUpdates "HTTP/1.1 200 OK"
+2026-03-01 02:58:30,902 | INFO | httpx | HTTP Request: POST https://api.telegram.org/bot8184060678:AAFVrixHiuVatmsEj0Nl4Iwn4Fv5VGKknh4/getUpdates "HTTP/1.1 200 OK"
+2026-03-01 02:58:40,956 | INFO | httpx | HTTP Request: POST https://api.telegram.org/bot8184060678:AAFVrixHiuVatmsEj0Nl4Iwn4Fv5VGKknh4/getUpdates "HTTP/1.1 200 OK"
+2026-03-01 02:58:51,010 | INFO | httpx | HTTP Request: POST https://api.telegram.org/bot8184060678:AAFVrixHiuVatmsEj0Nl4Iwn4Fv5VGKknh4/getUpdates "HTTP/1.1 200 OK"
+2026-03-01 02:59:01,063 | INFO | httpx | HTTP Request: POST https://api.telegram.org/bot8184060678:AAFVrixHiuVatmsEj0Nl4Iwn4Fv5VGKknh4/getUpdates "HTTP/1.1 200 OK"
+2026-03-01 02:59:11,116 | INFO | httpx | HTTP Request: POST https://api.telegram.org/bot8184060678:AAFVrixHiuVatmsEj0Nl4Iwn4Fv5VGKknh4/getUpdates "HTTP/1.1 200 OK"
+2026-03-01 02:59:21,300 | INFO | httpx | HTTP Request: POST https://api.telegram.org/bot8184060678:AAFVrixHiuVatmsEj0Nl4Iwn4Fv5VGKknh4/getUpdates "HTTP/1.1 200 OK"
+2026-03-01 02:59:31,358 | INFO | httpx | HTTP Request: POST https://api.telegram.org/bot8184060678:AAFVrixHiuVatmsEj0Nl4Iwn4Fv5VGKknh4/getUpdates "HTTP/1.1 200 OK"
+2026-03-01 02:59:41,422 | INFO | httpx | HTTP Request: POST https://api.telegram.org/bot8184060678:AAFVrixHiuVatmsEj0Nl4Iwn4Fv5VGKknh4/getUpdates "HTTP/1.1 200 OK"
+2026-03-01 02:59:51,481 | INFO | httpx | HTTP Request: POST https://api.telegram.org/bot8184060678:AAFVrixHiuVatmsEj0Nl4Iwn4Fv5VGKknh4/getUpdates "HTTP/1.1 200 OK"
+2026-03-01 03:00:01,548 | INFO | httpx | HTTP Request: POST https://api.telegram.org/bot8184060678:AAFVrixHiuVatmsEj0Nl4Iwn4Fv5VGKknh4/getUpdates "HTTP/1.1 200 OK"
+2026-03-01 03:00:11,610 | INFO | httpx | HTTP Request: POST https://api.telegram.org/bot8184060678:AAFVrixHiuVatmsEj0Nl4Iwn4Fv5VGKknh4/getUpdates "HTTP/1.1 200 OK"
+2026-03-01 03:00:21,668 | INFO | httpx | HTTP Request: POST https://api.telegram.org/bot8184060678:AAFVrixHiuVatmsEj0Nl4Iwn4Fv5VGKknh4/getUpdates "HTTP/1.1 200 OK"
+2026-03-01 03:00:31,729 | INFO | httpx | HTTP Request: POST https://api.telegram.org/bot8184060678:AAFVrixHiuVatmsEj0Nl4Iwn4Fv5VGKknh4/getUpdates "HTTP/1.1 200 OK"
+2026-03-01 03:00:41,791 | INFO | httpx | HTTP Request: POST https://api.telegram.org/bot8184060678:AAFVrixHiuVatmsEj0Nl4Iwn4Fv5VGKknh4/getUpdates "HTTP/1.1 200 OK"
+2026-03-01 03:00:51,853 | INFO | httpx | HTTP Request: POST https://api.telegram.org/bot8184060678:AAFVrixHiuVatmsEj0Nl4Iwn4Fv5VGKknh4/getUpdates "HTTP/1.1 200 OK"
+2026-03-01 03:01:01,918 | INFO | httpx | HTTP Request: POST https://api.telegram.org/bot8184060678:AAFVrixHiuVatmsEj0Nl4Iwn4Fv5VGKknh4/getUpdates "HTTP/1.1 200 OK"
+2026-03-01 03:01:11,977 | INFO | httpx | HTTP Request: POST https://api.telegram.org/bot8184060678:AAFVrixHiuVatmsEj0Nl4Iwn4Fv5VGKknh4/getUpdates "HTTP/1.1 200 OK"
+2026-03-01 03:01:22,035 | INFO | httpx | HTTP Request: POST https://api.telegram.org/bot8184060678:AAFVrixHiuVatmsEj0Nl4Iwn4Fv5VGKknh4/getUpdates "HTTP/1.1 200 OK"
+2026-03-01 03:01:30,366 | INFO | httpx | HTTP Request: POST https://api.telegram.org/bot8184060678:AAFVrixHiuVatmsEj0Nl4Iwn4Fv5VGKknh4/getUpdates "HTTP/1.1 502 Bad Gateway"
+2026-03-01 03:01:30,367 | ERROR | Ti App Studio | Hata: Bad Gateway
+Traceback (most recent call last):
+  File "C:\Users\emred\AppData\Local\Programs\Python\Python314\Lib\site-packages\telegram\ext\_utils\networkloop.py", line 161, in network_retry_loop
+    await do_action()
+  File "C:\Users\emred\AppData\Local\Programs\Python\Python314\Lib\site-packages\telegram\ext\_utils\networkloop.py", line 154, in do_action
+    action_cb_task.result()
+    ~~~~~~~~~~~~~~~~~~~~~^^
+  File "C:\Users\emred\AppData\Local\Programs\Python\Python314\Lib\site-packages\telegram\ext\_updater.py", line 340, in polling_action_cb
+    updates = await self.bot.get_updates(
+              ^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    ...<3 lines>...
+    )
+    ^
+  File "C:\Users\emred\AppData\Local\Programs\Python\Python314\Lib\site-packages\telegram\ext\_extbot.py", line 671, in get_updates
+    updates = await super().get_updates(
+              ^^^^^^^^^^^^^^^^^^^^^^^^^^
+    ...<9 lines>...
+    )
+    ^
+  File "C:\Users\emred\AppData\Local\Programs\Python\Python314\Lib\site-packages\telegram\_bot.py", line 4860, in get_updates
+    await self._post(
+    ^^^^^^^^^^^^^^^^^
+    ...<7 lines>...
+    ),
+    ^
+  File "C:\Users\emred\AppData\Local\Programs\Python\Python314\Lib\site-packages\telegram\_bot.py", line 703, in _post
+    return await self._do_post(
+           ^^^^^^^^^^^^^^^^^^^^
+    ...<6 lines>...
+    )
+    ^
+  File "C:\Users\emred\AppData\Local\Programs\Python\Python314\Lib\site-packages\telegram\ext\_extbot.py", line 369, in _do_post
+    return await super()._do_post(
+           ^^^^^^^^^^^^^^^^^^^^^^^
+    ...<6 lines>...
+    )
+    ^
+  File "C:\Users\emred\AppData\Local\Programs\Python\Python314\Lib\site-packages\telegram\_bot.py", line 732, in _do_post
+    result = await request.post(
+             ^^^^^^^^^^^^^^^^^^^
+    ...<6 lines>...
+    )
+    ^
+  File "C:\Users\emred\AppData\Local\Programs\Python\Python314\Lib\site-packages\telegram\request\_baserequest.py", line 198, in post
+    result = await self._request_wrapper(
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    ...<7 lines>...
+    )
+    ^
+  File "C:\Users\emred\AppData\Local\Programs\Python\Python314\Lib\site-packages\telegram\request\_baserequest.py", line 375, in _request_wrapper
+    raise exception
+telegram.error.NetworkError: Bad Gateway
+2026-03-01 03:01:31,435 | INFO | httpx | HTTP Request: POST https://api.telegram.org/bot8184060678:AAFVrixHiuVatmsEj0Nl4Iwn4Fv5VGKknh4/getUpdates "HTTP/1.1 502 Bad Gateway"
+2026-03-01 03:01:31,436 | ERROR | Ti App Studio | Hata: Bad Gateway
+Traceback (most recent call last):
+  File "C:\Users\emred\AppData\Local\Programs\Python\Python314\Lib\site-packages\telegram\ext\_utils\networkloop.py", line 161, in network_retry_loop
+    await do_action()
+  File "C:\Users\emred\AppData\Local\Programs\Python\Python314\Lib\site-packages\telegram\ext\_utils\networkloop.py", line 154, in do_action
+    action_cb_task.result()
+    ~~~~~~~~~~~~~~~~~~~~~^^
+  File "C:\Users\emred\AppData\Local\Programs\Python\Python314\Lib\site-packages\telegram\ext\_updater.py", line 340, in polling_action_cb
+    updates = await self.bot.get_updates(
+              ^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    ...<3 lines>...
+    )
+    ^
+  File "C:\Users\emred\AppData\Local\Programs\Python\Python314\Lib\site-packages\telegram\ext\_extbot.py", line 671, in get_updates
+    updates = await super().get_updates(
+              ^^^^^^^^^^^^^^^^^^^^^^^^^^
+    ...<9 lines>...
+    )
+    ^
+  File "C:\Users\emred\AppData\Local\Programs\Python\Python314\Lib\site-packages\telegram\_bot.py", line 4860, in get_updates
+    await self._post(
+    ^^^^^^^^^^^^^^^^^
+    ...<7 lines>...
+    ),
+    ^
+  File "C:\Users\emred\AppData\Local\Programs\Python\Python314\Lib\site-packages\telegram\_bot.py", line 703, in _post
+    return await self._do_post(
+           ^^^^^^^^^^^^^^^^^^^^
+    ...<6 lines>...
+    )
+    ^
+  File "C:\Users\emred\AppData\Local\Programs\Python\Python314\Lib\site-packages\telegram\ext\_extbot.py", line 369, in _do_post
+    return await super()._do_post(
+           ^^^^^^^^^^^^^^^^^^^^^^^
+    ...<6 lines>...
+    )
+    ^
+  File "C:\Users\emred\AppData\Local\Programs\Python\Python314\Lib\site-packages\telegram\_bot.py", line 732, in _do_post
+    result = await request.post(
+             ^^^^^^^^^^^^^^^^^^^
+    ...<6 lines>...
+    )
+    ^
+  File "C:\Users\emred\AppData\Local\Programs\Python\Python314\Lib\site-packages\telegram\request\_baserequest.py", line 198, in post
+    result = await self._request_wrapper(
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    ...<7 lines>...
+    )
+    ^
+  File "C:\Users\emred\AppData\Local\Programs\Python\Python314\Lib\site-packages\telegram\request\_baserequest.py", line 375, in _request_wrapper
+    raise exception
+telegram.error.NetworkError: Bad Gateway
+2026-03-01 03:02:17,094 | INFO | httpx | HTTP Request: POST https://api.telegram.org/bot8184060678:AAFVrixHiuVatmsEj0Nl4Iwn4Fv5VGKknh4/getUpdates "HTTP/1.1 200 OK"
+2026-03-01 03:02:27,152 | INFO | httpx | HTTP Request: POST https://api.telegram.org/bot8184060678:AAFVrixHiuVatmsEj0Nl4Iwn4Fv5VGKknh4/getUpdates "HTTP/1.1 200 OK"
+2026-03-01 03:02:37,209 | INFO | httpx | HTTP Request: POST https://api.telegram.org/bot8184060678:AAFVrixHiuVatmsEj0Nl4Iwn4Fv5VGKknh4/getUpdates "HTTP/1.1 200 OK"
+2026-03-01 03:02:47,265 | INFO | httpx | HTTP Request: POST https://api.telegram.org/bot8184060678:AAFVrixHiuVatmsEj0Nl4Iwn4Fv5VGKknh4/getUpdates "HTTP/1.1 200 OK"
+2026-03-01 03:02:57,320 | INFO | httpx | HTTP Request: POST https://api.telegram.org/bot8184060678:AAFVrixHiuVatmsEj0Nl4Iwn4Fv5VGKknh4/getUpdates "HTTP/1.1 200 OK"
+2026-03-01 03:03:07,378 | INFO | httpx | HTTP Request: POST https://api.telegram.org/bot8184060678:AAFVrixHiuVatmsEj0Nl4Iwn4Fv5VGKknh4/getUpdates "HTTP/1.1 200 OK"
+2026-03-01 03:03:17,437 | INFO | httpx | HTTP Request: POST https://api.telegram.org/bot8184060678:AAFVrixHiuVatmsEj0Nl4Iwn4Fv5VGKknh4/getUpdates "HTTP/1.1 200 OK"
+2026-03-01 03:03:27,494 | INFO | httpx | HTTP Request: POST https://api.telegram.org/bot8184060678:AAFVrixHiuVatmsEj0Nl4Iwn4Fv5VGKknh4/getUpdates "HTTP/1.1 200 OK"
+2026-03-01 03:03:37,553 | INFO | httpx | HTTP Request: POST https://api.telegram.org/bot8184060678:AAFVrixHiuVatmsEj0Nl4Iwn4Fv5VGKknh4/getUpdates "HTTP/1.1 200 OK"
+2026-03-01 03:03:47,614 | INFO | httpx | HTTP Request: POST https://api.telegram.org/bot8184060678:AAFVrixHiuVatmsEj0Nl4Iwn4Fv5VGKknh4/getUpdates "HTTP/1.1 200 OK"
+2026-03-01 03:03:57,670 | INFO | httpx | HTTP Request: POST https://api.telegram.org/bot8184060678:AAFVrixHiuVatmsEj0Nl4Iwn4Fv5VGKknh4/getUpdates "HTTP/1.1 200 OK"
+2026-03-01 03:04:07,724 | INFO | httpx | HTTP Request: POST https://api.telegram.org/bot8184060678:AAFVrixHiuVatmsEj0Nl4Iwn4Fv5VGKknh4/getUpdates "HTTP/1.1 200 OK"
+2026-03-01 03:04:17,782 | INFO | httpx | HTTP Request: POST https://api.telegram.org/bot8184060678:AAFVrixHiuVatmsEj0Nl4Iwn4Fv5VGKknh4/getUpdates "HTTP/1.1 200 OK"
+2026-03-01 03:04:27,839 | INFO | httpx | HTTP Request: POST https://api.telegram.org/bot8184060678:AAFVrixHiuVatmsEj0Nl4Iwn4Fv5VGKknh4/getUpdates "HTTP/1.1 200 OK"
+2026-03-01 03:04:37,895 | INFO | httpx | HTTP Request: POST https://api.telegram.org/bot8184060678:AAFVrixHiuVatmsEj0Nl4Iwn4Fv5VGKknh4/getUpdates "HTTP/1.1 200 OK"
+2026-03-01 03:04:47,949 | INFO | httpx | HTTP Request: POST https://api.telegram.org/bot8184060678:AAFVrixHiuVatmsEj0Nl4Iwn4Fv5VGKknh4/getUpdates "HTTP/1.1 200 OK"
+2026-03-01 03:04:58,004 | INFO | httpx | HTTP Request: POST https://api.telegram.org/bot8184060678:AAFVrixHiuVatmsEj0Nl4Iwn4Fv5VGKknh4/getUpdates "HTTP/1.1 200 OK"
+2026-03-01 03:05:08,062 | INFO | httpx | HTTP Request: POST https://api.telegram.org/bot8184060678:AAFVrixHiuVatmsEj0Nl4Iwn4Fv5VGKknh4/getUpdates "HTTP/1.1 200 OK"
+2026-03-01 03:05:18,118 | INFO | httpx | HTTP Request: POST https://api.telegram.org/bot8184060678:AAFVrixHiuVatmsEj0Nl4Iwn4Fv5VGKknh4/getUpdates "HTTP/1.1 200 OK"
+2026-03-01 12:21:11,666 | ERROR | Ti App Studio | Hata: httpx.ConnectError: [Errno 11001] getaddrinfo failed
+Traceback (most recent call last):
+  File "C:\Users\emred\AppData\Local\Programs\Python\Python314\Lib\site-packages\httpx\_transports\default.py", line 101, in map_httpcore_exceptions
+    yield
+  File "C:\Users\emred\AppData\Local\Programs\Python\Python314\Lib\site-packages\httpx\_transports\default.py", line 394, in handle_async_request
+    resp = await self._pool.handle_async_request(req)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\emred\AppData\Local\Programs\Python\Python314\Lib\site-packages\httpcore\_async\connection_pool.py", line 256, in handle_async_request
+    raise exc from None
+  File "C:\Users\emred\AppData\Local\Programs\Python\Python314\Lib\site-packages\httpcore\_async\connection_pool.py", line 236, in handle_async_request
+    response = await connection.handle_async_request(
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+        pool_request.request
+        ^^^^^^^^^^^^^^^^^^^^
+    )
+    ^
+  File "C:\Users\emred\AppData\Local\Programs\Python\Python314\Lib\site-packages\httpcore\_async\connection.py", line 101, in handle_async_request
+    raise exc
+  File "C:\Users\emred\AppData\Local\Programs\Python\Python314\Lib\site-packages\httpcore\_async\connection.py", line 78, in handle_async_request
+    stream = await self._connect(request)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\emred\AppData\Local\Programs\Python\Python314\Lib\site-packages\httpcore\_async\connection.py", line 124, in _connect
+    stream = await self._network_backend.connect_tcp(**kwargs)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\emred\AppData\Local\Programs\Python\Python314\Lib\site-packages\httpcore\_backends\auto.py", line 31, in connect_tcp
+    return await self._backend.connect_tcp(
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    ...<5 lines>...
+    )
+    ^
+  File "C:\Users\emred\AppData\Local\Programs\Python\Python314\Lib\site-packages\httpcore\_backends\anyio.py", line 113, in connect_tcp
+    with map_exceptions(exc_map):
+         ~~~~~~~~~~~~~~^^^^^^^^^
+  File "C:\Users\emred\AppData\Local\Programs\Python\Python314\Lib\contextlib.py", line 162, in __exit__
+    self.gen.throw(value)
+    ~~~~~~~~~~~~~~^^^^^^^
+  File "C:\Users\emred\AppData\Local\Programs\Python\Python314\Lib\site-packages\httpcore\_exceptions.py", line 14, in map_exceptions
+    raise to_exc(exc) from exc
+httpcore.ConnectError: [Errno 11001] getaddrinfo failed
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "C:\Users\emred\AppData\Local\Programs\Python\Python314\Lib\site-packages\telegram\request\_httpxrequest.py", line 279, in do_request
+    res = await self._client.request(
+          ^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    ...<6 lines>...
+    )
+    ^
+  File "C:\Users\emred\AppData\Local\Programs\Python\Python314\Lib\site-packages\httpx\_client.py", line 1540, in request
+    return await self.send(request, auth=auth, follow_redirects=follow_redirects)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\emred\AppData\Local\Programs\Python\Python314\Lib\site-packages\httpx\_client.py", line 1629, in send
+    response = await self._send_handling_auth(
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    ...<4 lines>...
+    )
+    ^
+  File "C:\Users\emred\AppData\Local\Programs\Python\Python314\Lib\site-packages\httpx\_client.py", line 1657, in _send_handling_auth
+    response = await self._send_handling_redirects(
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    ...<3 lines>...
+    )
+    ^
+  File "C:\Users\emred\AppData\Local\Programs\Python\Python314\Lib\site-packages\httpx\_client.py", line 1694, in _send_handling_redirects
+    response = await self._send_single_request(request)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\emred\AppData\Local\Programs\Python\Python314\Lib\site-packages\httpx\_client.py", line 1730, in _send_single_request
+    response = await transport.handle_async_request(request)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\emred\AppData\Local\Programs\Python\Python314\Lib\site-packages\httpx\_transports\default.py", line 393, in handle_async_request
+    with map_httpcore_exceptions():
+         ~~~~~~~~~~~~~~~~~~~~~~~^^
+  File "C:\Users\emred\AppData\Local\Programs\Python\Python314\Lib\contextlib.py", line 162, in __exit__
+    self.gen.throw(value)
+    ~~~~~~~~~~~~~~^^^^^^^
+  File "C:\Users\emred\AppData\Local\Programs\Python\Python314\Lib\site-packages\httpx\_transports\default.py", line 118, in map_httpcore_exceptions
+    raise mapped_exc(message) from exc
+httpx.ConnectError: [Errno 11001] getaddrinfo failed
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "C:\Users\emred\AppData\Local\Programs\Python\Python314\Lib\site-packages\telegram\ext\_utils\networkloop.py", line 161, in network_retry_loop
+    await do_action()
+  File "C:\Users\emred\AppData\Local\Programs\Python\Python314\Lib\site-packages\telegram\ext\_utils\networkloop.py", line 154, in do_action
+    action_cb_task.result()
+    ~~~~~~~~~~~~~~~~~~~~~^^
+  File "C:\Users\emred\AppData\Local\Programs\Python\Python314\Lib\site-packages\telegram\ext\_updater.py", line 340, in polling_action_cb
+    updates = await self.bot.get_updates(
+              ^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    ...<3 lines>...
+    )
+    ^
+  File "C:\Users\emred\AppData\Local\Programs\Python\Python314\Lib\site-packages\telegram\ext\_extbot.py", line 671, in get_updates
+    updates = await super().get_updates(
+              ^^^^^^^^^^^^^^^^^^^^^^^^^^
+    ...<9 lines>...
+    )
+    ^
+  File "C:\Users\emred\AppData\Local\Programs\Python\Python314\Lib\site-packages\telegram\_bot.py", line 4860, in get_updates
+    await self._post(
+    ^^^^^^^^^^^^^^^^^
+    ...<7 lines>...
+    ),
+    ^
+  File "C:\Users\emred\AppData\Local\Programs\Python\Python314\Lib\site-packages\telegram\_bot.py", line 703, in _post
+    return await self._do_post(
+           ^^^^^^^^^^^^^^^^^^^^
+    ...<6 lines>...
+    )
+    ^
+  File "C:\Users\emred\AppData\Local\Programs\Python\Python314\Lib\site-packages\telegram\ext\_extbot.py", line 369, in _do_post
+    return await super()._do_post(
+           ^^^^^^^^^^^^^^^^^^^^^^^
+    ...<6 lines>...
+    )
+    ^
+  File "C:\Users\emred\AppData\Local\Programs\Python\Python314\Lib\site-packages\telegram\_bot.py", line 732, in _do_post
+    result = await request.post(
+             ^^^^^^^^^^^^^^^^^^^
+    ...<6 lines>...
+    )
+    ^
+  File "C:\Users\emred\AppData\Local\Programs\Python\Python314\Lib\site-packages\telegram\request\_baserequest.py", line 198, in post
+    result = await self._request_wrapper(
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    ...<7 lines>...
+    )
+    ^
+  File "C:\Users\emred\AppData\Local\Programs\Python\Python314\Lib\site-packages\telegram\request\_baserequest.py", line 305, in _request_wrapper
+    code, payload = await self.do_request(
+                    ^^^^^^^^^^^^^^^^^^^^^^
+    ...<7 lines>...
+    )
+    ^
+  File "C:\Users\emred\AppData\Local\Programs\Python\Python314\Lib\site-packages\telegram\request\_httpxrequest.py", line 303, in do_request
+    raise NetworkError(f"httpx.{err.__class__.__name__}: {err}") from err
+telegram.error.NetworkError: httpx.ConnectError: [Errno 11001] getaddrinfo failed
+2026-03-01 12:21:13,997 | ERROR | Ti App Studio | Hata: httpx.ConnectError: [Errno 11001] getaddrinfo failed
+Traceback (most recent call last):
+  File "C:\Users\emred\AppData\Local\Programs\Python\Python314\Lib\site-packages\httpx\_transports\default.py", line 101, in map_httpcore_exceptions
+    yield
+  File "C:\Users\emred\AppData\Local\Programs\Python\Python314\Lib\site-packages\httpx\_transports\default.py", line 394, in handle_async_request
+    resp = await self._pool.handle_async_request(req)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\emred\AppData\Local\Programs\Python\Python314\Lib\site-packages\httpcore\_async\connection_pool.py", line 256, in handle_async_request
+    raise exc from None
+  File "C:\Users\emred\AppData\Local\Programs\Python\Python314\Lib\site-packages\httpcore\_async\connection_pool.py", line 236, in handle_async_request
+    response = await connection.handle_async_request(
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+        pool_request.request
+        ^^^^^^^^^^^^^^^^^^^^
+    )
+    ^
+  File "C:\Users\emred\AppData\Local\Programs\Python\Python314\Lib\site-packages\httpcore\_async\connection.py", line 101, in handle_async_request
+    raise exc
+  File "C:\Users\emred\AppData\Local\Programs\Python\Python314\Lib\site-packages\httpcore\_async\connection.py", line 78, in handle_async_request
+    stream = await self._connect(request)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\emred\AppData\Local\Programs\Python\Python314\Lib\site-packages\httpcore\_async\connection.py", line 124, in _connect
+    stream = await self._network_backend.connect_tcp(**kwargs)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\emred\AppData\Local\Programs\Python\Python314\Lib\site-packages\httpcore\_backends\auto.py", line 31, in connect_tcp
+    return await self._backend.connect_tcp(
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    ...<5 lines>...
+    )
+    ^
+  File "C:\Users\emred\AppData\Local\Programs\Python\Python314\Lib\site-packages\httpcore\_backends\anyio.py", line 113, in connect_tcp
+    with map_exceptions(exc_map):
+         ~~~~~~~~~~~~~~^^^^^^^^^
+  File "C:\Users\emred\AppData\Local\Programs\Python\Python314\Lib\contextlib.py", line 162, in __exit__
+    self.gen.throw(value)
+    ~~~~~~~~~~~~~~^^^^^^^
+  File "C:\Users\emred\AppData\Local\Programs\Python\Python314\Lib\site-packages\httpcore\_exceptions.py", line 14, in map_exceptions
+    raise to_exc(exc) from exc
+httpcore.ConnectError: [Errno 11001] getaddrinfo failed
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "C:\Users\emred\AppData\Local\Programs\Python\Python314\Lib\site-packages\telegram\request\_httpxrequest.py", line 279, in do_request
+    res = await self._client.request(
+          ^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    ...<6 lines>...
+    )
+    ^
+  File "C:\Users\emred\AppData\Local\Programs\Python\Python314\Lib\site-packages\httpx\_client.py", line 1540, in request
+    return await self.send(request, auth=auth, follow_redirects=follow_redirects)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\emred\AppData\Local\Programs\Python\Python314\Lib\site-packages\httpx\_client.py", line 1629, in send
+    response = await self._send_handling_auth(
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    ...<4 lines>...
+    )
+    ^
+  File "C:\Users\emred\AppData\Local\Programs\Python\Python314\Lib\site-packages\httpx\_client.py", line 1657, in _send_handling_auth
+    response = await self._send_handling_redirects(
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    ...<3 lines>...
+    )
+    ^
+  File "C:\Users\emred\AppData\Local\Programs\Python\Python314\Lib\site-packages\httpx\_client.py", line 1694, in _send_handling_redirects
+    response = await self._send_single_request(request)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\emred\AppData\Local\Programs\Python\Python314\Lib\site-packages\httpx\_client.py", line 1730, in _send_single_request
+    response = await transport.handle_async_request(request)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\emred\AppData\Local\Programs\Python\Python314\Lib\site-packages\httpx\_transports\default.py", line 393, in handle_async_request
+    with map_httpcore_exceptions():
+         ~~~~~~~~~~~~~~~~~~~~~~~^^
+  File "C:\Users\emred\AppData\Local\Programs\Python\Python314\Lib\contextlib.py", line 162, in __exit__
+    self.gen.throw(value)
+    ~~~~~~~~~~~~~~^^^^^^^
+  File "C:\Users\emred\AppData\Local\Programs\Python\Python314\Lib\site-packages\httpx\_transports\default.py", line 118, in map_httpcore_exceptions
+    raise mapped_exc(message) from exc
+httpx.ConnectError: [Errno 11001] getaddrinfo failed
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "C:\Users\emred\AppData\Local\Programs\Python\Python314\Lib\site-packages\telegram\ext\_utils\networkloop.py", line 161, in network_retry_loop
+    await do_action()
+  File "C:\Users\emred\AppData\Local\Programs\Python\Python314\Lib\site-packages\telegram\ext\_utils\networkloop.py", line 154, in do_action
+    action_cb_task.result()
+    ~~~~~~~~~~~~~~~~~~~~~^^
+  File "C:\Users\emred\AppData\Local\Programs\Python\Python314\Lib\site-packages\telegram\ext\_updater.py", line 340, in polling_action_cb
+    updates = await self.bot.get_updates(
+              ^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    ...<3 lines>...
+    )
+    ^
+  File "C:\Users\emred\AppData\Local\Programs\Python\Python314\Lib\site-packages\telegram\ext\_extbot.py", line 671, in get_updates
+    updates = await super().get_updates(
+              ^^^^^^^^^^^^^^^^^^^^^^^^^^
+    ...<9 lines>...
+    )
+    ^
+  File "C:\Users\emred\AppData\Local\Programs\Python\Python314\Lib\site-packages\telegram\_bot.py", line 4860, in get_updates
+    await self._post(
+    ^^^^^^^^^^^^^^^^^
+    ...<7 lines>...
+    ),
+    ^
+  File "C:\Users\emred\AppData\Local\Programs\Python\Python314\Lib\site-packages\telegram\_bot.py", line 703, in _post
+    return await self._do_post(
+           ^^^^^^^^^^^^^^^^^^^^
+    ...<6 lines>...
+    )
+    ^
+  File "C:\Users\emred\AppData\Local\Programs\Python\Python314\Lib\site-packages\telegram\ext\_extbot.py", line 369, in _do_post
+    return await super()._do_post(
+           ^^^^^^^^^^^^^^^^^^^^^^^
+    ...<6 lines>...
+    )
+    ^
+  File "C:\Users\emred\AppData\Local\Programs\Python\Python314\Lib\site-packages\telegram\_bot.py", line 732, in _do_post
+    result = await request.post(
+             ^^^^^^^^^^^^^^^^^^^
+    ...<6 lines>...
+    )
+    ^
+  File "C:\Users\emred\AppData\Local\Programs\Python\Python314\Lib\site-packages\telegram\request\_baserequest.py", line 198, in post
+    result = await self._request_wrapper(
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    ...<7 lines>...
+    )
+    ^
+  File "C:\Users\emred\AppData\Local\Programs\Python\Python314\Lib\site-packages\telegram\request\_baserequest.py", line 305, in _request_wrapper
+    code, payload = await self.do_request(
+                    ^^^^^^^^^^^^^^^^^^^^^^
+    ...<7 lines>...
+    )
+    ^
+  File "C:\Users\emred\AppData\Local\Programs\Python\Python314\Lib\site-packages\telegram\request\_httpxrequest.py", line 303, in do_request
+    raise NetworkError(f"httpx.{err.__class__.__name__}: {err}") from err
+telegram.error.NetworkError: httpx.ConnectError: [Errno 11001] getaddrinfo failed
+2026-03-01 12:21:15,503 | ERROR | Ti App Studio | Hata: httpx.ConnectError: [Errno 11001] getaddrinfo failed
+Traceback (most recent call last):
+  File "C:\Users\emred\AppData\Local\Programs\Python\Python314\Lib\site-packages\httpx\_transports\default.py", line 101, in map_httpcore_exceptions
+    yield
+  File "C:\Users\emred\AppData\Local\Programs\Python\Python314\Lib\site-packages\httpx\_transports\default.py", line 394, in handle_async_request
+    resp = await self._pool.handle_async_request(req)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\emred\AppData\Local\Programs\Python\Python314\Lib\site-packages\httpcore\_async\connection_pool.py", line 256, in handle_async_request
+    raise exc from None
+  File "C:\Users\emred\AppData\Local\Programs\Python\Python314\Lib\site-packages\httpcore\_async\connection_pool.py", line 236, in handle_async_request
+    response = await connection.handle_async_request(
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+        pool_request.request
+        ^^^^^^^^^^^^^^^^^^^^
+    )
+    ^
+  File "C:\Users\emred\AppData\Local\Programs\Python\Python314\Lib\site-packages\httpcore\_async\connection.py", line 101, in handle_async_request
+    raise exc
+  File "C:\Users\emred\AppData\Local\Programs\Python\Python314\Lib\site-packages\httpcore\_async\connection.py", line 78, in handle_async_request
+    stream = await self._connect(request)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\emred\AppData\Local\Programs\Python\Python314\Lib\site-packages\httpcore\_async\connection.py", line 124, in _connect
+    stream = await self._network_backend.connect_tcp(**kwargs)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\emred\AppData\Local\Programs\Python\Python314\Lib\site-packages\httpcore\_backends\auto.py", line 31, in connect_tcp
+    return await self._backend.connect_tcp(
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    ...<5 lines>...
+    )
+    ^
+  File "C:\Users\emred\AppData\Local\Programs\Python\Python314\Lib\site-packages\httpcore\_backends\anyio.py", line 113, in connect_tcp
+    with map_exceptions(exc_map):
+         ~~~~~~~~~~~~~~^^^^^^^^^
+  File "C:\Users\emred\AppData\Local\Programs\Python\Python314\Lib\contextlib.py", line 162, in __exit__
+    self.gen.throw(value)
+    ~~~~~~~~~~~~~~^^^^^^^
+  File "C:\Users\emred\AppData\Local\Programs\Python\Python314\Lib\site-packages\httpcore\_exceptions.py", line 14, in map_exceptions
+    raise to_exc(exc) from exc
+httpcore.ConnectError: [Errno 11001] getaddrinfo failed
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "C:\Users\emred\AppData\Local\Programs\Python\Python314\Lib\site-packages\telegram\request\_httpxrequest.py", line 279, in do_request
+    res = await self._client.request(
+          ^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    ...<6 lines>...
+    )
+    ^
+  File "C:\Users\emred\AppData\Local\Programs\Python\Python314\Lib\site-packages\httpx\_client.py", line 1540, in request
+    return await self.send(request, auth=auth, follow_redirects=follow_redirects)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\emred\AppData\Local\Programs\Python\Python314\Lib\site-packages\httpx\_client.py", line 1629, in send
+    response = await self._send_handling_auth(
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    ...<4 lines>...
+    )
+    ^
+  File "C:\Users\emred\AppData\Local\Programs\Python\Python314\Lib\site-packages\httpx\_client.py", line 1657, in _send_handling_auth
+    response = await self._send_handling_redirects(
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    ...<3 lines>...
+    )
+    ^
+  File "C:\Users\emred\AppData\Local\Programs\Python\Python314\Lib\site-packages\httpx\_client.py", line 1694, in _send_handling_redirects
+    response = await self._send_single_request(request)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\emred\AppData\Local\Programs\Python\Python314\Lib\site-packages\httpx\_client.py", line 1730, in _send_single_request
+    response = await transport.handle_async_request(request)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\emred\AppData\Local\Programs\Python\Python314\Lib\site-packages\httpx\_transports\default.py", line 393, in handle_async_request
+    with map_httpcore_exceptions():
+         ~~~~~~~~~~~~~~~~~~~~~~~^^
+  File "C:\Users\emred\AppData\Local\Programs\Python\Python314\Lib\contextlib.py", line 162, in __exit__
+    self.gen.throw(value)
+    ~~~~~~~~~~~~~~^^^^^^^
+  File "C:\Users\emred\AppData\Local\Programs\Python\Python314\Lib\site-packages\httpx\_transports\default.py", line 118, in map_httpcore_exceptions
+    raise mapped_exc(message) from exc
+httpx.ConnectError: [Errno 11001] getaddrinfo failed
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "C:\Users\emred\AppData\Local\Programs\Python\Python314\Lib\site-packages\telegram\ext\_utils\networkloop.py", line 161, in network_retry_loop
+    await do_action()
+  File "C:\Users\emred\AppData\Local\Programs\Python\Python314\Lib\site-packages\telegram\ext\_utils\networkloop.py", line 154, in do_action
+    action_cb_task.result()
+    ~~~~~~~~~~~~~~~~~~~~~^^
+  File "C:\Users\emred\AppData\Local\Programs\Python\Python314\Lib\site-packages\telegram\ext\_updater.py", line 340, in polling_action_cb
+    updates = await self.bot.get_updates(
+              ^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    ...<3 lines>...
+    )
+    ^
+  File "C:\Users\emred\AppData\Local\Programs\Python\Python314\Lib\site-packages\telegram\ext\_extbot.py", line 671, in get_updates
+    updates = await super().get_updates(
+              ^^^^^^^^^^^^^^^^^^^^^^^^^^
+    ...<9 lines>...
+    )
+    ^
+  File "C:\Users\emred\AppData\Local\Programs\Python\Python314\Lib\site-packages\telegram\_bot.py", line 4860, in get_updates
+    await self._post(
+    ^^^^^^^^^^^^^^^^^
+    ...<7 lines>...
+    ),
+    ^
+  File "C:\Users\emred\AppData\Local\Programs\Python\Python314\Lib\site-packages\telegram\_bot.py", line 703, in _post
+    return await self._do_post(
+           ^^^^^^^^^^^^^^^^^^^^
+    ...<6 lines>...
+    )
+    ^
+  File "C:\Users\emred\AppData\Local\Programs\Python\Python314\Lib\site-packages\telegram\ext\_extbot.py", line 369, in _do_post
+    return await super()._do_post(
+           ^^^^^^^^^^^^^^^^^^^^^^^
+    ...<6 lines>...
+    )
+    ^
+  File "C:\Users\emred\AppData\Local\Programs\Python\Python314\Lib\site-packages\telegram\_bot.py", line 732, in _do_post
+    result = await request.post(
+             ^^^^^^^^^^^^^^^^^^^
+    ...<6 lines>...
+    )
+    ^
+  File "C:\Users\emred\AppData\Local\Programs\Python\Python314\Lib\site-packages\telegram\request\_baserequest.py", line 198, in post
+    result = await self._request_wrapper(
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    ...<7 lines>...
+    )
+    ^
+  File "C:\Users\emred\AppData\Local\Programs\Python\Python314\Lib\site-packages\telegram\request\_baserequest.py", line 305, in _request_wrapper
+    code, payload = await self.do_request(
+                    ^^^^^^^^^^^^^^^^^^^^^^
+    ...<7 lines>...
+    )
+    ^
+  File "C:\Users\emred\AppData\Local\Programs\Python\Python314\Lib\site-packages\telegram\request\_httpxrequest.py", line 303, in do_request
+    raise NetworkError(f"httpx.{err.__class__.__name__}: {err}") from err
+telegram.error.NetworkError: httpx.ConnectError: [Errno 11001] getaddrinfo failed
+2026-03-01 12:21:17,767 | ERROR | Ti App Studio | Hata: httpx.ConnectError: [Errno 11001] getaddrinfo failed
+Traceback (most recent call last):
+  File "C:\Users\emred\AppData\Local\Programs\Python\Python314\Lib\site-packages\httpx\_transports\default.py", line 101, in map_httpcore_exceptions
+    yield
+  File "C:\Users\emred\AppData\Local\Programs\Python\Python314\Lib\site-packages\httpx\_transports\default.py", line 394, in handle_async_request
+    resp = await self._pool.handle_async_request(req)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\emred\AppData\Local\Programs\Python\Python314\Lib\site-packages\httpcore\_async\connection_pool.py", line 256, in handle_async_request
+    raise exc from None
+  File "C:\Users\emred\AppData\Local\Programs\Python\Python314\Lib\site-packages\httpcore\_async\connection_pool.py", line 236, in handle_async_request
+    response = await connection.handle_async_request(
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+        pool_request.request
+        ^^^^^^^^^^^^^^^^^^^^
+    )
+    ^
+  File "C:\Users\emred\AppData\Local\Programs\Python\Python314\Lib\site-packages\httpcore\_async\connection.py", line 101, in handle_async_request
+    raise exc
+  File "C:\Users\emred\AppData\Local\Programs\Python\Python314\Lib\site-packages\httpcore\_async\connection.py", line 78, in handle_async_request
+    stream = await self._connect(request)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\emred\AppData\Local\Programs\Python\Python314\Lib\site-packages\httpcore\_async\connection.py", line 124, in _connect
+    stream = await self._network_backend.connect_tcp(**kwargs)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\emred\AppData\Local\Programs\Python\Python314\Lib\site-packages\httpcore\_backends\auto.py", line 31, in connect_tcp
+    return await self._backend.connect_tcp(
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    ...<5 lines>...
+    )
+    ^
+  File "C:\Users\emred\AppData\Local\Programs\Python\Python314\Lib\site-packages\httpcore\_backends\anyio.py", line 113, in connect_tcp
+    with map_exceptions(exc_map):
+         ~~~~~~~~~~~~~~^^^^^^^^^
+  File "C:\Users\emred\AppData\Local\Programs\Python\Python314\Lib\contextlib.py", line 162, in __exit__
+    self.gen.throw(value)
+    ~~~~~~~~~~~~~~^^^^^^^
+  File "C:\Users\emred\AppData\Local\Programs\Python\Python314\Lib\site-packages\httpcore\_exceptions.py", line 14, in map_exceptions
+    raise to_exc(exc) from exc
+httpcore.ConnectError: [Errno 11001] getaddrinfo failed
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "C:\Users\emred\AppData\Local\Programs\Python\Python314\Lib\site-packages\telegram\request\_httpxrequest.py", line 279, in do_request
+    res = await self._client.request(
+          ^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    ...<6 lines>...
+    )
+    ^
+  File "C:\Users\emred\AppData\Local\Programs\Python\Python314\Lib\site-packages\httpx\_client.py", line 1540, in request
+    return await self.send(request, auth=auth, follow_redirects=follow_redirects)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\emred\AppData\Local\Programs\Python\Python314\Lib\site-packages\httpx\_client.py", line 1629, in send
+    response = await self._send_handling_auth(
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    ...<4 lines>...
+    )
+    ^
+  File "C:\Users\emred\AppData\Local\Programs\Python\Python314\Lib\site-packages\httpx\_client.py", line 1657, in _send_handling_auth
+    response = await self._send_handling_redirects(
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    ...<3 lines>...
+    )
+    ^
+  File "C:\Users\emred\AppData\Local\Programs\Python\Python314\Lib\site-packages\httpx\_client.py", line 1694, in _send_handling_redirects
+    response = await self._send_single_request(request)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\emred\AppData\Local\Programs\Python\Python314\Lib\site-packages\httpx\_client.py", line 1730, in _send_single_request
+    response = await transport.handle_async_request(request)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\emred\AppData\Local\Programs\Python\Python314\Lib\site-packages\httpx\_transports\default.py", line 393, in handle_async_request
+    with map_httpcore_exceptions():
+         ~~~~~~~~~~~~~~~~~~~~~~~^^
+  File "C:\Users\emred\AppData\Local\Programs\Python\Python314\Lib\contextlib.py", line 162, in __exit__
+    self.gen.throw(value)
+    ~~~~~~~~~~~~~~^^^^^^^
+  File "C:\Users\emred\AppData\Local\Programs\Python\Python314\Lib\site-packages\httpx\_transports\default.py", line 118, in map_httpcore_exceptions
+    raise mapped_exc(message) from exc
+httpx.ConnectError: [Errno 11001] getaddrinfo failed
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "C:\Users\emred\AppData\Local\Programs\Python\Python314\Lib\site-packages\telegram\ext\_utils\networkloop.py", line 161, in network_retry_loop
+    await do_action()
+  File "C:\Users\emred\AppData\Local\Programs\Python\Python314\Lib\site-packages\telegram\ext\_utils\networkloop.py", line 154, in do_action
+    action_cb_task.result()
+    ~~~~~~~~~~~~~~~~~~~~~^^
+  File "C:\Users\emred\AppData\Local\Programs\Python\Python314\Lib\site-packages\telegram\ext\_updater.py", line 340, in polling_action_cb
+    updates = await self.bot.get_updates(
+              ^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    ...<3 lines>...
+    )
+    ^
+  File "C:\Users\emred\AppData\Local\Programs\Python\Python314\Lib\site-packages\telegram\ext\_extbot.py", line 671, in get_updates
+    updates = await super().get_updates(
+              ^^^^^^^^^^^^^^^^^^^^^^^^^^
+    ...<9 lines>...
+    )
+    ^
+  File "C:\Users\emred\AppData\Local\Programs\Python\Python314\Lib\site-packages\telegram\_bot.py", line 4860, in get_updates
+    await self._post(
+    ^^^^^^^^^^^^^^^^^
+    ...<7 lines>...
+    ),
+    ^
+  File "C:\Users\emred\AppData\Local\Programs\Python\Python314\Lib\site-packages\telegram\_bot.py", line 703, in _post
+    return await self._do_post(
+           ^^^^^^^^^^^^^^^^^^^^
+    ...<6 lines>...
+    )
+    ^
+  File "C:\Users\emred\AppData\Local\Programs\Python\Python314\Lib\site-packages\telegram\ext\_extbot.py", line 369, in _do_post
+    return await super()._do_post(
+           ^^^^^^^^^^^^^^^^^^^^^^^
+    ...<6 lines>...
+    )
+    ^
+  File "C:\Users\emred\AppData\Local\Programs\Python\Python314\Lib\site-packages\telegram\_bot.py", line 732, in _do_post
+    result = await request.post(
+             ^^^^^^^^^^^^^^^^^^^
+    ...<6 lines>...
+    )
+    ^
+  File "C:\Users\emred\AppData\Local\Programs\Python\Python314\Lib\site-packages\telegram\request\_baserequest.py", line 198, in post
+    result = await self._request_wrapper(
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    ...<7 lines>...
+    )
+    ^
+  File "C:\Users\emred\AppData\Local\Programs\Python\Python314\Lib\site-packages\telegram\request\_baserequest.py", line 305, in _request_wrapper
+    code, payload = await self.do_request(
+                    ^^^^^^^^^^^^^^^^^^^^^^
+    ...<7 lines>...
+    )
+    ^
+  File "C:\Users\emred\AppData\Local\Programs\Python\Python314\Lib\site-packages\telegram\request\_httpxrequest.py", line 303, in do_request
+    raise NetworkError(f"httpx.{err.__class__.__name__}: {err}") from err
+telegram.error.NetworkError: httpx.ConnectError: [Errno 11001] getaddrinfo failed
+2026-03-01 12:21:21,155 | ERROR | Ti App Studio | Hata: httpx.ConnectError: [Errno 11001] getaddrinfo failed
+Traceback (most recent call last):
+  File "C:\Users\emred\AppData\Local\Programs\Python\Python314\Lib\site-packages\httpx\_transports\default.py", line 101, in map_httpcore_exceptions
+    yield
+  File "C:\Users\emred\AppData\Local\Programs\Python\Python314\Lib\site-packages\httpx\_transports\default.py", line 394, in handle_async_request
+    resp = await self._pool.handle_async_request(req)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\emred\AppData\Local\Programs\Python\Python314\Lib\site-packages\httpcore\_async\connection_pool.py", line 256, in handle_async_request
+    raise exc from None
+  File "C:\Users\emred\AppData\Local\Programs\Python\Python314\Lib\site-packages\httpcore\_async\connection_pool.py", line 236, in handle_async_request
+    response = await connection.handle_async_request(
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+        pool_request.request
+        ^^^^^^^^^^^^^^^^^^^^
+    )
+    ^
+  File "C:\Users\emred\AppData\Local\Programs\Python\Python314\Lib\site-packages\httpcore\_async\connection.py", line 101, in handle_async_request
+    raise exc
+  File "C:\Users\emred\AppData\Local\Programs\Python\Python314\Lib\site-packages\httpcore\_async\connection.py", line 78, in handle_async_request
+    stream = await self._connect(request)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\emred\AppData\Local\Programs\Python\Python314\Lib\site-packages\httpcore\_async\connection.py", line 124, in _connect
+    stream = await self._network_backend.connect_tcp(**kwargs)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\emred\AppData\Local\Programs\Python\Python314\Lib\site-packages\httpcore\_backends\auto.py", line 31, in connect_tcp
+    return await self._backend.connect_tcp(
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    ...<5 lines>...
+    )
+    ^
+  File "C:\Users\emred\AppData\Local\Programs\Python\Python314\Lib\site-packages\httpcore\_backends\anyio.py", line 113, in connect_tcp
+    with map_exceptions(exc_map):
+         ~~~~~~~~~~~~~~^^^^^^^^^
+  File "C:\Users\emred\AppData\Local\Programs\Python\Python314\Lib\contextlib.py", line 162, in __exit__
+    self.gen.throw(value)
+    ~~~~~~~~~~~~~~^^^^^^^
+  File "C:\Users\emred\AppData\Local\Programs\Python\Python314\Lib\site-packages\httpcore\_exceptions.py", line 14, in map_exceptions
+    raise to_exc(exc) from exc
+httpcore.ConnectError: [Errno 11001] getaddrinfo failed
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "C:\Users\emred\AppData\Local\Programs\Python\Python314\Lib\site-packages\telegram\request\_httpxrequest.py", line 279, in do_request
+    res = await self._client.request(
+          ^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    ...<6 lines>...
+    )
+    ^
+  File "C:\Users\emred\AppData\Local\Programs\Python\Python314\Lib\site-packages\httpx\_client.py", line 1540, in request
+    return await self.send(request, auth=auth, follow_redirects=follow_redirects)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\emred\AppData\Local\Programs\Python\Python314\Lib\site-packages\httpx\_client.py", line 1629, in send
+    response = await self._send_handling_auth(
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    ...<4 lines>...
+    )
+    ^
+  File "C:\Users\emred\AppData\Local\Programs\Python\Python314\Lib\site-packages\httpx\_client.py", line 1657, in _send_handling_auth
+    response = await self._send_handling_redirects(
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    ...<3 lines>...
+    )
+    ^
+  File "C:\Users\emred\AppData\Local\Programs\Python\Python314\Lib\site-packages\httpx\_client.py", line 1694, in _send_handling_redirects
+    response = await self._send_single_request(request)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\emred\AppData\Local\Programs\Python\Python314\Lib\site-packages\httpx\_client.py", line 1730, in _send_single_request
+    response = await transport.handle_async_request(request)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\emred\AppData\Local\Programs\Python\Python314\Lib\site-packages\httpx\_transports\default.py", line 393, in handle_async_request
+    with map_httpcore_exceptions():
+         ~~~~~~~~~~~~~~~~~~~~~~~^^
+  File "C:\Users\emred\AppData\Local\Programs\Python\Python314\Lib\contextlib.py", line 162, in __exit__
+    self.gen.throw(value)
+    ~~~~~~~~~~~~~~^^^^^^^
+  File "C:\Users\emred\AppData\Local\Programs\Python\Python314\Lib\site-packages\httpx\_transports\default.py", line 118, in map_httpcore_exceptions
+    raise mapped_exc(message) from exc
+httpx.ConnectError: [Errno 11001] getaddrinfo failed
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "C:\Users\emred\AppData\Local\Programs\Python\Python314\Lib\site-packages\telegram\ext\_utils\networkloop.py", line 161, in network_retry_loop
+    await do_action()
+  File "C:\Users\emred\AppData\Local\Programs\Python\Python314\Lib\site-packages\telegram\ext\_utils\networkloop.py", line 154, in do_action
+    action_cb_task.result()
+    ~~~~~~~~~~~~~~~~~~~~~^^
+  File "C:\Users\emred\AppData\Local\Programs\Python\Python314\Lib\site-packages\telegram\ext\_updater.py", line 340, in polling_action_cb
+    updates = await self.bot.get_updates(
+              ^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    ...<3 lines>...
+    )
+    ^
+  File "C:\Users\emred\AppData\Local\Programs\Python\Python314\Lib\site-packages\telegram\ext\_extbot.py", line 671, in get_updates
+    updates = await super().get_updates(
+              ^^^^^^^^^^^^^^^^^^^^^^^^^^
+    ...<9 lines>...
+    )
+    ^
+  File "C:\Users\emred\AppData\Local\Programs\Python\Python314\Lib\site-packages\telegram\_bot.py", line 4860, in get_updates
+    await self._post(
+    ^^^^^^^^^^^^^^^^^
+    ...<7 lines>...
+    ),
+    ^
+  File "C:\Users\emred\AppData\Local\Programs\Python\Python314\Lib\site-packages\telegram\_bot.py", line 703, in _post
+    return await self._do_post(
+           ^^^^^^^^^^^^^^^^^^^^
+    ...<6 lines>...
+    )
+    ^
+  File "C:\Users\emred\AppData\Local\Programs\Python\Python314\Lib\site-packages\telegram\ext\_extbot.py", line 369, in _do_post
+    return await super()._do_post(
+           ^^^^^^^^^^^^^^^^^^^^^^^
+    ...<6 lines>...
+    )
+    ^
+  File "C:\Users\emred\AppData\Local\Programs\Python\Python314\Lib\site-packages\telegram\_bot.py", line 732, in _do_post
+    result = await request.post(
+             ^^^^^^^^^^^^^^^^^^^
+    ...<6 lines>...
+    )
+    ^
+  File "C:\Users\emred\AppData\Local\Programs\Python\Python314\Lib\site-packages\telegram\request\_baserequest.py", line 198, in post
+    result = await self._request_wrapper(
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    ...<7 lines>...
+    )
+    ^
+  File "C:\Users\emred\AppData\Local\Programs\Python\Python314\Lib\site-packages\telegram\request\_baserequest.py", line 305, in _request_wrapper
+    code, payload = await self.do_request(
+                    ^^^^^^^^^^^^^^^^^^^^^^
+    ...<7 lines>...
+    )
+    ^
+  File "C:\Users\emred\AppData\Local\Programs\Python\Python314\Lib\site-packages\telegram\request\_httpxrequest.py", line 303, in do_request
+    raise NetworkError(f"httpx.{err.__class__.__name__}: {err}") from err
+telegram.error.NetworkError: httpx.ConnectError: [Errno 11001] getaddrinfo failed
+2026-03-01 12:21:26,432 | INFO | httpx | HTTP Request: POST https://api.telegram.org/bot8184060678:AAFVrixHiuVatmsEj0Nl4Iwn4Fv5VGKknh4/getUpdates "HTTP/1.1 200 OK"
+2026-03-01 12:21:27,051 | INFO | httpx | HTTP Request: POST https://api.telegram.org/bot8184060678:AAFVrixHiuVatmsEj0Nl4Iwn4Fv5VGKknh4/sendMessage "HTTP/1.1 200 OK"
+2026-03-01 12:21:35,329 | ERROR | Ti App Studio | Hata: httpx.ReadError: 
+Traceback (most recent call last):
+  File "C:\Users\emred\AppData\Local\Programs\Python\Python314\Lib\site-packages\httpx\_transports\default.py", line 101, in map_httpcore_exceptions
+    yield
+  File "C:\Users\emred\AppData\Local\Programs\Python\Python314\Lib\site-packages\httpx\_transports\default.py", line 394, in handle_async_request
+    resp = await self._pool.handle_async_request(req)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\emred\AppData\Local\Programs\Python\Python314\Lib\site-packages\httpcore\_async\connection_pool.py", line 256, in handle_async_request
+    raise exc from None
+  File "C:\Users\emred\AppData\Local\Programs\Python\Python314\Lib\site-packages\httpcore\_async\connection_pool.py", line 236, in handle_async_request
+    response = await connection.handle_async_request(
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+        pool_request.request
+        ^^^^^^^^^^^^^^^^^^^^
+    )
+    ^
+  File "C:\Users\emred\AppData\Local\Programs\Python\Python314\Lib\site-packages\httpcore\_async\connection.py", line 103, in handle_async_request
+    return await self._connection.handle_async_request(request)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\emred\AppData\Local\Programs\Python\Python314\Lib\site-packages\httpcore\_async\http11.py", line 136, in handle_async_request
+    raise exc
+  File "C:\Users\emred\AppData\Local\Programs\Python\Python314\Lib\site-packages\httpcore\_async\http11.py", line 106, in handle_async_request
+    ) = await self._receive_response_headers(**kwargs)
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\emred\AppData\Local\Programs\Python\Python314\Lib\site-packages\httpcore\_async\http11.py", line 177, in _receive_response_headers
+    event = await self._receive_event(timeout=timeout)
+            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\emred\AppData\Local\Programs\Python\Python314\Lib\site-packages\httpcore\_async\http11.py", line 217, in _receive_event
+    data = await self._network_stream.read(
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+        self.READ_NUM_BYTES, timeout=timeout
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    )
+    ^
+  File "C:\Users\emred\AppData\Local\Programs\Python\Python314\Lib\site-packages\httpcore\_backends\anyio.py", line 32, in read
+    with map_exceptions(exc_map):
+         ~~~~~~~~~~~~~~^^^^^^^^^
+  File "C:\Users\emred\AppData\Local\Programs\Python\Python314\Lib\contextlib.py", line 162, in __exit__
+    self.gen.throw(value)
+    ~~~~~~~~~~~~~~^^^^^^^
+  File "C:\Users\emred\AppData\Local\Programs\Python\Python314\Lib\site-packages\httpcore\_exceptions.py", line 14, in map_exceptions
+    raise to_exc(exc) from exc
+httpcore.ReadError
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "C:\Users\emred\AppData\Local\Programs\Python\Python314\Lib\site-packages\telegram\request\_httpxrequest.py", line 279, in do_request
+    res = await self._client.request(
+          ^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    ...<6 lines>...
+    )
+    ^
+  File "C:\Users\emred\AppData\Local\Programs\Python\Python314\Lib\site-packages\httpx\_client.py", line 1540, in request
+    return await self.send(request, auth=auth, follow_redirects=follow_redirects)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\emred\AppData\Local\Programs\Python\Python314\Lib\site-packages\httpx\_client.py", line 1629, in send
+    response = await self._send_handling_auth(
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    ...<4 lines>...
+    )
+    ^
+  File "C:\Users\emred\AppData\Local\Programs\Python\Python314\Lib\site-packages\httpx\_client.py", line 1657, in _send_handling_auth
+    response = await self._send_handling_redirects(
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    ...<3 lines>...
+    )
+    ^
+  File "C:\Users\emred\AppData\Local\Programs\Python\Python314\Lib\site-packages\httpx\_client.py", line 1694, in _send_handling_redirects
+    response = await self._send_single_request(request)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\emred\AppData\Local\Programs\Python\Python314\Lib\site-packages\httpx\_client.py", line 1730, in _send_single_request
+    response = await transport.handle_async_request(request)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\emred\AppData\Local\Programs\Python\Python314\Lib\site-packages\httpx\_transports\default.py", line 393, in handle_async_request
+    with map_httpcore_exceptions():
+         ~~~~~~~~~~~~~~~~~~~~~~~^^
+  File "C:\Users\emred\AppData\Local\Programs\Python\Python314\Lib\contextlib.py", line 162, in __exit__
+    self.gen.throw(value)
+    ~~~~~~~~~~~~~~^^^^^^^
+  File "C:\Users\emred\AppData\Local\Programs\Python\Python314\Lib\site-packages\httpx\_transports\default.py", line 118, in map_httpcore_exceptions
+    raise mapped_exc(message) from exc
+httpx.ReadError
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "C:\Users\emred\AppData\Local\Programs\Python\Python314\Lib\site-packages\telegram\ext\_utils\networkloop.py", line 161, in network_retry_loop
+    await do_action()
+  File "C:\Users\emred\AppData\Local\Programs\Python\Python314\Lib\site-packages\telegram\ext\_utils\networkloop.py", line 154, in do_action
+    action_cb_task.result()
+    ~~~~~~~~~~~~~~~~~~~~~^^
+  File "C:\Users\emred\AppData\Local\Programs\Python\Python314\Lib\site-packages\telegram\ext\_updater.py", line 340, in polling_action_cb
+    updates = await self.bot.get_updates(
+              ^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    ...<3 lines>...
+    )
+    ^
+  File "C:\Users\emred\AppData\Local\Programs\Python\Python314\Lib\site-packages\telegram\ext\_extbot.py", line 671, in get_updates
+    updates = await super().get_updates(
+              ^^^^^^^^^^^^^^^^^^^^^^^^^^
+    ...<9 lines>...
+    )
+    ^
+  File "C:\Users\emred\AppData\Local\Programs\Python\Python314\Lib\site-packages\telegram\_bot.py", line 4860, in get_updates
+    await self._post(
+    ^^^^^^^^^^^^^^^^^
+    ...<7 lines>...
+    ),
+    ^
+  File "C:\Users\emred\AppData\Local\Programs\Python\Python314\Lib\site-packages\telegram\_bot.py", line 703, in _post
+    return await self._do_post(
+           ^^^^^^^^^^^^^^^^^^^^
+    ...<6 lines>...
+    )
+    ^
+  File "C:\Users\emred\AppData\Local\Programs\Python\Python314\Lib\site-packages\telegram\ext\_extbot.py", line 369, in _do_post
+    return await super()._do_post(
+           ^^^^^^^^^^^^^^^^^^^^^^^
+    ...<6 lines>...
+    )
+    ^
+  File "C:\Users\emred\AppData\Local\Programs\Python\Python314\Lib\site-packages\telegram\_bot.py", line 732, in _do_post
+    result = await request.post(
+             ^^^^^^^^^^^^^^^^^^^
+    ...<6 lines>...
+    )
+    ^
+  File "C:\Users\emred\AppData\Local\Programs\Python\Python314\Lib\site-packages\telegram\request\_baserequest.py", line 198, in post
+    result = await self._request_wrapper(
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    ...<7 lines>...
+    )
+    ^
+  File "C:\Users\emred\AppData\Local\Programs\Python\Python314\Lib\site-packages\telegram\request\_baserequest.py", line 305, in _request_wrapper
+    code, payload = await self.do_request(
+                    ^^^^^^^^^^^^^^^^^^^^^^
+    ...<7 lines>...
+    )
+    ^
+  File "C:\Users\emred\AppData\Local\Programs\Python\Python314\Lib\site-packages\telegram\request\_httpxrequest.py", line 303, in do_request
+    raise NetworkError(f"httpx.{err.__class__.__name__}: {err}") from err
+telegram.error.NetworkError: httpx.ReadError: 
+2026-03-01 12:21:36,342 | ERROR | Ti App Studio | Hata: httpx.ConnectError: [Errno 11001] getaddrinfo failed
+Traceback (most recent call last):
+  File "C:\Users\emred\AppData\Local\Programs\Python\Python314\Lib\site-packages\httpx\_transports\default.py", line 101, in map_httpcore_exceptions
+    yield
+  File "C:\Users\emred\AppData\Local\Programs\Python\Python314\Lib\site-packages\httpx\_transports\default.py", line 394, in handle_async_request
+    resp = await self._pool.handle_async_request(req)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\emred\AppData\Local\Programs\Python\Python314\Lib\site-packages\httpcore\_async\connection_pool.py", line 256, in handle_async_request
+    raise exc from None
+  File "C:\Users\emred\AppData\Local\Programs\Python\Python314\Lib\site-packages\httpcore\_async\connection_pool.py", line 236, in handle_async_request
+    response = await connection.handle_async_request(
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+        pool_request.request
+        ^^^^^^^^^^^^^^^^^^^^
+    )
+    ^
+  File "C:\Users\emred\AppData\Local\Programs\Python\Python314\Lib\site-packages\httpcore\_async\connection.py", line 101, in handle_async_request
+    raise exc
+  File "C:\Users\emred\AppData\Local\Programs\Python\Python314\Lib\site-packages\httpcore\_async\connection.py", line 78, in handle_async_request
+    stream = await self._connect(request)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\emred\AppData\Local\Programs\Python\Python314\Lib\site-packages\httpcore\_async\connection.py", line 124, in _connect
+    stream = await self._network_backend.connect_tcp(**kwargs)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\emred\AppData\Local\Programs\Python\Python314\Lib\site-packages\httpcore\_backends\auto.py", line 31, in connect_tcp
+    return await self._backend.connect_tcp(
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    ...<5 lines>...
+    )
+    ^
+  File "C:\Users\emred\AppData\Local\Programs\Python\Python314\Lib\site-packages\httpcore\_backends\anyio.py", line 113, in connect_tcp
+    with map_exceptions(exc_map):
+         ~~~~~~~~~~~~~~^^^^^^^^^
+  File "C:\Users\emred\AppData\Local\Programs\Python\Python314\Lib\contextlib.py", line 162, in __exit__
+    self.gen.throw(value)
+    ~~~~~~~~~~~~~~^^^^^^^
+  File "C:\Users\emred\AppData\Local\Programs\Python\Python314\Lib\site-packages\httpcore\_exceptions.py", line 14, in map_exceptions
+    raise to_exc(exc) from exc
+httpcore.ConnectError: [Errno 11001] getaddrinfo failed
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "C:\Users\emred\AppData\Local\Programs\Python\Python314\Lib\site-packages\telegram\request\_httpxrequest.py", line 279, in do_request
+    res = await self._client.request(
+          ^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    ...<6 lines>...
+    )
+    ^
+  File "C:\Users\emred\AppData\Local\Programs\Python\Python314\Lib\site-packages\httpx\_client.py", line 1540, in request
+    return await self.send(request, auth=auth, follow_redirects=follow_redirects)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\emred\AppData\Local\Programs\Python\Python314\Lib\site-packages\httpx\_client.py", line 1629, in send
+    response = await self._send_handling_auth(
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    ...<4 lines>...
+    )
+    ^
+  File "C:\Users\emred\AppData\Local\Programs\Python\Python314\Lib\site-packages\httpx\_client.py", line 1657, in _send_handling_auth
+    response = await self._send_handling_redirects(
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    ...<3 lines>...
+    )
+    ^
+  File "C:\Users\emred\AppData\Local\Programs\Python\Python314\Lib\site-packages\httpx\_client.py", line 1694, in _send_handling_redirects
+    response = await self._send_single_request(request)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\emred\AppData\Local\Programs\Python\Python314\Lib\site-packages\httpx\_client.py", line 1730, in _send_single_request
+    response = await transport.handle_async_request(request)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\emred\AppData\Local\Programs\Python\Python314\Lib\site-packages\httpx\_transports\default.py", line 393, in handle_async_request
+    with map_httpcore_exceptions():
+         ~~~~~~~~~~~~~~~~~~~~~~~^^
+  File "C:\Users\emred\AppData\Local\Programs\Python\Python314\Lib\contextlib.py", line 162, in __exit__
+    self.gen.throw(value)
+    ~~~~~~~~~~~~~~^^^^^^^
+  File "C:\Users\emred\AppData\Local\Programs\Python\Python314\Lib\site-packages\httpx\_transports\default.py", line 118, in map_httpcore_exceptions
+    raise mapped_exc(message) from exc
+httpx.ConnectError: [Errno 11001] getaddrinfo failed
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "C:\Users\emred\AppData\Local\Programs\Python\Python314\Lib\site-packages\telegram\ext\_utils\networkloop.py", line 161, in network_retry_loop
+    await do_action()
+  File "C:\Users\emred\AppData\Local\Programs\Python\Python314\Lib\site-packages\telegram\ext\_utils\networkloop.py", line 154, in do_action
+    action_cb_task.result()
+    ~~~~~~~~~~~~~~~~~~~~~^^
+  File "C:\Users\emred\AppData\Local\Programs\Python\Python314\Lib\site-packages\telegram\ext\_updater.py", line 340, in polling_action_cb
+    updates = await self.bot.get_updates(
+              ^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    ...<3 lines>...
+    )
+    ^
+  File "C:\Users\emred\AppData\Local\Programs\Python\Python314\Lib\site-packages\telegram\ext\_extbot.py", line 671, in get_updates
+    updates = await super().get_updates(
+              ^^^^^^^^^^^^^^^^^^^^^^^^^^
+    ...<9 lines>...
+    )
+    ^
+  File "C:\Users\emred\AppData\Local\Programs\Python\Python314\Lib\site-packages\telegram\_bot.py", line 4860, in get_updates
+    await self._post(
+    ^^^^^^^^^^^^^^^^^
+    ...<7 lines>...
+    ),
+    ^
+  File "C:\Users\emred\AppData\Local\Programs\Python\Python314\Lib\site-packages\telegram\_bot.py", line 703, in _post
+    return await self._do_post(
+           ^^^^^^^^^^^^^^^^^^^^
+    ...<6 lines>...
+    )
+    ^
+  File "C:\Users\emred\AppData\Local\Programs\Python\Python314\Lib\site-packages\telegram\ext\_extbot.py", line 369, in _do_post
+    return await super()._do_post(
+           ^^^^^^^^^^^^^^^^^^^^^^^
+    ...<6 lines>...
+    )
+    ^
+  File "C:\Users\emred\AppData\Local\Programs\Python\Python314\Lib\site-packages\telegram\_bot.py", line 732, in _do_post
+    result = await request.post(
+             ^^^^^^^^^^^^^^^^^^^
+    ...<6 lines>...
+    )
+    ^
+  File "C:\Users\emred\AppData\Local\Programs\Python\Python314\Lib\site-packages\telegram\request\_baserequest.py", line 198, in post
+    result = await self._request_wrapper(
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    ...<7 lines>...
+    )
+    ^
+  File "C:\Users\emred\AppData\Local\Programs\Python\Python314\Lib\site-packages\telegram\request\_baserequest.py", line 305, in _request_wrapper
+    code, payload = await self.do_request(
+                    ^^^^^^^^^^^^^^^^^^^^^^
+    ...<7 lines>...
+    )
+    ^
+  File "C:\Users\emred\AppData\Local\Programs\Python\Python314\Lib\site-packages\telegram\request\_httpxrequest.py", line 303, in do_request
+    raise NetworkError(f"httpx.{err.__class__.__name__}: {err}") from err
+telegram.error.NetworkError: httpx.ConnectError: [Errno 11001] getaddrinfo failed
+2026-03-01 12:21:37,855 | ERROR | Ti App Studio | Hata: httpx.ConnectError: [Errno 11001] getaddrinfo failed
+Traceback (most recent call last):
+  File "C:\Users\emred\AppData\Local\Programs\Python\Python314\Lib\site-packages\httpx\_transports\default.py", line 101, in map_httpcore_exceptions
+    yield
+  File "C:\Users\emred\AppData\Local\Programs\Python\Python314\Lib\site-packages\httpx\_transports\default.py", line 394, in handle_async_request
+    resp = await self._pool.handle_async_request(req)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\emred\AppData\Local\Programs\Python\Python314\Lib\site-packages\httpcore\_async\connection_pool.py", line 256, in handle_async_request
+    raise exc from None
+  File "C:\Users\emred\AppData\Local\Programs\Python\Python314\Lib\site-packages\httpcore\_async\connection_pool.py", line 236, in handle_async_request
+    response = await connection.handle_async_request(
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+        pool_request.request
+        ^^^^^^^^^^^^^^^^^^^^
+    )
+    ^
+  File "C:\Users\emred\AppData\Local\Programs\Python\Python314\Lib\site-packages\httpcore\_async\connection.py", line 101, in handle_async_request
+    raise exc
+  File "C:\Users\emred\AppData\Local\Programs\Python\Python314\Lib\site-packages\httpcore\_async\connection.py", line 78, in handle_async_request
+    stream = await self._connect(request)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\emred\AppData\Local\Programs\Python\Python314\Lib\site-packages\httpcore\_async\connection.py", line 124, in _connect
+    stream = await self._network_backend.connect_tcp(**kwargs)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\emred\AppData\Local\Programs\Python\Python314\Lib\site-packages\httpcore\_backends\auto.py", line 31, in connect_tcp
+    return await self._backend.connect_tcp(
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    ...<5 lines>...
+    )
+    ^
+  File "C:\Users\emred\AppData\Local\Programs\Python\Python314\Lib\site-packages\httpcore\_backends\anyio.py", line 113, in connect_tcp
+    with map_exceptions(exc_map):
+         ~~~~~~~~~~~~~~^^^^^^^^^
+  File "C:\Users\emred\AppData\Local\Programs\Python\Python314\Lib\contextlib.py", line 162, in __exit__
+    self.gen.throw(value)
+    ~~~~~~~~~~~~~~^^^^^^^
+  File "C:\Users\emred\AppData\Local\Programs\Python\Python314\Lib\site-packages\httpcore\_exceptions.py", line 14, in map_exceptions
+    raise to_exc(exc) from exc
+httpcore.ConnectError: [Errno 11001] getaddrinfo failed
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "C:\Users\emred\AppData\Local\Programs\Python\Python314\Lib\site-packages\telegram\request\_httpxrequest.py", line 279, in do_request
+    res = await self._client.request(
+          ^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    ...<6 lines>...
+    )
+    ^
+  File "C:\Users\emred\AppData\Local\Programs\Python\Python314\Lib\site-packages\httpx\_client.py", line 1540, in request
+    return await self.send(request, auth=auth, follow_redirects=follow_redirects)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\emred\AppData\Local\Programs\Python\Python314\Lib\site-packages\httpx\_client.py", line 1629, in send
+    response = await self._send_handling_auth(
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    ...<4 lines>...
+    )
+    ^
+  File "C:\Users\emred\AppData\Local\Programs\Python\Python314\Lib\site-packages\httpx\_client.py", line 1657, in _send_handling_auth
+    response = await self._send_handling_redirects(
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    ...<3 lines>...
+    )
+    ^
+  File "C:\Users\emred\AppData\Local\Programs\Python\Python314\Lib\site-packages\httpx\_client.py", line 1694, in _send_handling_redirects
+    response = await self._send_single_request(request)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\emred\AppData\Local\Programs\Python\Python314\Lib\site-packages\httpx\_client.py", line 1730, in _send_single_request
+    response = await transport.handle_async_request(request)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\emred\AppData\Local\Programs\Python\Python314\Lib\site-packages\httpx\_transports\default.py", line 393, in handle_async_request
+    with map_httpcore_exceptions():
+         ~~~~~~~~~~~~~~~~~~~~~~~^^
+  File "C:\Users\emred\AppData\Local\Programs\Python\Python314\Lib\contextlib.py", line 162, in __exit__
+    self.gen.throw(value)
+    ~~~~~~~~~~~~~~^^^^^^^
+  File "C:\Users\emred\AppData\Local\Programs\Python\Python314\Lib\site-packages\httpx\_transports\default.py", line 118, in map_httpcore_exceptions
+    raise mapped_exc(message) from exc
+httpx.ConnectError: [Errno 11001] getaddrinfo failed
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "C:\Users\emred\AppData\Local\Programs\Python\Python314\Lib\site-packages\telegram\ext\_utils\networkloop.py", line 161, in network_retry_loop
+    await do_action()
+  File "C:\Users\emred\AppData\Local\Programs\Python\Python314\Lib\site-packages\telegram\ext\_utils\networkloop.py", line 154, in do_action
+    action_cb_task.result()
+    ~~~~~~~~~~~~~~~~~~~~~^^
+  File "C:\Users\emred\AppData\Local\Programs\Python\Python314\Lib\site-packages\telegram\ext\_updater.py", line 340, in polling_action_cb
+    updates = await self.bot.get_updates(
+              ^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    ...<3 lines>...
+    )
+    ^
+  File "C:\Users\emred\AppData\Local\Programs\Python\Python314\Lib\site-packages\telegram\ext\_extbot.py", line 671, in get_updates
+    updates = await super().get_updates(
+              ^^^^^^^^^^^^^^^^^^^^^^^^^^
+    ...<9 lines>...
+    )
+    ^
+  File "C:\Users\emred\AppData\Local\Programs\Python\Python314\Lib\site-packages\telegram\_bot.py", line 4860, in get_updates
+    await self._post(
+    ^^^^^^^^^^^^^^^^^
+    ...<7 lines>...
+    ),
+    ^
+  File "C:\Users\emred\AppData\Local\Programs\Python\Python314\Lib\site-packages\telegram\_bot.py", line 703, in _post
+    return await self._do_post(
+           ^^^^^^^^^^^^^^^^^^^^
+    ...<6 lines>...
+    )
+    ^
+  File "C:\Users\emred\AppData\Local\Programs\Python\Python314\Lib\site-packages\telegram\ext\_extbot.py", line 369, in _do_post
+    return await super()._do_post(
+           ^^^^^^^^^^^^^^^^^^^^^^^
+    ...<6 lines>...
+    )
+    ^
+  File "C:\Users\emred\AppData\Local\Programs\Python\Python314\Lib\site-packages\telegram\_bot.py", line 732, in _do_post
+    result = await request.post(
+             ^^^^^^^^^^^^^^^^^^^
+    ...<6 lines>...
+    )
+    ^
+  File "C:\Users\emred\AppData\Local\Programs\Python\Python314\Lib\site-packages\telegram\request\_baserequest.py", line 198, in post
+    result = await self._request_wrapper(
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    ...<7 lines>...
+    )
+    ^
+  File "C:\Users\emred\AppData\Local\Programs\Python\Python314\Lib\site-packages\telegram\request\_baserequest.py", line 305, in _request_wrapper
+    code, payload = await self.do_request(
+                    ^^^^^^^^^^^^^^^^^^^^^^
+    ...<7 lines>...
+    )
+    ^
+  File "C:\Users\emred\AppData\Local\Programs\Python\Python314\Lib\site-packages\telegram\request\_httpxrequest.py", line 303, in do_request
+    raise NetworkError(f"httpx.{err.__class__.__name__}: {err}") from err
+telegram.error.NetworkError: httpx.ConnectError: [Errno 11001] getaddrinfo failed
+2026-03-01 12:21:40,123 | ERROR | Ti App Studio | Hata: httpx.ConnectError: [Errno 11001] getaddrinfo failed
+Traceback (most recent call last):
+  File "C:\Users\emred\AppData\Local\Programs\Python\Python314\Lib\site-packages\httpx\_transports\default.py", line 101, in map_httpcore_exceptions
+    yield
+  File "C:\Users\emred\AppData\Local\Programs\Python\Python314\Lib\site-packages\httpx\_transports\default.py", line 394, in handle_async_request
+    resp = await self._pool.handle_async_request(req)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\emred\AppData\Local\Programs\Python\Python314\Lib\site-packages\httpcore\_async\connection_pool.py", line 256, in handle_async_request
+    raise exc from None
+  File "C:\Users\emred\AppData\Local\Programs\Python\Python314\Lib\site-packages\httpcore\_async\connection_pool.py", line 236, in handle_async_request
+    response = await connection.handle_async_request(
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+        pool_request.request
+        ^^^^^^^^^^^^^^^^^^^^
+    )
+    ^
+  File "C:\Users\emred\AppData\Local\Programs\Python\Python314\Lib\site-packages\httpcore\_async\connection.py", line 101, in handle_async_request
+    raise exc
+  File "C:\Users\emred\AppData\Local\Programs\Python\Python314\Lib\site-packages\httpcore\_async\connection.py", line 78, in handle_async_request
+    stream = await self._connect(request)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\emred\AppData\Local\Programs\Python\Python314\Lib\site-packages\httpcore\_async\connection.py", line 124, in _connect
+    stream = await self._network_backend.connect_tcp(**kwargs)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\emred\AppData\Local\Programs\Python\Python314\Lib\site-packages\httpcore\_backends\auto.py", line 31, in connect_tcp
+    return await self._backend.connect_tcp(
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    ...<5 lines>...
+    )
+    ^
+  File "C:\Users\emred\AppData\Local\Programs\Python\Python314\Lib\site-packages\httpcore\_backends\anyio.py", line 113, in connect_tcp
+    with map_exceptions(exc_map):
+         ~~~~~~~~~~~~~~^^^^^^^^^
+  File "C:\Users\emred\AppData\Local\Programs\Python\Python314\Lib\contextlib.py", line 162, in __exit__
+    self.gen.throw(value)
+    ~~~~~~~~~~~~~~^^^^^^^
+  File "C:\Users\emred\AppData\Local\Programs\Python\Python314\Lib\site-packages\httpcore\_exceptions.py", line 14, in map_exceptions
+    raise to_exc(exc) from exc
+httpcore.ConnectError: [Errno 11001] getaddrinfo failed
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "C:\Users\emred\AppData\Local\Programs\Python\Python314\Lib\site-packages\telegram\request\_httpxrequest.py", line 279, in do_request
+    res = await self._client.request(
+          ^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    ...<6 lines>...
+    )
+    ^
+  File "C:\Users\emred\AppData\Local\Programs\Python\Python314\Lib\site-packages\httpx\_client.py", line 1540, in request
+    return await self.send(request, auth=auth, follow_redirects=follow_redirects)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\emred\AppData\Local\Programs\Python\Python314\Lib\site-packages\httpx\_client.py", line 1629, in send
+    response = await self._send_handling_auth(
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    ...<4 lines>...
+    )
+    ^
+  File "C:\Users\emred\AppData\Local\Programs\Python\Python314\Lib\site-packages\httpx\_client.py", line 1657, in _send_handling_auth
+    response = await self._send_handling_redirects(
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    ...<3 lines>...
+    )
+    ^
+  File "C:\Users\emred\AppData\Local\Programs\Python\Python314\Lib\site-packages\httpx\_client.py", line 1694, in _send_handling_redirects
+    response = await self._send_single_request(request)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\emred\AppData\Local\Programs\Python\Python314\Lib\site-packages\httpx\_client.py", line 1730, in _send_single_request
+    response = await transport.handle_async_request(request)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\emred\AppData\Local\Programs\Python\Python314\Lib\site-packages\httpx\_transports\default.py", line 393, in handle_async_request
+    with map_httpcore_exceptions():
+         ~~~~~~~~~~~~~~~~~~~~~~~^^
+  File "C:\Users\emred\AppData\Local\Programs\Python\Python314\Lib\contextlib.py", line 162, in __exit__
+    self.gen.throw(value)
+    ~~~~~~~~~~~~~~^^^^^^^
+  File "C:\Users\emred\AppData\Local\Programs\Python\Python314\Lib\site-packages\httpx\_transports\default.py", line 118, in map_httpcore_exceptions
+    raise mapped_exc(message) from exc
+httpx.ConnectError: [Errno 11001] getaddrinfo failed
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "C:\Users\emred\AppData\Local\Programs\Python\Python314\Lib\site-packages\telegram\ext\_utils\networkloop.py", line 161, in network_retry_loop
+    await do_action()
+  File "C:\Users\emred\AppData\Local\Programs\Python\Python314\Lib\site-packages\telegram\ext\_utils\networkloop.py", line 154, in do_action
+    action_cb_task.result()
+    ~~~~~~~~~~~~~~~~~~~~~^^
+  File "C:\Users\emred\AppData\Local\Programs\Python\Python314\Lib\site-packages\telegram\ext\_updater.py", line 340, in polling_action_cb
+    updates = await self.bot.get_updates(
+              ^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    ...<3 lines>...
+    )
+    ^
+  File "C:\Users\emred\AppData\Local\Programs\Python\Python314\Lib\site-packages\telegram\ext\_extbot.py", line 671, in get_updates
+    updates = await super().get_updates(
+              ^^^^^^^^^^^^^^^^^^^^^^^^^^
+    ...<9 lines>...
+    )
+    ^
+  File "C:\Users\emred\AppData\Local\Programs\Python\Python314\Lib\site-packages\telegram\_bot.py", line 4860, in get_updates
+    await self._post(
+    ^^^^^^^^^^^^^^^^^
+    ...<7 lines>...
+    ),
+    ^
+  File "C:\Users\emred\AppData\Local\Programs\Python\Python314\Lib\site-packages\telegram\_bot.py", line 703, in _post
+    return await self._do_post(
+           ^^^^^^^^^^^^^^^^^^^^
+    ...<6 lines>...
+    )
+    ^
+  File "C:\Users\emred\AppData\Local\Programs\Python\Python314\Lib\site-packages\telegram\ext\_extbot.py", line 369, in _do_post
+    return await super()._do_post(
+           ^^^^^^^^^^^^^^^^^^^^^^^
+    ...<6 lines>...
+    )
+    ^
+  File "C:\Users\emred\AppData\Local\Programs\Python\Python314\Lib\site-packages\telegram\_bot.py", line 732, in _do_post
+    result = await request.post(
+             ^^^^^^^^^^^^^^^^^^^
+    ...<6 lines>...
+    )
+    ^
+  File "C:\Users\emred\AppData\Local\Programs\Python\Python314\Lib\site-packages\telegram\request\_baserequest.py", line 198, in post
+    result = await self._request_wrapper(
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    ...<7 lines>...
+    )
+    ^
+  File "C:\Users\emred\AppData\Local\Programs\Python\Python314\Lib\site-packages\telegram\request\_baserequest.py", line 305, in _request_wrapper
+    code, payload = await self.do_request(
+                    ^^^^^^^^^^^^^^^^^^^^^^
+    ...<7 lines>...
+    )
+    ^
+  File "C:\Users\emred\AppData\Local\Programs\Python\Python314\Lib\site-packages\telegram\request\_httpxrequest.py", line 303, in do_request
+    raise NetworkError(f"httpx.{err.__class__.__name__}: {err}") from err
+telegram.error.NetworkError: httpx.ConnectError: [Errno 11001] getaddrinfo failed
+2026-03-01 12:21:43,515 | ERROR | Ti App Studio | Hata: httpx.ConnectError: [Errno 11001] getaddrinfo failed
+Traceback (most recent call last):
+  File "C:\Users\emred\AppData\Local\Programs\Python\Python314\Lib\site-packages\httpx\_transports\default.py", line 101, in map_httpcore_exceptions
+    yield
+  File "C:\Users\emred\AppData\Local\Programs\Python\Python314\Lib\site-packages\httpx\_transports\default.py", line 394, in handle_async_request
+    resp = await self._pool.handle_async_request(req)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\emred\AppData\Local\Programs\Python\Python314\Lib\site-packages\httpcore\_async\connection_pool.py", line 256, in handle_async_request
+    raise exc from None
+  File "C:\Users\emred\AppData\Local\Programs\Python\Python314\Lib\site-packages\httpcore\_async\connection_pool.py", line 236, in handle_async_request
+    response = await connection.handle_async_request(
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+        pool_request.request
+        ^^^^^^^^^^^^^^^^^^^^
+    )
+    ^
+  File "C:\Users\emred\AppData\Local\Programs\Python\Python314\Lib\site-packages\httpcore\_async\connection.py", line 101, in handle_async_request
+    raise exc
+  File "C:\Users\emred\AppData\Local\Programs\Python\Python314\Lib\site-packages\httpcore\_async\connection.py", line 78, in handle_async_request
+    stream = await self._connect(request)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\emred\AppData\Local\Programs\Python\Python314\Lib\site-packages\httpcore\_async\connection.py", line 124, in _connect
+    stream = await self._network_backend.connect_tcp(**kwargs)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\emred\AppData\Local\Programs\Python\Python314\Lib\site-packages\httpcore\_backends\auto.py", line 31, in connect_tcp
+    return await self._backend.connect_tcp(
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    ...<5 lines>...
+    )
+    ^
+  File "C:\Users\emred\AppData\Local\Programs\Python\Python314\Lib\site-packages\httpcore\_backends\anyio.py", line 113, in connect_tcp
+    with map_exceptions(exc_map):
+         ~~~~~~~~~~~~~~^^^^^^^^^
+  File "C:\Users\emred\AppData\Local\Programs\Python\Python314\Lib\contextlib.py", line 162, in __exit__
+    self.gen.throw(value)
+    ~~~~~~~~~~~~~~^^^^^^^
+  File "C:\Users\emred\AppData\Local\Programs\Python\Python314\Lib\site-packages\httpcore\_exceptions.py", line 14, in map_exceptions
+    raise to_exc(exc) from exc
+httpcore.ConnectError: [Errno 11001] getaddrinfo failed
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "C:\Users\emred\AppData\Local\Programs\Python\Python314\Lib\site-packages\telegram\request\_httpxrequest.py", line 279, in do_request
+    res = await self._client.request(
+          ^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    ...<6 lines>...
+    )
+    ^
+  File "C:\Users\emred\AppData\Local\Programs\Python\Python314\Lib\site-packages\httpx\_client.py", line 1540, in request
+    return await self.send(request, auth=auth, follow_redirects=follow_redirects)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\emred\AppData\Local\Programs\Python\Python314\Lib\site-packages\httpx\_client.py", line 1629, in send
+    response = await self._send_handling_auth(
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    ...<4 lines>...
+    )
+    ^
+  File "C:\Users\emred\AppData\Local\Programs\Python\Python314\Lib\site-packages\httpx\_client.py", line 1657, in _send_handling_auth
+    response = await self._send_handling_redirects(
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    ...<3 lines>...
+    )
+    ^
+  File "C:\Users\emred\AppData\Local\Programs\Python\Python314\Lib\site-packages\httpx\_client.py", line 1694, in _send_handling_redirects
+    response = await self._send_single_request(request)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\emred\AppData\Local\Programs\Python\Python314\Lib\site-packages\httpx\_client.py", line 1730, in _send_single_request
+    response = await transport.handle_async_request(request)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\emred\AppData\Local\Programs\Python\Python314\Lib\site-packages\httpx\_transports\default.py", line 393, in handle_async_request
+    with map_httpcore_exceptions():
+         ~~~~~~~~~~~~~~~~~~~~~~~^^
+  File "C:\Users\emred\AppData\Local\Programs\Python\Python314\Lib\contextlib.py", line 162, in __exit__
+    self.gen.throw(value)
+    ~~~~~~~~~~~~~~^^^^^^^
+  File "C:\Users\emred\AppData\Local\Programs\Python\Python314\Lib\site-packages\httpx\_transports\default.py", line 118, in map_httpcore_exceptions
+    raise mapped_exc(message) from exc
+httpx.ConnectError: [Errno 11001] getaddrinfo failed
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "C:\Users\emred\AppData\Local\Programs\Python\Python314\Lib\site-packages\telegram\ext\_utils\networkloop.py", line 161, in network_retry_loop
+    await do_action()
+  File "C:\Users\emred\AppData\Local\Programs\Python\Python314\Lib\site-packages\telegram\ext\_utils\networkloop.py", line 154, in do_action
+    action_cb_task.result()
+    ~~~~~~~~~~~~~~~~~~~~~^^
+  File "C:\Users\emred\AppData\Local\Programs\Python\Python314\Lib\site-packages\telegram\ext\_updater.py", line 340, in polling_action_cb
+    updates = await self.bot.get_updates(
+              ^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    ...<3 lines>...
+    )
+    ^
+  File "C:\Users\emred\AppData\Local\Programs\Python\Python314\Lib\site-packages\telegram\ext\_extbot.py", line 671, in get_updates
+    updates = await super().get_updates(
+              ^^^^^^^^^^^^^^^^^^^^^^^^^^
+    ...<9 lines>...
+    )
+    ^
+  File "C:\Users\emred\AppData\Local\Programs\Python\Python314\Lib\site-packages\telegram\_bot.py", line 4860, in get_updates
+    await self._post(
+    ^^^^^^^^^^^^^^^^^
+    ...<7 lines>...
+    ),
+    ^
+  File "C:\Users\emred\AppData\Local\Programs\Python\Python314\Lib\site-packages\telegram\_bot.py", line 703, in _post
+    return await self._do_post(
+           ^^^^^^^^^^^^^^^^^^^^
+    ...<6 lines>...
+    )
+    ^
+  File "C:\Users\emred\AppData\Local\Programs\Python\Python314\Lib\site-packages\telegram\ext\_extbot.py", line 369, in _do_post
+    return await super()._do_post(
+           ^^^^^^^^^^^^^^^^^^^^^^^
+    ...<6 lines>...
+    )
+    ^
+  File "C:\Users\emred\AppData\Local\Programs\Python\Python314\Lib\site-packages\telegram\_bot.py", line 732, in _do_post
+    result = await request.post(
+             ^^^^^^^^^^^^^^^^^^^
+    ...<6 lines>...
+    )
+    ^
+  File "C:\Users\emred\AppData\Local\Programs\Python\Python314\Lib\site-packages\telegram\request\_baserequest.py", line 198, in post
+    result = await self._request_wrapper(
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    ...<7 lines>...
+    )
+    ^
+  File "C:\Users\emred\AppData\Local\Programs\Python\Python314\Lib\site-packages\telegram\request\_baserequest.py", line 305, in _request_wrapper
+    code, payload = await self.do_request(
+                    ^^^^^^^^^^^^^^^^^^^^^^
+    ...<7 lines>...
+    )
+    ^
+  File "C:\Users\emred\AppData\Local\Programs\Python\Python314\Lib\site-packages\telegram\request\_httpxrequest.py", line 303, in do_request
+    raise NetworkError(f"httpx.{err.__class__.__name__}: {err}") from err
+telegram.error.NetworkError: httpx.ConnectError: [Errno 11001] getaddrinfo failed
+2026-03-01 12:21:58,762 | INFO | httpx | HTTP Request: POST https://api.telegram.org/bot8184060678:AAFVrixHiuVatmsEj0Nl4Iwn4Fv5VGKknh4/getUpdates "HTTP/1.1 200 OK"
+2026-03-01 12:22:08,815 | INFO | httpx | HTTP Request: POST https://api.telegram.org/bot8184060678:AAFVrixHiuVatmsEj0Nl4Iwn4Fv5VGKknh4/getUpdates "HTTP/1.1 200 OK"
+2026-03-01 12:22:13,840 | INFO | httpx | HTTP Request: POST https://api.telegram.org/bot8184060678:AAFVrixHiuVatmsEj0Nl4Iwn4Fv5VGKknh4/getUpdates "HTTP/1.1 200 OK"
+2026-03-01 12:22:14,272 | INFO | httpx | HTTP Request: POST https://api.telegram.org/bot8184060678:AAFVrixHiuVatmsEj0Nl4Iwn4Fv5VGKknh4/sendMessage "HTTP/1.1 200 OK"
+2026-03-01 12:22:23,919 | INFO | httpx | HTTP Request: POST https://api.telegram.org/bot8184060678:AAFVrixHiuVatmsEj0Nl4Iwn4Fv5VGKknh4/getUpdates "HTTP/1.1 200 OK"
+2026-03-01 12:22:33,974 | INFO | httpx | HTTP Request: POST https://api.telegram.org/bot8184060678:AAFVrixHiuVatmsEj0Nl4Iwn4Fv5VGKknh4/getUpdates "HTTP/1.1 200 OK"
+2026-03-01 12:22:44,030 | INFO | httpx | HTTP Request: POST https://api.telegram.org/bot8184060678:AAFVrixHiuVatmsEj0Nl4Iwn4Fv5VGKknh4/getUpdates "HTTP/1.1 200 OK"
+2026-03-01 12:22:54,082 | INFO | httpx | HTTP Request: POST https://api.telegram.org/bot8184060678:AAFVrixHiuVatmsEj0Nl4Iwn4Fv5VGKknh4/getUpdates "HTTP/1.1 200 OK"
+2026-03-01 12:23:04,140 | INFO | httpx | HTTP Request: POST https://api.telegram.org/bot8184060678:AAFVrixHiuVatmsEj0Nl4Iwn4Fv5VGKknh4/getUpdates "HTTP/1.1 200 OK"
+2026-03-01 12:23:14,201 | INFO | httpx | HTTP Request: POST https://api.telegram.org/bot8184060678:AAFVrixHiuVatmsEj0Nl4Iwn4Fv5VGKknh4/getUpdates "HTTP/1.1 200 OK"
+2026-03-01 12:23:24,263 | INFO | httpx | HTTP Request: POST https://api.telegram.org/bot8184060678:AAFVrixHiuVatmsEj0Nl4Iwn4Fv5VGKknh4/getUpdates "HTTP/1.1 200 OK"
+2026-03-01 12:23:27,111 | INFO | httpx | HTTP Request: POST https://api.telegram.org/bot8184060678:AAFVrixHiuVatmsEj0Nl4Iwn4Fv5VGKknh4/getUpdates "HTTP/1.1 200 OK"
+2026-03-01 12:23:27,414 | INFO | httpx | HTTP Request: POST https://api.telegram.org/bot8184060678:AAFVrixHiuVatmsEj0Nl4Iwn4Fv5VGKknh4/sendMessage "HTTP/1.1 200 OK"
+2026-03-01 12:23:37,196 | INFO | httpx | HTTP Request: POST https://api.telegram.org/bot8184060678:AAFVrixHiuVatmsEj0Nl4Iwn4Fv5VGKknh4/getUpdates "HTTP/1.1 200 OK"
+2026-03-01 12:23:47,252 | INFO | httpx | HTTP Request: POST https://api.telegram.org/bot8184060678:AAFVrixHiuVatmsEj0Nl4Iwn4Fv5VGKknh4/getUpdates "HTTP/1.1 200 OK"
+2026-03-01 12:23:57,308 | INFO | httpx | HTTP Request: POST https://api.telegram.org/bot8184060678:AAFVrixHiuVatmsEj0Nl4Iwn4Fv5VGKknh4/getUpdates "HTTP/1.1 200 OK"
+2026-03-01 12:24:07,361 | INFO | httpx | HTTP Request: POST https://api.telegram.org/bot8184060678:AAFVrixHiuVatmsEj0Nl4Iwn4Fv5VGKknh4/getUpdates "HTTP/1.1 200 OK"
+2026-03-01 12:24:17,416 | INFO | httpx | HTTP Request: POST https://api.telegram.org/bot8184060678:AAFVrixHiuVatmsEj0Nl4Iwn4Fv5VGKknh4/getUpdates "HTTP/1.1 200 OK"

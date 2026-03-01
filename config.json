@@ -1,0 +1,383 @@
+{
+  "bot_token": "8184060678:AAFVrixHiuVatmsEj0Nl4Iwn4Fv5VGKknh4",
+  "bot_name": "Ti App Studio Bot",
+  "group_id": -1001234567890,
+
+  "rewards": {
+    "join_bonus_xp": 100,
+    "join_bonus_gold": 50,
+    "message_xp_min": 3,
+    "message_xp_max": 8,
+    "message_cooldown_seconds": 3,
+    "greet_bonus_xp": 15,
+    "greet_bonus_gold": 10,
+    "daily_xp": 200,
+    "daily_gold": 100,
+    "streak_xp_per_day": 20,
+    "streak_gold_per_day": 10,
+    "streak_max_xp": 300,
+    "streak_max_gold": 150,
+    "weekly_bonus_xp": 500,
+    "weekly_bonus_gold": 250,
+    "trivia_correct_xp": 75,
+    "trivia_correct_gold": 40,
+    "trivia_wrong_xp_penalty": 10
+  },
+
+  "games": {
+    "dice_max_bet": 5000,
+    "coin_max_bet": 5000
+  },
+
+  "moderation": {
+    "max_warnings": 3,
+    "mute_hours": 24,
+    "auto_delete_banned_words": true
+  },
+
+  "banned_words": [
+    "küfür1", "küfür2", "spam_kelime"
+  ],
+
+  "greet_words": [
+    "selam", "merhaba", "hey", "sa", "heyy", "selamlar",
+    "günaydın", "iyi akşamlar", "iyi geceler", "hello", "hi"
+  ],
+
+  "messages": {
+    "welcome": [
+      "🎮 Oyun dünyasının kapıları sana açıldı! Aramıza hoş geldin!",
+      "⚔️ Yeni bir savaşçı gruba katıldı! Hazır ol, macera seni bekliyor!",
+      "🚀 Süper hızda aramıza katıldın! Grupla oyun geliştirmeye ne dersin?",
+      "🌟 Yıldızlar seni bize gönderdi! Gruba hoş geldin, efsane olmaya hazır mısın?",
+      "🎯 Hedefine ulaştın, doğru yere geldin! Oyun stüdyomuza hoş geldin!",
+      "🦁 Cesur bir oyuncu gruba girdi! Birlikte büyük şeyler başaracağız!",
+      "🔥 Ateş gibi bir enerjiyle geldin! Bu tutku ile çok şey yapacaksın!",
+      "💎 Değerli bir üye daha kazandık! Grubumuz seninle daha güçlü!"
+    ],
+    "greetings": [
+      "Selam",
+      "Merhaba sana da",
+      "Hey, nasılsın",
+      "Selam! Bugün nasıl gidiyor",
+      "Merhaba! Bugün ne oynayacaksın",
+      "Hey! Aramızda görmek güzel",
+      "Selam! Puan tablomuzda seni görmeyi bekliyoruz"
+    ],
+    "level_up": [
+      "🎊 Tebrikler {name}! Seviye {level}'e yükseldin!",
+      "⚡ İnanılmaz {name}! Artık Seviye {level}!",
+      "🏆 {name} seviye atladı! Seviye {level} — Muhteşem!",
+      "🚀 {name} Seviye {level}'e ulaştı! Durdurulamaz!",
+      "🌟 Bravo {name}! Seviye {level} — Bir adım daha!"
+    ]
+  },
+
+  "ranks": [
+    {
+      "name": "Çaylak",
+      "emoji": "🌱",
+      "min_level": 1
+    },
+    {
+      "name": "Stajyer",
+      "emoji": "📋",
+      "min_level": 3
+    },
+    {
+      "name": "Junior Dev",
+      "emoji": "💻",
+      "min_level": 5
+    },
+    {
+      "name": "Pixel Savaşçısı",
+      "emoji": "⚔️",
+      "min_level": 7
+    },
+    {
+      "name": "Beta Tester",
+      "emoji": "🔬",
+      "min_level": 9
+    },
+    {
+      "name": "Mid Dev",
+      "emoji": "🛠️",
+      "min_level": 11
+    },
+    {
+      "name": "Senior Dev",
+      "emoji": "🧠",
+      "min_level": 14
+    },
+    {
+      "name": "Game Designer",
+      "emoji": "🎨",
+      "min_level": 17
+    },
+    {
+      "name": "Lead Developer",
+      "emoji": "👨‍💻",
+      "min_level": 20
+    },
+    {
+      "name": "Studio Director",
+      "emoji": "🎬",
+      "min_level": 23
+    },
+    {
+      "name": "Efsane Oyuncu",
+      "emoji": "🌟",
+      "min_level": 26
+    },
+    {
+      "name": "Oyun Tanrısı",
+      "emoji": "👑",
+      "min_level": 28
+    },
+    {
+      "name": "Ölümsüz",
+      "emoji": "💀",
+      "min_level": 30
+    }
+  ],
+
+  "titles": [
+    {"name": "Oyun Sever", "min_level": 1},
+    {"name": "Code Monkey", "min_level": 5},
+    {"name": "Bug Avcısı", "min_level": 8},
+    {"name": "Pixel Master", "min_level": 10},
+    {"name": "Shader Wizard", "min_level": 13},
+    {"name": "Lore Keeper", "min_level": 16},
+    {"name": "FPS God", "min_level": 18},
+    {"name": "Unity Ninja", "min_level": 20},
+    {"name": "Indie Spirit", "min_level": 22},
+    {"name": "Alpha Tester", "min_level": 25},
+    {"name": "The Architect", "min_level": 28},
+    {"name": "Chaos Engineer", "min_level": 30}
+  ],
+
+  "achievements": [
+    {
+      "id": "first_message",
+      "name": "İlk Söz",
+      "emoji": "💬",
+      "description": "İlk mesajını attın!",
+      "condition": {"type": "messages", "value": 1},
+      "reward_xp": 50,
+      "reward_gold": 25
+    },
+    {
+      "id": "chatterbox",
+      "name": "Konuşkan",
+      "emoji": "🗣️",
+      "description": "100 mesaj attın!",
+      "condition": {"type": "messages", "value": 100},
+      "reward_xp": 200,
+      "reward_gold": 100
+    },
+    {
+      "id": "wordsmith",
+      "name": "Kelime Ustası",
+      "emoji": "📝",
+      "description": "500 mesaj attın!",
+      "condition": {"type": "messages", "value": 500},
+      "reward_xp": 500,
+      "reward_gold": 250
+    },
+    {
+      "id": "legend_talker",
+      "name": "Efsane Konuşmacı",
+      "emoji": "📣",
+      "description": "1000 mesaj attın!",
+      "condition": {"type": "messages", "value": 1000},
+      "reward_xp": 1000,
+      "reward_gold": 500
+    },
+    {
+      "id": "level_5",
+      "name": "Yükseliş",
+      "emoji": "📈",
+      "description": "Seviye 5'e ulaştın!",
+      "condition": {"type": "level", "value": 5},
+      "reward_xp": 100,
+      "reward_gold": 150
+    },
+    {
+      "id": "level_10",
+      "name": "Orta Sınıf",
+      "emoji": "⚡",
+      "description": "Seviye 10'a ulaştın!",
+      "condition": {"type": "level", "value": 10},
+      "reward_xp": 300,
+      "reward_gold": 300
+    },
+    {
+      "id": "level_20",
+      "name": "Elite",
+      "emoji": "💎",
+      "description": "Seviye 20'ye ulaştın!",
+      "condition": {"type": "level", "value": 20},
+      "reward_xp": 800,
+      "reward_gold": 600
+    },
+    {
+      "id": "level_30",
+      "name": "Efsane",
+      "emoji": "👑",
+      "description": "Maksimum seviyeye ulaştın!",
+      "condition": {"type": "level", "value": 30},
+      "reward_xp": 2000,
+      "reward_gold": 2000
+    },
+    {
+      "id": "streak_3",
+      "name": "Düzenli",
+      "emoji": "🔥",
+      "description": "3 günlük streak!",
+      "condition": {"type": "streak", "value": 3},
+      "reward_xp": 100,
+      "reward_gold": 50
+    },
+    {
+      "id": "streak_7",
+      "name": "Haftalık Demir",
+      "emoji": "🔱",
+      "description": "7 günlük streak!",
+      "condition": {"type": "streak", "value": 7},
+      "reward_xp": 300,
+      "reward_gold": 200
+    },
+    {
+      "id": "streak_30",
+      "name": "Aylık Efsane",
+      "emoji": "🌙",
+      "description": "30 günlük streak!",
+      "condition": {"type": "streak", "value": 30},
+      "reward_xp": 1500,
+      "reward_gold": 1000
+    },
+    {
+      "id": "trivia_10",
+      "name": "Bilge",
+      "emoji": "🧠",
+      "description": "10 trivia sorusunu doğru cevapladın!",
+      "condition": {"type": "trivia", "value": 10},
+      "reward_xp": 250,
+      "reward_gold": 125
+    },
+    {
+      "id": "trivia_50",
+      "name": "Büyük Bilge",
+      "emoji": "🔮",
+      "description": "50 trivia sorusunu doğru cevapladın!",
+      "condition": {"type": "trivia", "value": 50},
+      "reward_xp": 750,
+      "reward_gold": 400
+    },
+    {
+      "id": "rich_100",
+      "name": "Kasalı",
+      "emoji": "💰",
+      "description": "1000 altın biriktirdin!",
+      "condition": {"type": "gold", "value": 1000},
+      "reward_xp": 150,
+      "reward_gold": 0
+    },
+    {
+      "id": "rich_10000",
+      "name": "Zengin",
+      "emoji": "🤑",
+      "description": "10.000 altın biriktirdin!",
+      "condition": {"type": "gold", "value": 10000},
+      "reward_xp": 500,
+      "reward_gold": 0
+    }
+  ],
+
+  "trivia_questions": [
+    {
+      "id": "q1",
+      "category": "Oyun Tarihi",
+      "question": "Dünyanın ilk ticari video oyunu hangisidir?",
+      "answer": "Pong",
+      "wrong_answers": ["Pac-Man", "Space Invaders", "Tetris"]
+    },
+    {
+      "id": "q2",
+      "category": "Programlama",
+      "question": "Unity'nin ana programlama dili hangisidir?",
+      "answer": "C#",
+      "wrong_answers": ["Java", "Python", "C++"]
+    },
+    {
+      "id": "q3",
+      "category": "Oyun Tarihi",
+      "question": "Minecraft'ı kim yarattı?",
+      "answer": "Notch (Markus Persson)",
+      "wrong_answers": ["Todd Howard", "Phil Spencer", "Hideo Kojima"]
+    },
+    {
+      "id": "q4",
+      "category": "Teknik",
+      "question": "FPS neyin kısaltmasıdır?",
+      "answer": "Frames Per Second",
+      "wrong_answers": ["First Person Shooter", "Fast Processing System", "Frame Per Scene"]
+    },
+    {
+      "id": "q5",
+      "category": "Oyun Tarihi",
+      "question": "Grand Theft Auto serisini hangi şirket geliştirdi?",
+      "answer": "Rockstar Games",
+      "wrong_answers": ["EA Games", "Ubisoft", "Activision"]
+    },
+    {
+      "id": "q6",
+      "category": "Programlama",
+      "question": "Hangi oyun motoru 'Fortnite' için kullanıldı?",
+      "answer": "Unreal Engine",
+      "wrong_answers": ["Unity", "Godot", "CryEngine"]
+    },
+    {
+      "id": "q7",
+      "category": "Kültür",
+      "question": "E-Spor dünyasının en büyük turnuvası hangisidir?",
+      "answer": "The International (Dota 2)",
+      "wrong_answers": ["League of Legends Worlds", "CS:GO Major", "Fortnite World Cup"]
+    },
+    {
+      "id": "q8",
+      "category": "Teknik",
+      "question": "Ray tracing ne işe yarar?",
+      "answer": "Gerçekçi ışık ve gölge hesaplama",
+      "wrong_answers": ["FPS artırma", "Ses kalitesi artırma", "Ağ gecikmesi azaltma"]
+    },
+    {
+      "id": "q9",
+      "category": "Oyun Tarihi",
+      "question": "The Legend of Zelda hangi platformda çıktı?",
+      "answer": "NES",
+      "wrong_answers": ["SNES", "Game Boy", "N64"]
+    },
+    {
+      "id": "q10",
+      "category": "Programlama",
+      "question": "Git ne için kullanılır?",
+      "answer": "Versiyon kontrolü",
+      "wrong_answers": ["Grafik tasarım", "Ses düzenleme", "Veritabanı yönetimi"]
+    },
+    {
+      "id": "q11",
+      "category": "Kültür",
+      "question": "Hangi oyun 'Battle Royale' türünü popülerleştirdi?",
+      "answer": "PlayerUnknown's Battlegrounds (PUBG)",
+      "wrong_answers": ["Fortnite", "Apex Legends", "Warzone"]
+    },
+    {
+      "id": "q12",
+      "category": "Teknik",
+      "question": "GPU ne anlama gelir?",
+      "answer": "Graphics Processing Unit",
+      "wrong_answers": ["Game Processing Unit", "General Performance Unit", "Global Pixel Unit"]
+    }
+  ]
+}
