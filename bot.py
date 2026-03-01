@@ -59,6 +59,9 @@ logger = logging.getLogger("GameStudioBot")
 def load_config() -> dict:
     with open("config.json", "r", encoding="utf-8") as f:
         return json.load(f)
+      
+import os
+cfg["bot_token"] = os.environ.get("BOT_TOKEN", cfg["bot_token"])
 
 def load_data() -> dict:
     if not os.path.exists("data.json"):
